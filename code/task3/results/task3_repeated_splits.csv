@@ -1,0 +1,1401 @@
+detector,auc_pr,pair_acc,seed
+LR(T1)  [Task 1],0.5473579990059897,0.65,0
+LR(T2)  [Task 2],0.914827487618241,0.975,0
+LR(T1 + T2)  [Task 3],0.9161713923217691,0.975,0
+LR(length),0.9849669510832498,0.975,0
+LR(length + T1),0.9950570835495589,0.975,0
+LR(length + T2),0.9906740966430289,0.95,0
+LR(length + T1 + T2),0.9925250322675075,0.95,0
+"LR(T1, length removed)",0.6457005806899836,0.8,0
+"LR(T2, length removed)",0.6401783823856008,0.75,0
+"LR(T1 + T2, length removed)",0.6367582851983529,0.75,0
+"mean_logprob, length removed",0.6222271301637495,0.825,0
+"mean_entropy, length removed",0.47522450945070854,0.525,0
+"bertscore_incons, length removed",0.4000621079507408,0.25,0
+"nli_contra, length removed",0.3928204240216761,0.325,0
+LR(T1)  [Task 1],0.6467586759969315,0.8,1
+LR(T2)  [Task 2],0.9450388230132905,0.95,1
+LR(T1 + T2)  [Task 3],0.946826374696319,0.95,1
+LR(length),0.9415179353110388,0.925,1
+LR(length + T1),0.9552278390128204,0.975,1
+LR(length + T2),0.9644594833751212,0.95,1
+LR(length + T1 + T2),0.968847883062975,0.975,1
+"LR(T1, length removed)",0.5858882519542932,0.675,1
+"LR(T2, length removed)",0.6899935899401517,0.825,1
+"LR(T1 + T2, length removed)",0.6533096761099535,0.775,1
+"mean_logprob, length removed",0.5680753306485578,0.675,1
+"mean_entropy, length removed",0.45104938911305176,0.425,1
+"bertscore_incons, length removed",0.393418763437993,0.2,1
+"nli_contra, length removed",0.39557847183197004,0.275,1
+LR(T1)  [Task 1],0.5966951400651082,0.6,2
+LR(T2)  [Task 2],0.9645704492298817,0.975,2
+LR(T1 + T2)  [Task 3],0.9607127971069471,0.975,2
+LR(length),0.9822907268085415,1.0,2
+LR(length + T1),0.9874943977586707,1.0,2
+LR(length + T2),0.9930825818699572,1.0,2
+LR(length + T1 + T2),0.9948966408268733,1.0,2
+"LR(T1, length removed)",0.5970708407380059,0.675,2
+"LR(T2, length removed)",0.6683240852661004,0.775,2
+"LR(T1 + T2, length removed)",0.6529322582913931,0.775,2
+"mean_logprob, length removed",0.6347685835435208,0.7,2
+"mean_entropy, length removed",0.4834218881703325,0.525,2
+"bertscore_incons, length removed",0.4175285941241089,0.225,2
+"nli_contra, length removed",0.41910360223747933,0.4,2
+LR(T1)  [Task 1],0.5478585770399538,0.65,3
+LR(T2)  [Task 2],0.9553586986598057,0.975,3
+LR(T1 + T2)  [Task 3],0.9523905543309614,0.975,3
+LR(length),0.9976308139534884,1.0,3
+LR(length + T1),1.0,1.0,3
+LR(length + T2),0.9965077605321507,1.0,3
+LR(length + T1 + T2),0.9967906478488956,1.0,3
+"LR(T1, length removed)",0.6695129606914623,0.85,3
+"LR(T2, length removed)",0.6453609448600932,0.65,3
+"LR(T1 + T2, length removed)",0.6700521345782691,0.75,3
+"mean_logprob, length removed",0.6931123939557697,0.85,3
+"mean_entropy, length removed",0.49285983644940967,0.525,3
+"bertscore_incons, length removed",0.5342599541719456,0.35,3
+"nli_contra, length removed",0.4046373088307708,0.3,3
+LR(T1)  [Task 1],0.6730459125591297,0.625,4
+LR(T2)  [Task 2],0.8936427108265552,0.9,4
+LR(T1 + T2)  [Task 3],0.89410702940295,0.9,4
+LR(length),0.9634726403158607,0.975,4
+LR(length + T1),0.9813060979321698,0.975,4
+LR(length + T2),0.974645548475959,0.95,4
+LR(length + T1 + T2),0.9831536978410461,0.975,4
+"LR(T1, length removed)",0.670065233321068,0.775,4
+"LR(T2, length removed)",0.6906583447029805,0.75,4
+"LR(T1 + T2, length removed)",0.6643870418337716,0.75,4
+"mean_logprob, length removed",0.6640169325390681,0.8,4
+"mean_entropy, length removed",0.4216608166645165,0.375,4
+"bertscore_incons, length removed",0.44016334800008083,0.2,4
+"nli_contra, length removed",0.40555714519572506,0.325,4
+LR(T1)  [Task 1],0.6530159449193975,0.725,5
+LR(T2)  [Task 2],0.9926635435845962,1.0,5
+LR(T1 + T2)  [Task 3],0.9906849875270928,1.0,5
+LR(length),0.9613600198065789,0.95,5
+LR(length + T1),0.9704068235001433,0.95,5
+LR(length + T2),0.9875546670530111,1.0,5
+LR(length + T1 + T2),0.9891066470497585,1.0,5
+"LR(T1, length removed)",0.5604079368904802,0.675,5
+"LR(T2, length removed)",0.7522772514906233,0.75,5
+"LR(T1 + T2, length removed)",0.5876914734148034,0.7,5
+"mean_logprob, length removed",0.5656512871155575,0.7,5
+"mean_entropy, length removed",0.5040501776502897,0.575,5
+"bertscore_incons, length removed",0.41475561457610916,0.25,5
+"nli_contra, length removed",0.46699555470919085,0.475,5
+LR(T1)  [Task 1],0.6123148617477694,0.7,6
+LR(T2)  [Task 2],0.9304977918639561,0.875,6
+LR(T1 + T2)  [Task 3],0.9304727132221626,0.875,6
+LR(length),0.969589446388227,0.975,6
+LR(length + T1),0.9781604772065299,0.975,6
+LR(length + T2),0.9775670184967699,0.975,6
+LR(length + T1 + T2),0.9843357032145021,0.975,6
+"LR(T1, length removed)",0.6231089717532381,0.7,6
+"LR(T2, length removed)",0.6654805598818763,0.7,6
+"LR(T1 + T2, length removed)",0.6329748012689698,0.725,6
+"mean_logprob, length removed",0.6194362997712666,0.775,6
+"mean_entropy, length removed",0.48665569249206175,0.5,6
+"bertscore_incons, length removed",0.44723254474486374,0.25,6
+"nli_contra, length removed",0.43165149261016456,0.4,6
+LR(T1)  [Task 1],0.6689853633384976,0.775,7
+LR(T2)  [Task 2],0.9721899729440037,0.95,7
+LR(T1 + T2)  [Task 3],0.9744781162604822,0.95,7
+LR(length),0.992912087912088,1.0,7
+LR(length + T1),0.9969489859733762,1.0,7
+LR(length + T2),0.998765243902439,1.0,7
+LR(length + T1 + T2),1.0,1.0,7
+"LR(T1, length removed)",0.5681993537171368,0.675,7
+"LR(T2, length removed)",0.7065144601580398,0.7,7
+"LR(T1 + T2, length removed)",0.5898113812928962,0.725,7
+"mean_logprob, length removed",0.5450647517416678,0.65,7
+"mean_entropy, length removed",0.4706619477657501,0.45,7
+"bertscore_incons, length removed",0.46335956597990774,0.325,7
+"nli_contra, length removed",0.39609908455670984,0.275,7
+LR(T1)  [Task 1],0.5769033018976039,0.625,8
+LR(T2)  [Task 2],0.9457912696428801,0.95,8
+LR(T1 + T2)  [Task 3],0.9456493606288461,0.95,8
+LR(length),0.9795859944658903,0.95,8
+LR(length + T1),0.9893595272166701,0.95,8
+LR(length + T2),0.9897804237061468,0.975,8
+LR(length + T1 + T2),0.9902864796680128,0.975,8
+"LR(T1, length removed)",0.6318005738156753,0.825,8
+"LR(T2, length removed)",0.625798921000742,0.65,8
+"LR(T1 + T2, length removed)",0.6264850236133209,0.775,8
+"mean_logprob, length removed",0.6379786213225391,0.825,8
+"mean_entropy, length removed",0.47343145106873025,0.55,8
+"bertscore_incons, length removed",0.4751452907805078,0.325,8
+"nli_contra, length removed",0.42116480426863956,0.375,8
+LR(T1)  [Task 1],0.6323684764561908,0.725,9
+LR(T2)  [Task 2],0.9700796157812555,0.975,9
+LR(T1 + T2)  [Task 3],0.9705660572640097,0.975,9
+LR(length),0.9782952953908837,0.975,9
+LR(length + T1),0.988713518209856,0.975,9
+LR(length + T2),0.993409507159507,1.0,9
+LR(length + T1 + T2),0.9975434981684981,1.0,9
+"LR(T1, length removed)",0.5517024698436847,0.725,9
+"LR(T2, length removed)",0.6618751260360476,0.675,9
+"LR(T1 + T2, length removed)",0.5944890321555035,0.75,9
+"mean_logprob, length removed",0.5621675409857179,0.725,9
+"mean_entropy, length removed",0.4852140397145845,0.525,9
+"bertscore_incons, length removed",0.47360486527168066,0.325,9
+"nli_contra, length removed",0.42008556945380715,0.4,9
+LR(T1)  [Task 1],0.6732027201937896,0.75,10
+LR(T2)  [Task 2],0.9406542774228666,0.975,10
+LR(T1 + T2)  [Task 3],0.937682727417459,0.95,10
+LR(length),0.9908163265306122,0.975,10
+LR(length + T1),0.9936224489795918,0.975,10
+LR(length + T2),0.9927138155269054,0.95,10
+LR(length + T1 + T2),0.9946226261686788,0.95,10
+"LR(T1, length removed)",0.6831565475544747,0.8,10
+"LR(T2, length removed)",0.6634398829525997,0.775,10
+"LR(T1 + T2, length removed)",0.7191133431401392,0.825,10
+"mean_logprob, length removed",0.6832802377274613,0.775,10
+"mean_entropy, length removed",0.40991730069839716,0.35,10
+"bertscore_incons, length removed",0.38713417276340056,0.2,10
+"nli_contra, length removed",0.394320311550003,0.3,10
+LR(T1)  [Task 1],0.6156308046570742,0.65,11
+LR(T2)  [Task 2],0.9069281153175233,0.925,11
+LR(T1 + T2)  [Task 3],0.9095129695221584,0.925,11
+LR(length),0.9809294790968733,0.95,11
+LR(length + T1),0.9875568396267893,0.95,11
+LR(length + T2),0.9841045569448393,0.95,11
+LR(length + T1 + T2),0.9888168994010496,0.95,11
+"LR(T1, length removed)",0.5795271440445454,0.7,11
+"LR(T2, length removed)",0.6171284202830534,0.625,11
+"LR(T1 + T2, length removed)",0.5864350322794145,0.675,11
+"mean_logprob, length removed",0.5945755156629202,0.7,11
+"mean_entropy, length removed",0.46846258438367216,0.525,11
+"bertscore_incons, length removed",0.45160990617838925,0.325,11
+"nli_contra, length removed",0.41836796458153547,0.325,11
+LR(T1)  [Task 1],0.6270253968725734,0.7,12
+LR(T2)  [Task 2],0.9716146108212202,0.975,12
+LR(T1 + T2)  [Task 3],0.9702741925185927,0.975,12
+LR(length),0.9794718337523571,1.0,12
+LR(length + T1),0.9864543177817171,1.0,12
+LR(length + T2),0.999390243902439,1.0,12
+LR(length + T1 + T2),0.999390243902439,1.0,12
+"LR(T1, length removed)",0.6155179446077883,0.7,12
+"LR(T2, length removed)",0.6614891378901715,0.775,12
+"LR(T1 + T2, length removed)",0.6491905839368249,0.8,12
+"mean_logprob, length removed",0.5943459903597355,0.75,12
+"mean_entropy, length removed",0.4493667049310726,0.4,12
+"bertscore_incons, length removed",0.4225242509961062,0.25,12
+"nli_contra, length removed",0.4097137382847936,0.3,12
+LR(T1)  [Task 1],0.5742770249260597,0.75,13
+LR(T2)  [Task 2],0.930235041815035,0.975,13
+LR(T1 + T2)  [Task 3],0.9285677321556951,0.975,13
+LR(length),0.9532231436500034,0.95,13
+LR(length + T1),0.9511471728855774,0.975,13
+LR(length + T2),0.9756224325940468,1.0,13
+LR(length + T1 + T2),0.9768608215371541,1.0,13
+"LR(T1, length removed)",0.6376367300975577,0.75,13
+"LR(T2, length removed)",0.6411738197997817,0.675,13
+"LR(T1 + T2, length removed)",0.6729851981209554,0.775,13
+"mean_logprob, length removed",0.6222480464017165,0.725,13
+"mean_entropy, length removed",0.47296054759344996,0.5,13
+"bertscore_incons, length removed",0.5052100380128828,0.35,13
+"nli_contra, length removed",0.44393816107265843,0.425,13
+LR(T1)  [Task 1],0.5679166548533094,0.65,14
+LR(T2)  [Task 2],0.9569729979058159,0.975,14
+LR(T1 + T2)  [Task 3],0.9583230747946115,0.975,14
+LR(length),0.9831732465289215,0.95,14
+LR(length + T1),0.9881077988541366,0.95,14
+LR(length + T2),0.9926520939714641,0.975,14
+LR(length + T1 + T2),0.9938982213438734,0.975,14
+"LR(T1, length removed)",0.61314380300973,0.7,14
+"LR(T2, length removed)",0.6352037204561432,0.7,14
+"LR(T1 + T2, length removed)",0.6115305409387108,0.675,14
+"mean_logprob, length removed",0.6059480772363612,0.775,14
+"mean_entropy, length removed",0.5291164998009517,0.575,14
+"bertscore_incons, length removed",0.4693019077762326,0.275,14
+"nli_contra, length removed",0.45667503709330637,0.55,14
+LR(T1)  [Task 1],0.6684292254464709,0.675,15
+LR(T2)  [Task 2],0.9843578460194315,0.975,15
+LR(T1 + T2)  [Task 3],0.9826046909385342,0.975,15
+LR(length),0.9829648507392411,0.975,15
+LR(length + T1),0.987863584059027,1.0,15
+LR(length + T2),0.9952088401542829,0.975,15
+LR(length + T1 + T2),0.9945331644786074,1.0,15
+"LR(T1, length removed)",0.6429747415568606,0.8,15
+"LR(T2, length removed)",0.7298828865499969,0.825,15
+"LR(T1 + T2, length removed)",0.6864239707988223,0.825,15
+"mean_logprob, length removed",0.6687088654664568,0.8,15
+"mean_entropy, length removed",0.4662943453300658,0.525,15
+"bertscore_incons, length removed",0.420171062174551,0.2,15
+"nli_contra, length removed",0.39619077002038905,0.3,15
+LR(T1)  [Task 1],0.6577755039940081,0.75,16
+LR(T2)  [Task 2],0.9432016197566491,0.925,16
+LR(T1 + T2)  [Task 3],0.9438303158141298,0.925,16
+LR(length),0.9563100561862172,0.975,16
+LR(length + T1),0.9603801752087882,0.95,16
+LR(length + T2),0.9771958812374708,0.975,16
+LR(length + T1 + T2),0.9759365601574406,0.975,16
+"LR(T1, length removed)",0.5761954365059913,0.65,16
+"LR(T2, length removed)",0.6812425402837421,0.675,16
+"LR(T1 + T2, length removed)",0.6281120190085785,0.75,16
+"mean_logprob, length removed",0.5869474178281279,0.675,16
+"mean_entropy, length removed",0.4968814399363747,0.55,16
+"bertscore_incons, length removed",0.4251044474033135,0.275,16
+"nli_contra, length removed",0.39754381838632924,0.35,16
+LR(T1)  [Task 1],0.699049065925317,0.725,17
+LR(T2)  [Task 2],0.9540203598692774,0.925,17
+LR(T1 + T2)  [Task 3],0.9538707404848775,0.925,17
+LR(length),0.976831363072782,0.975,17
+LR(length + T1),0.9821979954189033,0.975,17
+LR(length + T2),0.991697423039241,0.975,17
+LR(length + T1 + T2),0.9846628288522904,0.975,17
+"LR(T1, length removed)",0.5321607228830345,0.6,17
+"LR(T2, length removed)",0.6338274786428432,0.6,17
+"LR(T1 + T2, length removed)",0.556746707450051,0.675,17
+"mean_logprob, length removed",0.5437881698934437,0.675,17
+"mean_entropy, length removed",0.48959900892165814,0.5,17
+"bertscore_incons, length removed",0.4764645059953752,0.4,17
+"nli_contra, length removed",0.4285640752260979,0.5,17
+LR(T1)  [Task 1],0.5412460233434482,0.525,18
+LR(T2)  [Task 2],0.9317910594497512,0.95,18
+LR(T1 + T2)  [Task 3],0.9327506541387527,0.95,18
+LR(length),0.9699063864359917,0.925,18
+LR(length + T1),0.9803966782189779,0.95,18
+LR(length + T2),0.9788413285589171,0.925,18
+LR(length + T1 + T2),0.9820499993274349,0.95,18
+"LR(T1, length removed)",0.6438496183898016,0.775,18
+"LR(T2, length removed)",0.7156377886385055,0.775,18
+"LR(T1 + T2, length removed)",0.6597266078369008,0.825,18
+"mean_logprob, length removed",0.6660119587448384,0.8,18
+"mean_entropy, length removed",0.5172822998593827,0.525,18
+"bertscore_incons, length removed",0.4807975626826994,0.25,18
+"nli_contra, length removed",0.4369934029404233,0.5,18
+LR(T1)  [Task 1],0.5715500175591892,0.65,19
+LR(T2)  [Task 2],0.9575605707065025,0.95,19
+LR(T1 + T2)  [Task 3],0.9570402625832533,0.95,19
+LR(length),0.9855906537363087,1.0,19
+LR(length + T1),0.9938010591697862,1.0,19
+LR(length + T2),0.9938387200341628,1.0,19
+LR(length + T1 + T2),1.0,1.0,19
+"LR(T1, length removed)",0.7900736488051978,0.875,19
+"LR(T2, length removed)",0.6396334243643539,0.625,19
+"LR(T1 + T2, length removed)",0.8395320463832221,0.85,19
+"mean_logprob, length removed",0.806404782879348,0.925,19
+"mean_entropy, length removed",0.47407167556022684,0.425,19
+"bertscore_incons, length removed",0.4471317536006463,0.325,19
+"nli_contra, length removed",0.3995594977031307,0.325,19
+LR(T1)  [Task 1],0.6319279908779963,0.75,20
+LR(T2)  [Task 2],0.963297155053609,0.975,20
+LR(T1 + T2)  [Task 3],0.9625294991258145,0.975,20
+LR(length),0.9556006197657898,0.95,20
+LR(length + T1),0.968960630083181,0.975,20
+LR(length + T2),0.9766722172959967,1.0,20
+LR(length + T1 + T2),0.9804981824719805,1.0,20
+"LR(T1, length removed)",0.5991530173323276,0.7,20
+"LR(T2, length removed)",0.7022224252831244,0.8,20
+"LR(T1 + T2, length removed)",0.6220546271192111,0.75,20
+"mean_logprob, length removed",0.5732471190992525,0.675,20
+"mean_entropy, length removed",0.4834925407252978,0.45,20
+"bertscore_incons, length removed",0.38126995631035454,0.2,20
+"nli_contra, length removed",0.3962616782697852,0.3,20
+LR(T1)  [Task 1],0.734237291367724,0.725,21
+LR(T2)  [Task 2],0.9695973500383719,0.975,21
+LR(T1 + T2)  [Task 3],0.9691549494199792,0.975,21
+LR(length),0.9975595238095238,0.975,21
+LR(length + T1),0.9982558139534884,1.0,21
+LR(length + T2),0.9988095238095238,1.0,21
+LR(length + T1 + T2),0.998765243902439,1.0,21
+"LR(T1, length removed)",0.6140937250796633,0.8,21
+"LR(T2, length removed)",0.7750248962273953,0.775,21
+"LR(T1 + T2, length removed)",0.6822155076880367,0.75,21
+"mean_logprob, length removed",0.5919271988741104,0.775,21
+"mean_entropy, length removed",0.4470755559422982,0.425,21
+"bertscore_incons, length removed",0.3968342187633127,0.25,21
+"nli_contra, length removed",0.4252166165363012,0.35,21
+LR(T1)  [Task 1],0.640248927253932,0.675,22
+LR(T2)  [Task 2],0.97271967301109,1.0,22
+LR(T1 + T2)  [Task 3],0.9754048556305978,1.0,22
+LR(length),0.978161888977436,1.0,22
+LR(length + T1),0.9882445298369752,1.0,22
+LR(length + T2),0.9962099277559804,1.0,22
+LR(length + T1 + T2),0.9981242182614134,1.0,22
+"LR(T1, length removed)",0.6757457467180914,0.875,22
+"LR(T2, length removed)",0.6726783039974936,0.7,22
+"LR(T1 + T2, length removed)",0.7278817740138667,0.825,22
+"mean_logprob, length removed",0.6502104367685495,0.85,22
+"mean_entropy, length removed",0.44126162955689574,0.475,22
+"bertscore_incons, length removed",0.4621890735176481,0.275,22
+"nli_contra, length removed",0.45938827341368016,0.475,22
+LR(T1)  [Task 1],0.6974582161217435,0.775,23
+LR(T2)  [Task 2],0.9605627002340864,1.0,23
+LR(T1 + T2)  [Task 3],0.9591646166803398,1.0,23
+LR(length),0.9611219873525092,0.95,23
+LR(length + T1),0.9625885741504362,0.95,23
+LR(length + T2),0.9813484269405321,1.0,23
+LR(length + T1 + T2),0.9814959843636314,1.0,23
+"LR(T1, length removed)",0.6186931313985808,0.725,23
+"LR(T2, length removed)",0.7357886612660491,0.7,23
+"LR(T1 + T2, length removed)",0.6871518144419186,0.775,23
+"mean_logprob, length removed",0.5910502922454635,0.7,23
+"mean_entropy, length removed",0.4269626600573573,0.425,23
+"bertscore_incons, length removed",0.44586347951213934,0.25,23
+"nli_contra, length removed",0.43329934184245245,0.375,23
+LR(T1)  [Task 1],0.6508973367609201,0.725,24
+LR(T2)  [Task 2],0.9609890936992832,0.925,24
+LR(T1 + T2)  [Task 3],0.961974404494202,0.925,24
+LR(length),0.9833317867993948,0.975,24
+LR(length + T1),0.9905113776372623,1.0,24
+LR(length + T2),0.9920429906193556,0.975,24
+LR(length + T1 + T2),0.9942066854021282,1.0,24
+"LR(T1, length removed)",0.5911250885197813,0.7,24
+"LR(T2, length removed)",0.67899947284222,0.675,24
+"LR(T1 + T2, length removed)",0.6259238495727683,0.725,24
+"mean_logprob, length removed",0.5891732888453043,0.75,24
+"mean_entropy, length removed",0.48536413673462303,0.475,24
+"bertscore_incons, length removed",0.4521773673190643,0.275,24
+"nli_contra, length removed",0.3844444465135076,0.275,24
+LR(T1)  [Task 1],0.6056602700264089,0.7,25
+LR(T2)  [Task 2],0.89008070933256,0.925,25
+LR(T1 + T2)  [Task 3],0.8898825662586551,0.925,25
+LR(length),0.9589226075484637,0.975,25
+LR(length + T1),0.9626499600763009,0.975,25
+LR(length + T2),0.971162579562291,0.975,25
+LR(length + T1 + T2),0.9729630874481362,0.975,25
+"LR(T1, length removed)",0.605515058963788,0.7,25
+"LR(T2, length removed)",0.6405681225339157,0.625,25
+"LR(T1 + T2, length removed)",0.589103583013652,0.65,25
+"mean_logprob, length removed",0.5809697996743118,0.7,25
+"mean_entropy, length removed",0.48131129197682143,0.475,25
+"bertscore_incons, length removed",0.4889501460876954,0.35,25
+"nli_contra, length removed",0.42993904109206643,0.4,25
+LR(T1)  [Task 1],0.6301223327869818,0.725,26
+LR(T2)  [Task 2],0.9506876023664164,0.95,26
+LR(T1 + T2)  [Task 3],0.9527694582915156,0.95,26
+LR(length),0.9587064043462745,0.925,26
+LR(length + T1),0.9714076135088849,0.95,26
+LR(length + T2),0.9723919784557378,0.95,26
+LR(length + T1 + T2),0.9757277787953371,0.975,26
+"LR(T1, length removed)",0.7458739158190739,0.825,26
+"LR(T2, length removed)",0.7083374159420692,0.8,26
+"LR(T1 + T2, length removed)",0.7401111162598979,0.85,26
+"mean_logprob, length removed",0.7272033362501931,0.8,26
+"mean_entropy, length removed",0.42335351633774276,0.375,26
+"bertscore_incons, length removed",0.4271934591275699,0.25,26
+"nli_contra, length removed",0.47523929550064586,0.45,26
+LR(T1)  [Task 1],0.6387375443393619,0.775,27
+LR(T2)  [Task 2],0.9770865536841035,0.975,27
+LR(T1 + T2)  [Task 3],0.9735924281057113,0.95,27
+LR(length),0.9831309041835358,1.0,27
+LR(length + T1),0.9863949130155689,1.0,27
+LR(length + T2),0.9901624696701423,1.0,27
+LR(length + T1 + T2),0.9940476190476191,1.0,27
+"LR(T1, length removed)",0.593298552456399,0.75,27
+"LR(T2, length removed)",0.6554037586033439,0.675,27
+"LR(T1 + T2, length removed)",0.6359046699736026,0.775,27
+"mean_logprob, length removed",0.6159925416055193,0.775,27
+"mean_entropy, length removed",0.476077044022047,0.5,27
+"bertscore_incons, length removed",0.4332298804209808,0.325,27
+"nli_contra, length removed",0.3928131833895857,0.225,27
+LR(T1)  [Task 1],0.6770457262655466,0.725,28
+LR(T2)  [Task 2],0.9697537548187403,0.975,28
+LR(T1 + T2)  [Task 3],0.9666602359870815,0.975,28
+LR(length),0.961826901813357,0.975,28
+LR(length + T1),0.9851257017949858,1.0,28
+LR(length + T2),0.9857218701211836,1.0,28
+LR(length + T1 + T2),0.9887208196418723,1.0,28
+"LR(T1, length removed)",0.5882940090738922,0.75,28
+"LR(T2, length removed)",0.6632404137792751,0.8,28
+"LR(T1 + T2, length removed)",0.603446760349811,0.7,28
+"mean_logprob, length removed",0.5543512330139078,0.725,28
+"mean_entropy, length removed",0.44877293603745166,0.475,28
+"bertscore_incons, length removed",0.4091506198463143,0.2,28
+"nli_contra, length removed",0.4086983179204572,0.35,28
+LR(T1)  [Task 1],0.6510847063518609,0.825,29
+LR(T2)  [Task 2],0.9396198386250108,0.95,29
+LR(T1 + T2)  [Task 3],0.9382950927333905,0.925,29
+LR(length),0.9748237800204521,0.975,29
+LR(length + T1),0.9805121585578687,0.975,29
+LR(length + T2),0.9857424044750196,1.0,29
+LR(length + T1 + T2),0.9902413400856799,1.0,29
+"LR(T1, length removed)",0.4982806789030386,0.625,29
+"LR(T2, length removed)",0.63615643772447,0.575,29
+"LR(T1 + T2, length removed)",0.5184068434878795,0.6,29
+"mean_logprob, length removed",0.4872593053838816,0.6,29
+"mean_entropy, length removed",0.47343067022266505,0.525,29
+"bertscore_incons, length removed",0.5075013525555562,0.375,29
+"nli_contra, length removed",0.4219548640796963,0.35,29
+LR(T1)  [Task 1],0.6151818990126385,0.7,30
+LR(T2)  [Task 2],0.9215091651833306,0.975,30
+LR(T1 + T2)  [Task 3],0.9214370032674368,0.975,30
+LR(length),0.9743999885615741,0.975,30
+LR(length + T1),0.9840179966650555,1.0,30
+LR(length + T2),0.9792040012193937,0.95,30
+LR(length + T1 + T2),0.9825132436130274,0.975,30
+"LR(T1, length removed)",0.6049752823659293,0.725,30
+"LR(T2, length removed)",0.6459798838058574,0.725,30
+"LR(T1 + T2, length removed)",0.5866445042554009,0.7,30
+"mean_logprob, length removed",0.5765295367910191,0.7,30
+"mean_entropy, length removed",0.45609792783459996,0.475,30
+"bertscore_incons, length removed",0.41764371320323856,0.275,30
+"nli_contra, length removed",0.43330651846387236,0.375,30
+LR(T1)  [Task 1],0.5778904548394515,0.65,31
+LR(T2)  [Task 2],0.94255954361951,0.95,31
+LR(T1 + T2)  [Task 3],0.9426185431536167,0.95,31
+LR(length),0.9767761118438049,0.975,31
+LR(length + T1),0.9851308645976825,0.975,31
+LR(length + T2),0.985517500791891,0.975,31
+LR(length + T1 + T2),0.9872940013183916,0.975,31
+"LR(T1, length removed)",0.7262951477794799,0.825,31
+"LR(T2, length removed)",0.6513447540457087,0.625,31
+"LR(T1 + T2, length removed)",0.7403934504852002,0.775,31
+"mean_logprob, length removed",0.7336502404358163,0.85,31
+"mean_entropy, length removed",0.42736465121822104,0.4,31
+"bertscore_incons, length removed",0.4425438762194929,0.35,31
+"nli_contra, length removed",0.38079366919834945,0.275,31
+LR(T1)  [Task 1],0.6695893513308169,0.75,32
+LR(T2)  [Task 2],0.9634915217343538,0.975,32
+LR(T1 + T2)  [Task 3],0.9632976601043826,0.975,32
+LR(length),0.9384149471032244,0.925,32
+LR(length + T1),0.944850847301632,0.925,32
+LR(length + T2),0.9695222335337486,0.95,32
+LR(length + T1 + T2),0.9675533165677941,0.95,32
+"LR(T1, length removed)",0.5717248964254897,0.675,32
+"LR(T2, length removed)",0.7115463986527772,0.775,32
+"LR(T1 + T2, length removed)",0.6368375844567571,0.775,32
+"mean_logprob, length removed",0.5602229976244881,0.675,32
+"mean_entropy, length removed",0.44308351052997685,0.4,32
+"bertscore_incons, length removed",0.4055502631415771,0.25,32
+"nli_contra, length removed",0.41710763320869887,0.3,32
+LR(T1)  [Task 1],0.7049486028680569,0.8,33
+LR(T2)  [Task 2],0.9707668642722991,0.95,33
+LR(T1 + T2)  [Task 3],0.9713598129902478,0.95,33
+LR(length),0.9566718895067912,0.95,33
+LR(length + T1),0.9598539175767278,0.95,33
+LR(length + T2),0.9797220181982178,0.975,33
+LR(length + T1 + T2),0.9799091510412378,0.975,33
+"LR(T1, length removed)",0.5450350863469472,0.6,33
+"LR(T2, length removed)",0.6609676392408912,0.7,33
+"LR(T1 + T2, length removed)",0.5893796880352347,0.65,33
+"mean_logprob, length removed",0.5330543854456322,0.65,33
+"mean_entropy, length removed",0.4652128331087062,0.475,33
+"bertscore_incons, length removed",0.4243658668283783,0.175,33
+"nli_contra, length removed",0.41973348048595305,0.4,33
+LR(T1)  [Task 1],0.5958502826446082,0.625,34
+LR(T2)  [Task 2],0.9645765583805365,1.0,34
+LR(T1 + T2)  [Task 3],0.9633529641800567,0.975,34
+LR(length),0.9737206406148143,0.975,34
+LR(length + T1),0.9807315290185727,0.975,34
+LR(length + T2),0.9838497561878291,0.975,34
+LR(length + T1 + T2),0.9868380923008387,1.0,34
+"LR(T1, length removed)",0.592337420823406,0.725,34
+"LR(T2, length removed)",0.5115145440663748,0.55,34
+"LR(T1 + T2, length removed)",0.5729160452057124,0.725,34
+"mean_logprob, length removed",0.5930875298004653,0.7,34
+"mean_entropy, length removed",0.5022309573682275,0.525,34
+"bertscore_incons, length removed",0.5424721048029364,0.45,34
+"nli_contra, length removed",0.4534589520231833,0.5,34
+LR(T1)  [Task 1],0.6574737982999643,0.725,35
+LR(T2)  [Task 2],0.9806354525298542,0.975,35
+LR(T1 + T2)  [Task 3],0.9781220465546784,0.975,35
+LR(length),0.9394512186509657,0.925,35
+LR(length + T1),0.9431767700988489,0.9,35
+LR(length + T2),0.981013908801444,0.975,35
+LR(length + T1 + T2),0.9775519213632182,0.975,35
+"LR(T1, length removed)",0.5602560648857599,0.675,35
+"LR(T2, length removed)",0.7650829810233297,0.8,35
+"LR(T1 + T2, length removed)",0.6484505524495892,0.8,35
+"mean_logprob, length removed",0.5446720876388396,0.7,35
+"mean_entropy, length removed",0.4804664051073632,0.5,35
+"bertscore_incons, length removed",0.3692688676911936,0.2,35
+"nli_contra, length removed",0.419629059958434,0.4,35
+LR(T1)  [Task 1],0.6451118434233247,0.7,36
+LR(T2)  [Task 2],0.9665374847388368,1.0,36
+LR(T1 + T2)  [Task 3],0.9657190440170084,1.0,36
+LR(length),0.9669806051006988,0.95,36
+LR(length + T1),0.9731230546565774,0.975,36
+LR(length + T2),0.9796682277426416,0.975,36
+LR(length + T1 + T2),0.9818099547511312,1.0,36
+"LR(T1, length removed)",0.5877228790559716,0.7,36
+"LR(T2, length removed)",0.5951621505051062,0.575,36
+"LR(T1 + T2, length removed)",0.5546595307902307,0.625,36
+"mean_logprob, length removed",0.5512317942859081,0.7,36
+"mean_entropy, length removed",0.437223501715597,0.375,36
+"bertscore_incons, length removed",0.4778244347237426,0.4,36
+"nli_contra, length removed",0.3969752278942897,0.3,36
+LR(T1)  [Task 1],0.60572760266921,0.725,37
+LR(T2)  [Task 2],0.9759282054804278,0.975,37
+LR(T1 + T2)  [Task 3],0.9753944528661428,0.975,37
+LR(length),0.9793240657920891,0.975,37
+LR(length + T1),0.9836572334360103,1.0,37
+LR(length + T2),0.9951711792899063,0.975,37
+LR(length + T1 + T2),0.998765243902439,1.0,37
+"LR(T1, length removed)",0.5536434746739582,0.675,37
+"LR(T2, length removed)",0.703532609687975,0.75,37
+"LR(T1 + T2, length removed)",0.6345698240344788,0.725,37
+"mean_logprob, length removed",0.5644080973035926,0.65,37
+"mean_entropy, length removed",0.521060766733386,0.575,37
+"bertscore_incons, length removed",0.4241495632869015,0.225,37
+"nli_contra, length removed",0.3949229019005758,0.325,37
+LR(T1)  [Task 1],0.6257934473120779,0.7,38
+LR(T2)  [Task 2],0.9606295238920357,0.95,38
+LR(T1 + T2)  [Task 3],0.9569495366232181,0.95,38
+LR(length),0.982384506940428,1.0,38
+LR(length + T1),0.9899305917818769,1.0,38
+LR(length + T2),0.9883379039464566,1.0,38
+LR(length + T1 + T2),0.9905118184753443,1.0,38
+"LR(T1, length removed)",0.6431586922595898,0.775,38
+"LR(T2, length removed)",0.6544789421500212,0.7,38
+"LR(T1 + T2, length removed)",0.6449437974587587,0.775,38
+"mean_logprob, length removed",0.6466535725347105,0.8,38
+"mean_entropy, length removed",0.477449511411009,0.55,38
+"bertscore_incons, length removed",0.4408362427162637,0.25,38
+"nli_contra, length removed",0.4099777827442265,0.4,38
+LR(T1)  [Task 1],0.6420296352197434,0.75,39
+LR(T2)  [Task 2],0.9745886328339106,1.0,39
+LR(T1 + T2)  [Task 3],0.9756645263195342,1.0,39
+LR(length),1.0,1.0,39
+LR(length + T1),1.0,1.0,39
+LR(length + T2),1.0,1.0,39
+LR(length + T1 + T2),0.9974663235245712,1.0,39
+"LR(T1, length removed)",0.5785013288431682,0.725,39
+"LR(T2, length removed)",0.6944357607547509,0.775,39
+"LR(T1 + T2, length removed)",0.6197896987958862,0.7,39
+"mean_logprob, length removed",0.5653110458229427,0.75,39
+"mean_entropy, length removed",0.4400112197141395,0.45,39
+"bertscore_incons, length removed",0.40766077222014563,0.225,39
+"nli_contra, length removed",0.4258495080295934,0.325,39
+LR(T1)  [Task 1],0.6168667875175342,0.625,40
+LR(T2)  [Task 2],0.9148537193585262,0.975,40
+LR(T1 + T2)  [Task 3],0.9174622537608215,0.975,40
+LR(length),0.9438563320543376,0.95,40
+LR(length + T1),0.9574524398294532,0.975,40
+LR(length + T2),0.9679285722273421,0.95,40
+LR(length + T1 + T2),0.9754962919480318,0.95,40
+"LR(T1, length removed)",0.5661482020670291,0.675,40
+"LR(T2, length removed)",0.6395247443290223,0.675,40
+"LR(T1 + T2, length removed)",0.6122481578031591,0.75,40
+"mean_logprob, length removed",0.5709273024207573,0.65,40
+"mean_entropy, length removed",0.5000207214528356,0.45,40
+"bertscore_incons, length removed",0.44990826124396466,0.275,40
+"nli_contra, length removed",0.4092565065632746,0.375,40
+LR(T1)  [Task 1],0.6494628465447974,0.675,41
+LR(T2)  [Task 2],0.9398286133944392,0.925,41
+LR(T1 + T2)  [Task 3],0.9445571716471937,0.925,41
+LR(length),0.963317334839074,0.925,41
+LR(length + T1),0.9742774864308478,0.95,41
+LR(length + T2),0.9743045460731127,0.95,41
+LR(length + T1 + T2),0.9761402018611098,0.95,41
+"LR(T1, length removed)",0.5484684529689023,0.675,41
+"LR(T2, length removed)",0.6937870264120185,0.8,41
+"LR(T1 + T2, length removed)",0.5815506509662393,0.625,41
+"mean_logprob, length removed",0.5302647059453731,0.65,41
+"mean_entropy, length removed",0.4799481812391975,0.5,41
+"bertscore_incons, length removed",0.44962859527422633,0.225,41
+"nli_contra, length removed",0.43707000919500866,0.475,41
+LR(T1)  [Task 1],0.6021594871820896,0.725,42
+LR(T2)  [Task 2],0.957030417621842,0.975,42
+LR(T1 + T2)  [Task 3],0.9505142155123114,0.95,42
+LR(length),0.965060612659698,1.0,42
+LR(length + T1),0.9793224626359349,1.0,42
+LR(length + T2),0.990953408481604,1.0,42
+LR(length + T1 + T2),0.9925392928353455,1.0,42
+"LR(T1, length removed)",0.5773175218211545,0.725,42
+"LR(T2, length removed)",0.6440701813744978,0.7,42
+"LR(T1 + T2, length removed)",0.6423362713621719,0.775,42
+"mean_logprob, length removed",0.6077492712511747,0.775,42
+"mean_entropy, length removed",0.48775929508228344,0.575,42
+"bertscore_incons, length removed",0.44469891689200153,0.3,42
+"nli_contra, length removed",0.4389425915977813,0.45,42
+LR(T1)  [Task 1],0.6415415621088271,0.8,43
+LR(T2)  [Task 2],0.9585740915960989,0.975,43
+LR(T1 + T2)  [Task 3],0.954957027084394,0.975,43
+LR(length),0.9954545454545455,0.975,43
+LR(length + T1),0.9964700996677741,1.0,43
+LR(length + T2),0.9977272727272728,1.0,43
+LR(length + T1 + T2),1.0,1.0,43
+"LR(T1, length removed)",0.5602452616728546,0.675,43
+"LR(T2, length removed)",0.646205788911469,0.65,43
+"LR(T1 + T2, length removed)",0.5778527516877099,0.675,43
+"mean_logprob, length removed",0.5361801298309475,0.65,43
+"mean_entropy, length removed",0.45773457550733365,0.425,43
+"bertscore_incons, length removed",0.42397461705937844,0.25,43
+"nli_contra, length removed",0.3843840159732161,0.225,43
+LR(T1)  [Task 1],0.658101345471243,0.675,44
+LR(T2)  [Task 2],0.917033187108106,0.925,44
+LR(T1 + T2)  [Task 3],0.9182698884389267,0.925,44
+LR(length),0.9736672730422731,1.0,44
+LR(length + T1),0.9902575468035993,1.0,44
+LR(length + T2),0.9842071892185241,0.975,44
+LR(length + T1 + T2),0.9881044602981909,0.975,44
+"LR(T1, length removed)",0.6627275618732381,0.825,44
+"LR(T2, length removed)",0.6219095107386752,0.675,44
+"LR(T1 + T2, length removed)",0.6736974466228123,0.75,44
+"mean_logprob, length removed",0.6784951615235809,0.825,44
+"mean_entropy, length removed",0.5120870835952099,0.55,44
+"bertscore_incons, length removed",0.45542084015244555,0.3,44
+"nli_contra, length removed",0.39738570681171187,0.4,44
+LR(T1)  [Task 1],0.5777738588502377,0.675,45
+LR(T2)  [Task 2],0.9331330723967646,0.925,45
+LR(T1 + T2)  [Task 3],0.9330614178993004,0.925,45
+LR(length),0.9797018419408294,1.0,45
+LR(length + T1),0.9872485140997992,1.0,45
+LR(length + T2),0.9885692737038522,1.0,45
+LR(length + T1 + T2),0.9907206632653061,1.0,45
+"LR(T1, length removed)",0.6051678249696206,0.75,45
+"LR(T2, length removed)",0.5781317233545258,0.525,45
+"LR(T1 + T2, length removed)",0.5577501494790198,0.675,45
+"mean_logprob, length removed",0.6113842108084816,0.75,45
+"mean_entropy, length removed",0.4766552393999743,0.45,45
+"bertscore_incons, length removed",0.5302347433810873,0.375,45
+"nli_contra, length removed",0.39423297820665304,0.35,45
+LR(T1)  [Task 1],0.7567820804455196,0.825,46
+LR(T2)  [Task 2],0.9176545376376675,0.95,46
+LR(T1 + T2)  [Task 3],0.9118768852008347,0.95,46
+LR(length),0.9841335381693217,1.0,46
+LR(length + T1),0.9902529419499048,1.0,46
+LR(length + T2),0.9837998384552762,0.975,46
+LR(length + T1 + T2),0.9884661247535002,0.975,46
+"LR(T1, length removed)",0.6001306886599852,0.725,46
+"LR(T2, length removed)",0.6206633330612816,0.6,46
+"LR(T1 + T2, length removed)",0.5991648006845605,0.65,46
+"mean_logprob, length removed",0.5919012468740406,0.75,46
+"mean_entropy, length removed",0.43329856233187386,0.4,46
+"bertscore_incons, length removed",0.46510672181614815,0.325,46
+"nli_contra, length removed",0.40360006346937244,0.375,46
+LR(T1)  [Task 1],0.6374462287798722,0.75,47
+LR(T2)  [Task 2],0.946592140340849,0.925,47
+LR(T1 + T2)  [Task 3],0.9394527748228687,0.925,47
+LR(length),0.9654134409775917,0.975,47
+LR(length + T1),0.9554456955888577,0.975,47
+LR(length + T2),0.9911560092980466,1.0,47
+LR(length + T1 + T2),0.9768276363227175,1.0,47
+"LR(T1, length removed)",0.5228047680879399,0.65,47
+"LR(T2, length removed)",0.753748396930754,0.725,47
+"LR(T1 + T2, length removed)",0.6079791582628893,0.725,47
+"mean_logprob, length removed",0.5465254220430069,0.7,47
+"mean_entropy, length removed",0.5082273837536446,0.55,47
+"bertscore_incons, length removed",0.4234876927721348,0.2,47
+"nli_contra, length removed",0.41987463179160517,0.425,47
+LR(T1)  [Task 1],0.5846946339410964,0.625,48
+LR(T2)  [Task 2],0.9473014724547195,0.95,48
+LR(T1 + T2)  [Task 3],0.9491826416833433,0.95,48
+LR(length),0.9605050974791679,0.975,48
+LR(length + T1),0.9721763881525286,0.975,48
+LR(length + T2),0.9784469503716937,0.975,48
+LR(length + T1 + T2),0.9853667262969589,1.0,48
+"LR(T1, length removed)",0.6628568800988934,0.8,48
+"LR(T2, length removed)",0.6027018829290152,0.575,48
+"LR(T1 + T2, length removed)",0.6370966036724041,0.725,48
+"mean_logprob, length removed",0.6243380440298353,0.775,48
+"mean_entropy, length removed",0.4520470671986319,0.425,48
+"bertscore_incons, length removed",0.45236166579245485,0.35,48
+"nli_contra, length removed",0.3969894964553245,0.275,48
+LR(T1)  [Task 1],0.6113311091935207,0.625,49
+LR(T2)  [Task 2],0.9264633863739884,0.975,49
+LR(T1 + T2)  [Task 3],0.9295703166945084,0.975,49
+LR(length),0.9705022818381731,0.975,49
+LR(length + T1),0.9818205668951552,0.975,49
+LR(length + T2),0.9856015465452771,0.95,49
+LR(length + T1 + T2),0.9898323940194114,0.95,49
+"LR(T1, length removed)",0.6910458659970677,0.825,49
+"LR(T2, length removed)",0.6819569706574535,0.75,49
+"LR(T1 + T2, length removed)",0.690177297073278,0.825,49
+"mean_logprob, length removed",0.6730558576196508,0.825,49
+"mean_entropy, length removed",0.4470016123940892,0.475,49
+"bertscore_incons, length removed",0.40890744678094637,0.25,49
+"nli_contra, length removed",0.4281218781721565,0.425,49
+LR(T1)  [Task 1],0.6161115348363595,0.775,50
+LR(T2)  [Task 2],0.935156956935653,0.925,50
+LR(T1 + T2)  [Task 3],0.9355634051942338,0.925,50
+LR(length),0.9834591656874268,1.0,50
+LR(length + T1),0.9857101328903654,1.0,50
+LR(length + T2),0.9825354162512079,1.0,50
+LR(length + T1 + T2),0.9833835697399527,1.0,50
+"LR(T1, length removed)",0.5838311300837434,0.675,50
+"LR(T2, length removed)",0.6564079506338487,0.6,50
+"LR(T1 + T2, length removed)",0.5753275065847695,0.575,50
+"mean_logprob, length removed",0.5709960581628888,0.675,50
+"mean_entropy, length removed",0.46475473151611374,0.475,50
+"bertscore_incons, length removed",0.5748744682288788,0.35,50
+"nli_contra, length removed",0.4596312375157091,0.45,50
+LR(T1)  [Task 1],0.6099486473543589,0.65,51
+LR(T2)  [Task 2],0.9488662765538335,0.95,51
+LR(T1 + T2)  [Task 3],0.943198764535045,0.95,51
+LR(length),0.9703745845709996,0.975,51
+LR(length + T1),0.978647735669237,0.975,51
+LR(length + T2),0.9837007690886397,0.975,51
+LR(length + T1 + T2),0.9876693766937669,0.975,51
+"LR(T1, length removed)",0.5718168158512824,0.7,51
+"LR(T2, length removed)",0.6034041083570172,0.675,51
+"LR(T1 + T2, length removed)",0.592169878001404,0.675,51
+"mean_logprob, length removed",0.6436591824988179,0.7,51
+"mean_entropy, length removed",0.4801877425547564,0.55,51
+"bertscore_incons, length removed",0.5139023351802665,0.275,51
+"nli_contra, length removed",0.39713057097897725,0.325,51
+LR(T1)  [Task 1],0.6404167732832697,0.75,52
+LR(T2)  [Task 2],0.9111661853259495,0.95,52
+LR(T1 + T2)  [Task 3],0.9121775796550148,0.925,52
+LR(length),0.9668661853587195,0.975,52
+LR(length + T1),0.976308253265291,0.975,52
+LR(length + T2),0.979744151303702,0.95,52
+LR(length + T1 + T2),0.9881560007038803,0.95,52
+"LR(T1, length removed)",0.6748210859080496,0.825,52
+"LR(T2, length removed)",0.6213142106388796,0.675,52
+"LR(T1 + T2, length removed)",0.669477890235324,0.775,52
+"mean_logprob, length removed",0.6708367135776857,0.825,52
+"mean_entropy, length removed",0.4280515428626309,0.4,52
+"bertscore_incons, length removed",0.411212090823432,0.225,52
+"nli_contra, length removed",0.3819803370528166,0.25,52
+LR(T1)  [Task 1],0.6540878103234876,0.7,53
+LR(T2)  [Task 2],0.9018197666097181,0.95,53
+LR(T1 + T2)  [Task 3],0.9025408204119872,0.95,53
+LR(length),0.9780069236319237,0.975,53
+LR(length + T1),0.9831748716565916,1.0,53
+LR(length + T2),0.9823179844739078,0.975,53
+LR(length + T1 + T2),0.989489254105959,0.975,53
+"LR(T1, length removed)",0.7366003153011962,0.85,53
+"LR(T2, length removed)",0.6012852601735102,0.725,53
+"LR(T1 + T2, length removed)",0.6885687611129216,0.75,53
+"mean_logprob, length removed",0.7234059523161378,0.825,53
+"mean_entropy, length removed",0.4292436136305643,0.375,53
+"bertscore_incons, length removed",0.4754262964864147,0.25,53
+"nli_contra, length removed",0.35878971553044076,0.15,53
+LR(T1)  [Task 1],0.5906842616608972,0.65,54
+LR(T2)  [Task 2],0.9447783768495854,0.9,54
+LR(T1 + T2)  [Task 3],0.9470820810861269,0.9,54
+LR(length),0.9715226090436174,0.975,54
+LR(length + T1),0.9816083816562613,0.975,54
+LR(length + T2),0.9833064921852912,0.975,54
+LR(length + T1 + T2),0.9869649685110211,0.975,54
+"LR(T1, length removed)",0.6505324741734215,0.775,54
+"LR(T2, length removed)",0.6704959989721564,0.775,54
+"LR(T1 + T2, length removed)",0.6583491460240536,0.775,54
+"mean_logprob, length removed",0.6496503106699469,0.8,54
+"mean_entropy, length removed",0.4794582500846213,0.55,54
+"bertscore_incons, length removed",0.4114618750650694,0.225,54
+"nli_contra, length removed",0.3965788590516904,0.3,54
+LR(T1)  [Task 1],0.6484734985019156,0.775,55
+LR(T2)  [Task 2],0.9688869188732848,0.95,55
+LR(T1 + T2)  [Task 3],0.9643268151570549,0.95,55
+LR(length),0.9762392104223453,0.975,55
+LR(length + T1),0.977969389529505,0.975,55
+LR(length + T2),0.9916889138691465,1.0,55
+LR(length + T1 + T2),0.9895733591898548,1.0,55
+"LR(T1, length removed)",0.5685312655043048,0.725,55
+"LR(T2, length removed)",0.6926167404710659,0.75,55
+"LR(T1 + T2, length removed)",0.6359147249638828,0.8,55
+"mean_logprob, length removed",0.5778627678770474,0.725,55
+"mean_entropy, length removed",0.4802279746002184,0.525,55
+"bertscore_incons, length removed",0.4072869986576547,0.25,55
+"nli_contra, length removed",0.38303161624248955,0.275,55
+LR(T1)  [Task 1],0.6022451742162128,0.675,56
+LR(T2)  [Task 2],0.9634332864672954,0.975,56
+LR(T1 + T2)  [Task 3],0.9591358103746456,0.95,56
+LR(length),0.9721063215744067,0.975,56
+LR(length + T1),0.9803924934960793,0.975,56
+LR(length + T2),0.9975434981684981,1.0,56
+LR(length + T1 + T2),1.0,1.0,56
+"LR(T1, length removed)",0.6184368717416879,0.8,56
+"LR(T2, length removed)",0.6387849870538472,0.7,56
+"LR(T1 + T2, length removed)",0.656795544231738,0.775,56
+"mean_logprob, length removed",0.6142926967868629,0.775,56
+"mean_entropy, length removed",0.4461282361181599,0.5,56
+"bertscore_incons, length removed",0.43730716362359745,0.3,56
+"nli_contra, length removed",0.43383516817086604,0.3,56
+LR(T1)  [Task 1],0.5836719532487493,0.7,57
+LR(T2)  [Task 2],0.9603656853603173,0.975,57
+LR(T1 + T2)  [Task 3],0.961406459152417,0.975,57
+LR(length),0.980199083011583,0.975,57
+LR(length + T1),0.9835119971450368,0.975,57
+LR(length + T2),0.9939727954971858,1.0,57
+LR(length + T1 + T2),0.9967391304347826,1.0,57
+"LR(T1, length removed)",0.6112553225390331,0.825,57
+"LR(T2, length removed)",0.7317953351826822,0.7,57
+"LR(T1 + T2, length removed)",0.6457486568019641,0.725,57
+"mean_logprob, length removed",0.5952048235873452,0.8,57
+"mean_entropy, length removed",0.5011059696997429,0.575,57
+"bertscore_incons, length removed",0.5003708970671225,0.275,57
+"nli_contra, length removed",0.4515771402112221,0.5,57
+LR(T1)  [Task 1],0.6200065673548272,0.7,58
+LR(T2)  [Task 2],0.9757827270311108,1.0,58
+LR(T1 + T2)  [Task 3],0.9735839600720582,1.0,58
+LR(length),0.9833159110486881,0.95,58
+LR(length + T1),0.9825084876610128,0.95,58
+LR(length + T2),0.9946226261686788,0.975,58
+LR(length + T1 + T2),0.9934450899367947,0.975,58
+"LR(T1, length removed)",0.621290317049469,0.75,58
+"LR(T2, length removed)",0.7196452732549838,0.725,58
+"LR(T1 + T2, length removed)",0.6535200568523769,0.725,58
+"mean_logprob, length removed",0.607031603962007,0.75,58
+"mean_entropy, length removed",0.45660857274206096,0.525,58
+"bertscore_incons, length removed",0.45023517825464743,0.25,58
+"nli_contra, length removed",0.42481168136380704,0.45,58
+LR(T1)  [Task 1],0.5810454943411918,0.7,59
+LR(T2)  [Task 2],0.9854057049040489,1.0,59
+LR(T1 + T2)  [Task 3],0.9824112973755755,1.0,59
+LR(length),0.9709093330942826,0.975,59
+LR(length + T1),0.9707525791240661,0.975,59
+LR(length + T2),0.9876228632478632,1.0,59
+LR(length + T1 + T2),0.9880736301369861,1.0,59
+"LR(T1, length removed)",0.5768229679726264,0.7,59
+"LR(T2, length removed)",0.7310151170239116,0.75,59
+"LR(T1 + T2, length removed)",0.6889063727501987,0.85,59
+"mean_logprob, length removed",0.5822890524954596,0.725,59
+"mean_entropy, length removed",0.48638585483384933,0.525,59
+"bertscore_incons, length removed",0.39976373669739973,0.275,59
+"nli_contra, length removed",0.47260291778138663,0.425,59
+LR(T1)  [Task 1],0.6640376601354274,0.7,60
+LR(T2)  [Task 2],0.9655565814021696,0.95,60
+LR(T1 + T2)  [Task 3],0.9659519799680453,0.95,60
+LR(length),0.9793115942028985,1.0,60
+LR(length + T1),0.9867658184524728,1.0,60
+LR(length + T2),0.9926635435845962,1.0,60
+LR(length + T1 + T2),0.9988095238095238,1.0,60
+"LR(T1, length removed)",0.6117002767241837,0.725,60
+"LR(T2, length removed)",0.7668223150386457,0.775,60
+"LR(T1 + T2, length removed)",0.7075324276231012,0.85,60
+"mean_logprob, length removed",0.6024711069250493,0.75,60
+"mean_entropy, length removed",0.4577917818934771,0.45,60
+"bertscore_incons, length removed",0.4001982911388987,0.175,60
+"nli_contra, length removed",0.36668864698808734,0.225,60
+LR(T1)  [Task 1],0.7228194359321003,0.8,61
+LR(T2)  [Task 2],0.9787620700067395,1.0,61
+LR(T1 + T2)  [Task 3],0.976425697988198,1.0,61
+LR(length),0.9617942393863447,1.0,61
+LR(length + T1),0.9657192908793893,1.0,61
+LR(length + T2),0.9789095211951194,1.0,61
+LR(length + T1 + T2),0.9790244505869505,1.0,61
+"LR(T1, length removed)",0.6221957036051269,0.75,61
+"LR(T2, length removed)",0.7755966159943998,0.75,61
+"LR(T1 + T2, length removed)",0.6439984027456505,0.7,61
+"mean_logprob, length removed",0.6129663549923224,0.675,61
+"mean_entropy, length removed",0.4596627366841858,0.4,61
+"bertscore_incons, length removed",0.4293604800796553,0.25,61
+"nli_contra, length removed",0.4048149823901618,0.325,61
+LR(T1)  [Task 1],0.6271427610013504,0.7,62
+LR(T2)  [Task 2],0.9025694866603708,0.95,62
+LR(T1 + T2)  [Task 3],0.9019214631370001,0.925,62
+LR(length),0.967779592937373,0.95,62
+LR(length + T1),0.9876292246891277,0.975,62
+LR(length + T2),0.97387454782701,0.95,62
+LR(length + T1 + T2),0.9803681996938021,0.95,62
+"LR(T1, length removed)",0.6289697094672484,0.775,62
+"LR(T2, length removed)",0.5811562111463281,0.675,62
+"LR(T1 + T2, length removed)",0.6210556278420811,0.725,62
+"mean_logprob, length removed",0.6125017961732807,0.75,62
+"mean_entropy, length removed",0.46244189804407276,0.45,62
+"bertscore_incons, length removed",0.406645482704594,0.275,62
+"nli_contra, length removed",0.39269399245232095,0.325,62
+LR(T1)  [Task 1],0.671859223944294,0.825,63
+LR(T2)  [Task 2],0.9352225459704346,0.925,63
+LR(T1 + T2)  [Task 3],0.9362092325908626,0.925,63
+LR(length),0.9495056458334451,0.95,63
+LR(length + T1),0.959200272807084,0.975,63
+LR(length + T2),0.9643942229073309,0.975,63
+LR(length + T1 + T2),0.9619746902193711,0.95,63
+"LR(T1, length removed)",0.5259685490977533,0.6,63
+"LR(T2, length removed)",0.6602810820867802,0.625,63
+"LR(T1 + T2, length removed)",0.5338663862531106,0.625,63
+"mean_logprob, length removed",0.516274324506014,0.575,63
+"mean_entropy, length removed",0.4551803722809149,0.45,63
+"bertscore_incons, length removed",0.4839272909655613,0.325,63
+"nli_contra, length removed",0.42397944478554717,0.375,63
+LR(T1)  [Task 1],0.5671398969060807,0.6,64
+LR(T2)  [Task 2],0.9681002949347592,1.0,64
+LR(T1 + T2)  [Task 3],0.9689001946460198,1.0,64
+LR(length),0.9766956349760343,1.0,64
+LR(length + T1),0.9796934814012278,1.0,64
+LR(length + T2),0.9838812598023123,1.0,64
+LR(length + T1 + T2),0.9882638888888888,1.0,64
+"LR(T1, length removed)",0.7294579426649559,0.875,64
+"LR(T2, length removed)",0.6454171454049837,0.675,64
+"LR(T1 + T2, length removed)",0.714705597433438,0.85,64
+"mean_logprob, length removed",0.7274388221456972,0.825,64
+"mean_entropy, length removed",0.47413338938557614,0.55,64
+"bertscore_incons, length removed",0.4263183580617795,0.3,64
+"nli_contra, length removed",0.387108552296043,0.25,64
+LR(T1)  [Task 1],0.6432005151960212,0.75,65
+LR(T2)  [Task 2],0.9231487983444794,0.975,65
+LR(T1 + T2)  [Task 3],0.924216456149006,0.975,65
+LR(length),0.9925334168755222,1.0,65
+LR(length + T1),0.9956154155608584,1.0,65
+LR(length + T2),0.9935121936235678,0.975,65
+LR(length + T1 + T2),0.9974663235245712,0.975,65
+"LR(T1, length removed)",0.6466654262273058,0.775,65
+"LR(T2, length removed)",0.6619798802567886,0.75,65
+"LR(T1 + T2, length removed)",0.6420912753488477,0.725,65
+"mean_logprob, length removed",0.6481723695225472,0.8,65
+"mean_entropy, length removed",0.46800075904599236,0.5,65
+"bertscore_incons, length removed",0.48441203881700634,0.25,65
+"nli_contra, length removed",0.4180146836297405,0.4,65
+LR(T1)  [Task 1],0.6745406629922845,0.75,66
+LR(T2)  [Task 2],0.9001281039251698,0.925,66
+LR(T1 + T2)  [Task 3],0.9005815115592006,0.925,66
+LR(length),0.9814044638702556,0.95,66
+LR(length + T1),0.986159420289855,0.95,66
+LR(length + T2),0.9757489189181487,0.925,66
+LR(length + T1 + T2),0.9790078722285894,0.925,66
+"LR(T1, length removed)",0.5994016137968249,0.75,66
+"LR(T2, length removed)",0.669963760728856,0.7,66
+"LR(T1 + T2, length removed)",0.6783114772724441,0.775,66
+"mean_logprob, length removed",0.5998068700886832,0.775,66
+"mean_entropy, length removed",0.4641385081247018,0.5,66
+"bertscore_incons, length removed",0.4320680866140157,0.275,66
+"nli_contra, length removed",0.44320654444003493,0.45,66
+LR(T1)  [Task 1],0.6860475751742265,0.725,67
+LR(T2)  [Task 2],0.92462592839612,0.975,67
+LR(T1 + T2)  [Task 3],0.9265071328365067,0.975,67
+LR(length),0.9746200598912899,0.975,67
+LR(length + T1),0.9716916672647402,0.975,67
+LR(length + T2),0.9840300267033047,0.975,67
+LR(length + T1 + T2),0.9890223966222813,0.975,67
+"LR(T1, length removed)",0.5966695818313754,0.75,67
+"LR(T2, length removed)",0.6349454354768583,0.625,67
+"LR(T1 + T2, length removed)",0.6221495321666958,0.7,67
+"mean_logprob, length removed",0.592217802573549,0.75,67
+"mean_entropy, length removed",0.47283640448896,0.45,67
+"bertscore_incons, length removed",0.4458563851174627,0.325,67
+"nli_contra, length removed",0.42725207241031604,0.5,67
+LR(T1)  [Task 1],0.6212475346023844,0.65,68
+LR(T2)  [Task 2],0.9230089887619515,0.95,68
+LR(T1 + T2)  [Task 3],0.9243046996742973,0.95,68
+LR(length),0.9663655276434182,0.975,68
+LR(length + T1),0.9632686544858681,0.975,68
+LR(length + T2),0.982372007813143,0.975,68
+LR(length + T1 + T2),0.9847056103936235,0.975,68
+"LR(T1, length removed)",0.6492682697404939,0.775,68
+"LR(T2, length removed)",0.5950895598674962,0.675,68
+"LR(T1 + T2, length removed)",0.6582951952270841,0.75,68
+"mean_logprob, length removed",0.671479400200099,0.775,68
+"mean_entropy, length removed",0.4553042171561218,0.4,68
+"bertscore_incons, length removed",0.44162253450206734,0.325,68
+"nli_contra, length removed",0.4423096417472244,0.475,68
+LR(T1)  [Task 1],0.6283977437613635,0.75,69
+LR(T2)  [Task 2],0.9690246990673727,0.95,69
+LR(T1 + T2)  [Task 3],0.9670650613028555,0.95,69
+LR(length),0.9730108060259142,0.95,69
+LR(length + T1),0.9730592805345477,0.95,69
+LR(length + T2),0.9843913618368048,0.975,69
+LR(length + T1 + T2),0.979707473441616,0.975,69
+"LR(T1, length removed)",0.5965273004086001,0.725,69
+"LR(T2, length removed)",0.717403718600524,0.775,69
+"LR(T1 + T2, length removed)",0.6539607831900576,0.725,69
+"mean_logprob, length removed",0.5666109744672894,0.725,69
+"mean_entropy, length removed",0.46647996097194055,0.475,69
+"bertscore_incons, length removed",0.4431830760677758,0.2,69
+"nli_contra, length removed",0.4086978621662696,0.35,69
+LR(T1)  [Task 1],0.559345838524089,0.6,70
+LR(T2)  [Task 2],0.9532989739307101,1.0,70
+LR(T1 + T2)  [Task 3],0.9546736364561561,1.0,70
+LR(length),0.9537031865480239,1.0,70
+LR(length + T1),0.9710966614643084,1.0,70
+LR(length + T2),0.978670438437399,1.0,70
+LR(length + T1 + T2),0.9857320231006118,1.0,70
+"LR(T1, length removed)",0.7920271168534799,0.9,70
+"LR(T2, length removed)",0.6892211077620326,0.75,70
+"LR(T1 + T2, length removed)",0.8048683086997049,0.875,70
+"mean_logprob, length removed",0.802382073331824,0.875,70
+"mean_entropy, length removed",0.45764010830572055,0.475,70
+"bertscore_incons, length removed",0.40684823081224947,0.225,70
+"nli_contra, length removed",0.39768354650759963,0.25,70
+LR(T1)  [Task 1],0.6021143701856346,0.7,71
+LR(T2)  [Task 2],0.97718471214441,0.975,71
+LR(T1 + T2)  [Task 3],0.9766425670913955,0.975,71
+LR(length),0.9573703632856865,0.95,71
+LR(length + T1),0.9608244667393995,0.95,71
+LR(length + T2),0.9869402633968117,0.975,71
+LR(length + T1 + T2),0.987676499032882,0.975,71
+"LR(T1, length removed)",0.5409725983790079,0.675,71
+"LR(T2, length removed)",0.7801533119701706,0.9,71
+"LR(T1 + T2, length removed)",0.6567231337655213,0.8,71
+"mean_logprob, length removed",0.5292209655355229,0.7,71
+"mean_entropy, length removed",0.5052347573697844,0.525,71
+"bertscore_incons, length removed",0.3672918356983552,0.125,71
+"nli_contra, length removed",0.3959173612590608,0.275,71
+LR(T1)  [Task 1],0.575588555484092,0.7,72
+LR(T2)  [Task 2],0.9525714796021314,0.975,72
+LR(T1 + T2)  [Task 3],0.9523963892791085,0.975,72
+LR(length),0.9832225842901895,0.975,72
+LR(length + T1),0.9839618649906419,0.975,72
+LR(length + T2),0.9940336637047162,1.0,72
+LR(length + T1 + T2),0.9962099277559804,1.0,72
+"LR(T1, length removed)",0.6625544718351455,0.75,72
+"LR(T2, length removed)",0.6168441100106309,0.625,72
+"LR(T1 + T2, length removed)",0.654324097724258,0.75,72
+"mean_logprob, length removed",0.6560505149827298,0.775,72
+"mean_entropy, length removed",0.48482589341151766,0.5,72
+"bertscore_incons, length removed",0.5392681041612735,0.375,72
+"nli_contra, length removed",0.43758111581477,0.45,72
+LR(T1)  [Task 1],0.6536802989357373,0.75,73
+LR(T2)  [Task 2],0.9094938814178654,0.95,73
+LR(T1 + T2)  [Task 3],0.9110606215836266,0.95,73
+LR(length),0.9741785878519011,0.975,73
+LR(length + T1),0.986578475420977,0.975,73
+LR(length + T2),0.9798786043939969,0.95,73
+LR(length + T1 + T2),0.9822075487596351,0.95,73
+"LR(T1, length removed)",0.5824635262734659,0.675,73
+"LR(T2, length removed)",0.6396332363561607,0.6,73
+"LR(T1 + T2, length removed)",0.5720418785279993,0.675,73
+"mean_logprob, length removed",0.5786751873101271,0.725,73
+"mean_entropy, length removed",0.45462932682874146,0.45,73
+"bertscore_incons, length removed",0.45586349418655137,0.375,73
+"nli_contra, length removed",0.42804511577575155,0.35,73
+LR(T1)  [Task 1],0.7529485504637297,0.85,74
+LR(T2)  [Task 2],0.9871874497799513,1.0,74
+LR(T1 + T2)  [Task 3],0.9886593474933028,1.0,74
+LR(length),0.9823345070422536,0.975,74
+LR(length + T1),0.985030395136778,0.975,74
+LR(length + T2),0.9874999999999999,0.975,74
+LR(length + T1 + T2),0.986444805194805,0.975,74
+"LR(T1, length removed)",0.5883299735737588,0.725,74
+"LR(T2, length removed)",0.7939474978935002,0.8,74
+"LR(T1 + T2, length removed)",0.6451953366229772,0.725,74
+"mean_logprob, length removed",0.5668162447291796,0.725,74
+"mean_entropy, length removed",0.4410595491424927,0.4,74
+"bertscore_incons, length removed",0.3871712497914123,0.2,74
+"nli_contra, length removed",0.4316287075972916,0.45,74
+LR(T1)  [Task 1],0.6559296512803305,0.725,75
+LR(T2)  [Task 2],0.9704615027004999,0.975,75
+LR(T1 + T2)  [Task 3],0.9695649865439406,0.975,75
+LR(length),0.961164674516823,0.975,75
+LR(length + T1),0.9715569169041605,0.975,75
+LR(length + T2),0.9842313664596274,0.975,75
+LR(length + T1 + T2),0.9835426478283621,0.975,75
+"LR(T1, length removed)",0.5588957319177472,0.625,75
+"LR(T2, length removed)",0.685554247935909,0.75,75
+"LR(T1 + T2, length removed)",0.6097925008771409,0.7,75
+"mean_logprob, length removed",0.5670734752032678,0.675,75
+"mean_entropy, length removed",0.4742543732251854,0.5,75
+"bertscore_incons, length removed",0.4195059808838376,0.275,75
+"nli_contra, length removed",0.39608513603956624,0.325,75
+LR(T1)  [Task 1],0.6359707752802382,0.75,76
+LR(T2)  [Task 2],0.9794567686788359,0.975,76
+LR(T1 + T2)  [Task 3],0.9774067928052479,0.95,76
+LR(length),0.9660271274130309,1.0,76
+LR(length + T1),0.984206851971125,1.0,76
+LR(length + T2),0.9956515957446808,1.0,76
+LR(length + T1 + T2),0.9965972222222221,1.0,76
+"LR(T1, length removed)",0.6363682244597113,0.825,76
+"LR(T2, length removed)",0.6898958809850386,0.8,76
+"LR(T1 + T2, length removed)",0.7136199580905418,0.8,76
+"mean_logprob, length removed",0.6291073137198829,0.825,76
+"mean_entropy, length removed",0.4565849128401661,0.45,76
+"bertscore_incons, length removed",0.38558956882798867,0.225,76
+"nli_contra, length removed",0.40145153521624,0.35,76
+LR(T1)  [Task 1],0.6016481500860639,0.575,77
+LR(T2)  [Task 2],0.9256756647842976,0.975,77
+LR(T1 + T2)  [Task 3],0.9261308105251289,0.975,77
+LR(length),0.9827014652014652,1.0,77
+LR(length + T1),0.9849492408976813,1.0,77
+LR(length + T2),0.9876825492069394,0.975,77
+LR(length + T1 + T2),0.9894861595399616,0.975,77
+"LR(T1, length removed)",0.5693775975066429,0.7,77
+"LR(T2, length removed)",0.7286932150955626,0.825,77
+"LR(T1 + T2, length removed)",0.6577768631002685,0.85,77
+"mean_logprob, length removed",0.6375865260980913,0.8,77
+"mean_entropy, length removed",0.5041892704835226,0.6,77
+"bertscore_incons, length removed",0.4161814246034128,0.15,77
+"nli_contra, length removed",0.3923634415454321,0.375,77
+LR(T1)  [Task 1],0.6123850226925336,0.65,78
+LR(T2)  [Task 2],0.9443104977337056,0.925,78
+LR(T1 + T2)  [Task 3],0.9449030352067103,0.925,78
+LR(length),0.9786904761904762,0.975,78
+LR(length + T1),0.9829214901939622,0.975,78
+LR(length + T2),0.9808861984451217,0.975,78
+LR(length + T1 + T2),0.9849383197977285,0.975,78
+"LR(T1, length removed)",0.6732096791849284,0.8,78
+"LR(T2, length removed)",0.644703701352654,0.65,78
+"LR(T1 + T2, length removed)",0.7569550169820329,0.875,78
+"mean_logprob, length removed",0.6812349078777427,0.825,78
+"mean_entropy, length removed",0.42911865106924146,0.375,78
+"bertscore_incons, length removed",0.49343342762176967,0.325,78
+"nli_contra, length removed",0.42076398944094784,0.4,78
+LR(T1)  [Task 1],0.5789707812611111,0.7,79
+LR(T2)  [Task 2],0.9430432204920474,0.925,79
+LR(T1 + T2)  [Task 3],0.9437411738473491,0.925,79
+LR(length),0.9775262664646228,1.0,79
+LR(length + T1),0.9825316057392437,1.0,79
+LR(length + T2),0.9858042542253068,1.0,79
+LR(length + T1 + T2),0.9882638888888888,1.0,79
+"LR(T1, length removed)",0.679887243011157,0.775,79
+"LR(T2, length removed)",0.6020533439973029,0.625,79
+"LR(T1 + T2, length removed)",0.6458592966899267,0.775,79
+"mean_logprob, length removed",0.6657516422834694,0.8,79
+"mean_entropy, length removed",0.46767004710301757,0.5,79
+"bertscore_incons, length removed",0.4369553886794808,0.325,79
+"nli_contra, length removed",0.4250099333570343,0.375,79
+LR(T1)  [Task 1],0.600708154377803,0.65,80
+LR(T2)  [Task 2],0.9747061055588675,1.0,80
+LR(T1 + T2)  [Task 3],0.9753360992699228,1.0,80
+LR(length),0.9622242158426368,0.95,80
+LR(length + T1),0.9738205228780504,0.975,80
+LR(length + T2),0.9816027224482695,0.975,80
+LR(length + T1 + T2),0.9819222111491314,0.975,80
+"LR(T1, length removed)",0.6177835589918349,0.725,80
+"LR(T2, length removed)",0.7399743290466471,0.8,80
+"LR(T1 + T2, length removed)",0.6337210333621295,0.75,80
+"mean_logprob, length removed",0.5804211504532845,0.675,80
+"mean_entropy, length removed",0.46142585957847126,0.4,80
+"bertscore_incons, length removed",0.3985757475681386,0.225,80
+"nli_contra, length removed",0.4259048585648396,0.375,80
+LR(T1)  [Task 1],0.5794304953017613,0.675,81
+LR(T2)  [Task 2],0.9411183704572881,0.95,81
+LR(T1 + T2)  [Task 3],0.9423970117491791,0.95,81
+LR(length),0.965222193161661,0.975,81
+LR(length + T1),0.9757505378313529,0.975,81
+LR(length + T2),0.9829398711238881,1.0,81
+LR(length + T1 + T2),0.9900224708891756,1.0,81
+"LR(T1, length removed)",0.6751953799547347,0.8,81
+"LR(T2, length removed)",0.6874094710840879,0.675,81
+"LR(T1 + T2, length removed)",0.7249613319497146,0.8,81
+"mean_logprob, length removed",0.697087276446732,0.8,81
+"mean_entropy, length removed",0.5073286716451868,0.525,81
+"bertscore_incons, length removed",0.47513838220145654,0.275,81
+"nli_contra, length removed",0.42474081313095746,0.425,81
+LR(T1)  [Task 1],0.5632805638508491,0.7,82
+LR(T2)  [Task 2],0.9233567158842817,0.9,82
+LR(T1 + T2)  [Task 3],0.9224162384314702,0.875,82
+LR(length),0.9768737250101999,0.95,82
+LR(length + T1),0.9823366630458261,0.95,82
+LR(length + T2),0.9817829627361652,0.95,82
+LR(length + T1 + T2),0.9838626455703919,0.95,82
+"LR(T1, length removed)",0.760879695412744,0.875,82
+"LR(T2, length removed)",0.5879089678564637,0.625,82
+"LR(T1 + T2, length removed)",0.7218296200408132,0.825,82
+"mean_logprob, length removed",0.7793996691262545,0.875,82
+"mean_entropy, length removed",0.4457085875544205,0.475,82
+"bertscore_incons, length removed",0.5201997662878146,0.325,82
+"nli_contra, length removed",0.4148893170472644,0.4,82
+LR(T1)  [Task 1],0.5791444005209299,0.675,83
+LR(T2)  [Task 2],0.9554883185428097,0.95,83
+LR(T1 + T2)  [Task 3],0.9563442931495869,0.95,83
+LR(length),0.9815557544275787,1.0,83
+LR(length + T1),0.9944527313458487,1.0,83
+LR(length + T2),0.9915155677655677,1.0,83
+LR(length + T1 + T2),0.995803352349405,1.0,83
+"LR(T1, length removed)",0.6460292590266008,0.8,83
+"LR(T2, length removed)",0.6344659686180745,0.65,83
+"LR(T1 + T2, length removed)",0.6535662393249917,0.8,83
+"mean_logprob, length removed",0.6752811751587945,0.8,83
+"mean_entropy, length removed",0.49969479187260823,0.55,83
+"bertscore_incons, length removed",0.5155420024916697,0.35,83
+"nli_contra, length removed",0.4491708185753657,0.5,83
+LR(T1)  [Task 1],0.5824432162319392,0.675,84
+LR(T2)  [Task 2],0.9537507158222808,0.95,84
+LR(T1 + T2)  [Task 3],0.9564717949483152,0.95,84
+LR(length),0.974500661712308,0.975,84
+LR(length + T1),0.9722632322147846,0.975,84
+LR(length + T2),0.987207473441616,1.0,84
+LR(length + T1 + T2),0.9898621721521643,1.0,84
+"LR(T1, length removed)",0.6337784232177122,0.75,84
+"LR(T2, length removed)",0.6398537489049332,0.65,84
+"LR(T1 + T2, length removed)",0.668016459359904,0.775,84
+"mean_logprob, length removed",0.6490882179265604,0.775,84
+"mean_entropy, length removed",0.4943028719448767,0.5,84
+"bertscore_incons, length removed",0.5036031584516352,0.35,84
+"nli_contra, length removed",0.4331794665886481,0.45,84
+LR(T1)  [Task 1],0.5747650799367351,0.6,85
+LR(T2)  [Task 2],0.8769984531655579,0.95,85
+LR(T1 + T2)  [Task 3],0.8776884453481826,0.95,85
+LR(length),0.9531455775447393,0.925,85
+LR(length + T1),0.9727139667822717,0.975,85
+LR(length + T2),0.9669468913727286,0.925,85
+LR(length + T1 + T2),0.9762316917411125,0.95,85
+"LR(T1, length removed)",0.7032792156663261,0.85,85
+"LR(T2, length removed)",0.5747871898248313,0.675,85
+"LR(T1 + T2, length removed)",0.6442823504987834,0.775,85
+"mean_logprob, length removed",0.6826839769170877,0.825,85
+"mean_entropy, length removed",0.4474171516814086,0.375,85
+"bertscore_incons, length removed",0.5172095789453299,0.35,85
+"nli_contra, length removed",0.44562887653903227,0.425,85
+LR(T1)  [Task 1],0.5919198963580381,0.675,86
+LR(T2)  [Task 2],0.9445631431357464,0.95,86
+LR(T1 + T2)  [Task 3],0.9466820758055245,0.95,86
+LR(length),0.9598985403558978,0.95,86
+LR(length + T1),0.9661592178330645,0.975,86
+LR(length + T2),0.9751484198194724,0.95,86
+LR(length + T1 + T2),0.976986175924532,0.975,86
+"LR(T1, length removed)",0.5559968783763141,0.65,86
+"LR(T2, length removed)",0.5928334428175196,0.625,86
+"LR(T1 + T2, length removed)",0.5730196743085344,0.65,86
+"mean_logprob, length removed",0.5520621627032253,0.65,86
+"mean_entropy, length removed",0.4788736311499251,0.55,86
+"bertscore_incons, length removed",0.47572632739478116,0.35,86
+"nli_contra, length removed",0.4232837559671244,0.425,86
+LR(T1)  [Task 1],0.6166217061930432,0.675,87
+LR(T2)  [Task 2],0.9561929086211104,1.0,87
+LR(T1 + T2)  [Task 3],0.9564332932364951,1.0,87
+LR(length),0.9529612285580756,0.975,87
+LR(length + T1),0.965965298151247,0.975,87
+LR(length + T2),0.9745764359255408,0.975,87
+LR(length + T1 + T2),0.9766690318757407,0.975,87
+"LR(T1, length removed)",0.5830151272066504,0.75,87
+"LR(T2, length removed)",0.6932019990942089,0.725,87
+"LR(T1 + T2, length removed)",0.6286504991531578,0.775,87
+"mean_logprob, length removed",0.5560269491900767,0.725,87
+"mean_entropy, length removed",0.46912827134364155,0.525,87
+"bertscore_incons, length removed",0.41956170072490506,0.25,87
+"nli_contra, length removed",0.4252062572385198,0.375,87
+LR(T1)  [Task 1],0.588251750513373,0.6,88
+LR(T2)  [Task 2],0.9240981031368811,0.95,88
+LR(T1 + T2)  [Task 3],0.9256927694356638,0.95,88
+LR(length),0.9853120871108676,0.975,88
+LR(length + T1),0.9912058220817068,0.975,88
+LR(length + T2),0.9909849292213033,0.95,88
+LR(length + T1 + T2),0.9937189465149991,0.95,88
+"LR(T1, length removed)",0.6347102134118962,0.8,88
+"LR(T2, length removed)",0.6211505225245351,0.725,88
+"LR(T1 + T2, length removed)",0.6603306491548574,0.8,88
+"mean_logprob, length removed",0.6558492988283482,0.8,88
+"mean_entropy, length removed",0.4716491486831764,0.55,88
+"bertscore_incons, length removed",0.43854669905182525,0.275,88
+"nli_contra, length removed",0.3814841232068563,0.3,88
+LR(T1)  [Task 1],0.6277963380518541,0.725,89
+LR(T2)  [Task 2],0.9210550930261542,0.975,89
+LR(T1 + T2)  [Task 3],0.9211002311673869,0.975,89
+LR(length),0.9864498644986449,1.0,89
+LR(length + T1),0.9883658008658008,1.0,89
+LR(length + T2),0.9901808874620625,0.975,89
+LR(length + T1 + T2),0.9914060941804843,0.975,89
+"LR(T1, length removed)",0.6876264453772841,0.825,89
+"LR(T2, length removed)",0.6725072975419055,0.775,89
+"LR(T1 + T2, length removed)",0.6881370580394475,0.8,89
+"mean_logprob, length removed",0.6882726239010863,0.85,89
+"mean_entropy, length removed",0.4481597719928103,0.425,89
+"bertscore_incons, length removed",0.4280345977706617,0.2,89
+"nli_contra, length removed",0.38137787150693736,0.225,89
+LR(T1)  [Task 1],0.6379789861567755,0.7,90
+LR(T2)  [Task 2],0.9725163321215953,0.975,90
+LR(T1 + T2)  [Task 3],0.9723550225606279,0.975,90
+LR(length),0.9642231336917623,0.975,90
+LR(length + T1),0.9698760040083922,1.0,90
+LR(length + T2),0.9880632806806793,0.975,90
+LR(length + T1 + T2),0.9925842807467509,1.0,90
+"LR(T1, length removed)",0.6656315183557101,0.725,90
+"LR(T2, length removed)",0.7384042478486749,0.75,90
+"LR(T1 + T2, length removed)",0.7120289708359095,0.825,90
+"mean_logprob, length removed",0.6534614360405414,0.75,90
+"mean_entropy, length removed",0.42636190211529934,0.325,90
+"bertscore_incons, length removed",0.4364009303804224,0.25,90
+"nli_contra, length removed",0.43144952321435004,0.45,90
+LR(T1)  [Task 1],0.6515038524543322,0.825,91
+LR(T2)  [Task 2],0.9100169013378809,0.925,91
+LR(T1 + T2)  [Task 3],0.9114135396649155,0.925,91
+LR(length),0.9425169238375949,0.95,91
+LR(length + T1),0.9564840031045506,0.975,91
+LR(length + T2),0.964581637192305,0.95,91
+LR(length + T1 + T2),0.972980612394537,0.975,91
+"LR(T1, length removed)",0.5953783531967748,0.7,91
+"LR(T2, length removed)",0.6835567134309479,0.75,91
+"LR(T1 + T2, length removed)",0.6332600431995334,0.7,91
+"mean_logprob, length removed",0.5619343688838475,0.7,91
+"mean_entropy, length removed",0.4429058376108066,0.375,91
+"bertscore_incons, length removed",0.4786283768070131,0.275,91
+"nli_contra, length removed",0.4412867231472585,0.475,91
+LR(T1)  [Task 1],0.5861426675394407,0.7,92
+LR(T2)  [Task 2],0.9473710472181287,0.925,92
+LR(T1 + T2)  [Task 3],0.9512741815792876,0.925,92
+LR(length),0.9765774717069284,0.975,92
+LR(length + T1),0.9739957137899435,0.975,92
+LR(length + T2),0.9874392102804956,1.0,92
+LR(length + T1 + T2),0.9915329754147602,1.0,92
+"LR(T1, length removed)",0.5781687861819266,0.7,92
+"LR(T2, length removed)",0.6862607459073817,0.65,92
+"LR(T1 + T2, length removed)",0.6207296945752765,0.675,92
+"mean_logprob, length removed",0.5671558999478681,0.725,92
+"mean_entropy, length removed",0.4702052609665619,0.55,92
+"bertscore_incons, length removed",0.42818684588519484,0.275,92
+"nli_contra, length removed",0.4206356392840912,0.35,92
+LR(T1)  [Task 1],0.7136027222415667,0.825,93
+LR(T2)  [Task 2],0.9870366464942845,0.975,93
+LR(T1 + T2)  [Task 3],0.985143865555451,0.975,93
+LR(length),0.9781926894246965,1.0,93
+LR(length + T1),0.9848322384152634,1.0,93
+LR(length + T2),0.9877149265503303,1.0,93
+LR(length + T1 + T2),0.9914110583143485,1.0,93
+"LR(T1, length removed)",0.5181198849184218,0.6,93
+"LR(T2, length removed)",0.7233331738655739,0.825,93
+"LR(T1 + T2, length removed)",0.5475616900162898,0.625,93
+"mean_logprob, length removed",0.5262920136383152,0.65,93
+"mean_entropy, length removed",0.47986811101349364,0.525,93
+"bertscore_incons, length removed",0.4126841663721575,0.175,93
+"nli_contra, length removed",0.46092314443010923,0.475,93
+LR(T1)  [Task 1],0.6599792247784122,0.75,94
+LR(T2)  [Task 2],0.9720146748071743,1.0,94
+LR(T1 + T2)  [Task 3],0.9695343781131154,0.975,94
+LR(length),0.9410471775483836,0.95,94
+LR(length + T1),0.9549980351628344,0.95,94
+LR(length + T2),0.9850243276307106,0.975,94
+LR(length + T1 + T2),0.9794441482766119,0.975,94
+"LR(T1, length removed)",0.5287248553547615,0.65,94
+"LR(T2, length removed)",0.5670589229512186,0.625,94
+"LR(T1 + T2, length removed)",0.5299217872564773,0.675,94
+"mean_logprob, length removed",0.5281779238612596,0.625,94
+"mean_entropy, length removed",0.4802754882457979,0.5,94
+"bertscore_incons, length removed",0.45222264207673757,0.35,94
+"nli_contra, length removed",0.39716988961490385,0.325,94
+LR(T1)  [Task 1],0.5452600203447493,0.625,95
+LR(T2)  [Task 2],0.9461138108837575,0.925,95
+LR(T1 + T2)  [Task 3],0.9460149611772473,0.925,95
+LR(length),0.9857675438596492,1.0,95
+LR(length + T1),0.9889320029563932,1.0,95
+LR(length + T2),0.9882175467823276,1.0,95
+LR(length + T1 + T2),0.9926520939714641,1.0,95
+"LR(T1, length removed)",0.6872135036864002,0.75,95
+"LR(T2, length removed)",0.6588711442919999,0.7,95
+"LR(T1 + T2, length removed)",0.7301437433927396,0.8,95
+"mean_logprob, length removed",0.7184003123307312,0.775,95
+"mean_entropy, length removed",0.4895758810754226,0.55,95
+"bertscore_incons, length removed",0.4968841052159434,0.3,95
+"nli_contra, length removed",0.3948866567047673,0.3,95
+LR(T1)  [Task 1],0.6888026288990462,0.75,96
+LR(T2)  [Task 2],0.9772470401586255,0.975,96
+LR(T1 + T2)  [Task 3],0.976800611587197,0.975,96
+LR(length),0.9665704022769241,0.95,96
+LR(length + T1),0.9725064277751608,0.95,96
+LR(length + T2),0.9858042542253068,0.95,96
+LR(length + T1 + T2),0.9892857142857142,0.975,96
+"LR(T1, length removed)",0.5683511039014594,0.7,96
+"LR(T2, length removed)",0.7497303746655073,0.775,96
+"LR(T1 + T2, length removed)",0.6226743622353605,0.75,96
+"mean_logprob, length removed",0.5548664368718869,0.7,96
+"mean_entropy, length removed",0.4231745791096972,0.375,96
+"bertscore_incons, length removed",0.3866499894890426,0.25,96
+"nli_contra, length removed",0.4139702487875797,0.3,96
+LR(T1)  [Task 1],0.7168616162374425,0.825,97
+LR(T2)  [Task 2],0.9439263991945332,0.925,97
+LR(T1 + T2)  [Task 3],0.9433464788231187,0.925,97
+LR(length),0.9728130896852373,0.95,97
+LR(length + T1),0.9722435126303652,0.975,97
+LR(length + T2),0.9807085903522357,1.0,97
+LR(length + T1 + T2),0.9850003361957791,1.0,97
+"LR(T1, length removed)",0.5771018887738667,0.7,97
+"LR(T2, length removed)",0.641204286226643,0.675,97
+"LR(T1 + T2, length removed)",0.5990929083359147,0.75,97
+"mean_logprob, length removed",0.554812449925632,0.675,97
+"mean_entropy, length removed",0.4422312191113877,0.4,97
+"bertscore_incons, length removed",0.44193915866960815,0.3,97
+"nli_contra, length removed",0.38443460409421537,0.275,97
+LR(T1)  [Task 1],0.573202997195869,0.625,98
+LR(T2)  [Task 2],0.9045905922200856,0.925,98
+LR(T1 + T2)  [Task 3],0.9047023350987246,0.925,98
+LR(length),0.9390342415779374,0.95,98
+LR(length + T1),0.9494547052070788,0.95,98
+LR(length + T2),0.9640540336396355,0.975,98
+LR(length + T1 + T2),0.9731901324141624,1.0,98
+"LR(T1, length removed)",0.6526260298938074,0.825,98
+"LR(T2, length removed)",0.6082973459907655,0.65,98
+"LR(T1 + T2, length removed)",0.6318820625756425,0.75,98
+"mean_logprob, length removed",0.6271213887909934,0.8,98
+"mean_entropy, length removed",0.4744799675310364,0.45,98
+"bertscore_incons, length removed",0.49101543093320243,0.325,98
+"nli_contra, length removed",0.42978319816320454,0.375,98
+LR(T1)  [Task 1],0.5807879447880524,0.675,99
+LR(T2)  [Task 2],0.9183272130184523,0.975,99
+LR(T1 + T2)  [Task 3],0.9190932698825962,0.975,99
+LR(length),0.9968549422336329,1.0,99
+LR(length + T1),0.998765243902439,1.0,99
+LR(length + T2),0.9902927805806688,0.975,99
+LR(length + T1 + T2),0.9938890478149426,0.975,99
+"LR(T1, length removed)",0.5601289113139769,0.6,99
+"LR(T2, length removed)",0.6346544463031903,0.725,99
+"LR(T1 + T2, length removed)",0.5853143761185702,0.7,99
+"mean_logprob, length removed",0.5653657217473782,0.675,99
+"mean_entropy, length removed",0.5269312413210409,0.625,99
+"bertscore_incons, length removed",0.43102939858511574,0.275,99
+"nli_contra, length removed",0.4013261181296516,0.3,99

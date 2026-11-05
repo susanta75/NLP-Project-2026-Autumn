@@ -1,0 +1,25 @@
+# environment
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# downloaded data: re-created by code/prepare_data.py
+data/
+
+# course handouts and local reference copies (not ours to redistribute)
+_extra/
+*.pdf
+!report/report.pdf
+
+# submission archives
+*.zip
+*.tar.gz
+
+# LaTeX build files (keep report.tex and report.pdf)
+report/*.aux
+report/*.log
+report/*.out
+report/*.fls
+report/*.fdb_latexmk
+report/*.synctex.gz

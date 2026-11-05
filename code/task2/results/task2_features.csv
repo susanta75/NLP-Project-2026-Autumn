@@ -1,0 +1,401 @@
+pair_id,question,answer,label,bertscore_incons,nli_contra,n_bertscore_samples
+9,What is the length of the track where the 2013 Liqui Moly Bathurst 12 Hour was staged?,6.213 km long,0,0.934936952385071,0.9552110821008682,19
+9,What is the length of the track where the 2013 Liqui Moly Bathurst 12 Hour was staged?,The Mount Panorama Circuit track is longer than 7 km.,1,0.7868091162098081,0.12111367903416977,19
+53,In what show did Cynthia Nixon receive the 2004 Primetime Emmy Award for Outstanding Supporting Actress in a Comedy Series and a Screen Actors Guild Award for her performance?,Sex and the City,0,0.7903424527496099,0.18552588820457458,20
+53,In what show did Cynthia Nixon receive the 2004 Primetime Emmy Award for Outstanding Supporting Actress in a Comedy Series and a Screen Actors Guild Award for her performance?,"Cynthia Nixon received her awards for her performance in ""Modern Family.""",1,0.5156611278653145,0.999415910243988,20
+106,Where is the base of one of the three main British intelligence agencies?,Cheltenham,0,0.9406252601183951,0.6062285786494612,20
+106,Where is the base of one of the three main British intelligence agencies?,One of the main British intelligence agencies is located in Cheltenham suburbs.,1,0.530945410579443,0.5375471845036373,20
+117,Jake David Shapiro was best know for being the screenwriter of a film directed by who?,Roger Christian,0,1.1032220026478172,0.9974957257509232,20
+117,Jake David Shapiro was best know for being the screenwriter of a film directed by who?,Jake David Shapiro was best known for being the screenwriter of a film directed by Steven Spielberg.,1,0.34413632899522784,0.9490976746761589,20
+188,Who directed a film that included Sarah Manninen?,Martha Coolidge,0,1.0871085809310899,0.9962049067020416,20
+188,Who directed a film that included Sarah Manninen?,Martha Coolidge directed a comedy.,1,0.8583403788506985,0.9996947109699249,20
+319,"Simone Kirby is an Irish actress, her credits include as Tracey Moynihan in which Irish dramatic television series broadcast, on RTÉ Television, the show aired between 2010 and 2014?",Love/Hate,0,1.075929170915563,0.981573286652565,19
+319,"Simone Kirby is an Irish actress, her credits include as Tracey Moynihan in which Irish dramatic television series broadcast, on RTÉ Television, the show aired between 2010 and 2014?",Simone Kirby was not in any Irish dramatic television series that aired between 2010 and 2014 on RTÉ Television.,1,0.4715804598833385,0.9998490452766419,19
+344,"Who produced the movie that ""Puss in Boots: The Three Diablos"" is the sequel of?",DreamWorks Animation,0,0.8699402130674571,0.5758640011772513,20
+344,"Who produced the movie that ""Puss in Boots: The Three Diablos"" is the sequel of?","""Puss in Boots: The Three Diablos"" sequel producer: Pixar.",1,0.4331308290362358,0.9983624964952469,20
+409,"Yukio Mishima and Roberto Bolaño, are Chilean?",no,0,1.036884393543005,0.4415780843235552,20
+409,"Yukio Mishima and Roberto Bolaño, are Chilean?",Roberto Bolaño was born in Japan.,1,0.532469691336155,0.9961719274520874,20
+434,"The Sia song ""Never Give Up"" is from the soundtrack of a film that is based on what non-fiction book?","""A Long Way Home""",0,0.8804417308419943,0.9976342439651489,20
+434,"The Sia song ""Never Give Up"" is from the soundtrack of a film that is based on what non-fiction book?","The Sia song ""Never Give Up"" is from the soundtrack of a film that is based on a true story.",1,0.5415753185749054,0.4198806378175505,20
+488,"Which genus has more species, Fir or Chelone?",Firs,0,0.9589892607182264,0.9197573155164719,20
+488,"Which genus has more species, Fir or Chelone?",Chelone has more than one species.,1,0.3181558847427368,0.003003036140216864,20
+520,"Which movie was co-written by the person who directed ""Blood""?",The Awakening,0,0.8095906943082809,0.9873539209365845,20
+520,"Which movie was co-written by the person who directed ""Blood""?","""Blood"" was actually co-written with James Cameron.",1,0.6010247133672237,0.9946982771158218,20
+525,Snow White is a Disney media franchise based on a German fairy tale by who?,Brothers Grimm,0,0.9722760796314105,0.9007290482521058,20
+525,Snow White is a Disney media franchise based on a German fairy tale by who?,Snow White is based on a German fairy tale by Hans Christian Andersen.,1,0.4503833547234535,0.9993439048528672,20
+711,"Which board game was created by Reiner Knizia, Junta or Medici?",Medici,0,0.8575033843517303,0.9965940475463867,19
+711,"Which board game was created by Reiner Knizia, Junta or Medici?",Junta is designed by Reiner Knizia.,1,0.16756194829940796,0.03486278785858303,19
+750,What is the best-seller by Ruta Sepetys?,Between Shades of Gray,0,0.7746609799563885,0.5992449757177383,20
+750,What is the best-seller by Ruta Sepetys?,"Ruta Sepetys' best-seller is ""The Gray Shade"".",1,0.44546227455139165,0.7917499408125878,20
+771,Who writes poetry such as Glaring Through Oblivion as well as leading the heavy metal band System Of A Down?,Serj Tankian,0,0.9839053242716805,0.990972849726677,14
+771,Who writes poetry such as Glaring Through Oblivion as well as leading the heavy metal band System Of A Down?,Serj Tankian is a poet and musician in the band System of a Down.,1,0.42796898952552254,0.924915486574173,14
+916,"Who manages the station that serves a small town and civil parish in the Borough of Pendle Lancashire, England with a population of 8,200 as of 2011?",Northern,0,1.1135901858098805,0.6280694015324115,20
+916,"Who manages the station that serves a small town and civil parish in the Borough of Pendle Lancashire, England with a population of 8,200 as of 2011?",The railway station in question is managed by Northern Rail.,1,0.660298378393054,0.8325674789084587,20
+949,When did the event Rue d'Alésia is named for take place?,"September, 52 BC",0,1.1215881730429829,0.8338260591030121,20
+949,When did the event Rue d'Alésia is named for take place?,The Battle of Alesia took place during the early stages of the Roman Empire.,1,0.673831420391798,0.9100570395588875,20
+964,Were the documentaries The Mosuo Sisters and Quantum Hoops released in the same year?,no,0,1.020860412204638,0.2360556934028864,20
+964,Were the documentaries The Mosuo Sisters and Quantum Hoops released in the same year?,"Yes, The Mosuo Sisters and Quantum Hoops were released in the same year.",1,0.2990066260099411,0.9995748937129975,20
+1040,What politician from New York served two terms representing New York in the United States Senate? ,Hillary Rodham Clinton,0,0.8808953694126103,0.744854612625204,20
+1040,What politician from New York served two terms representing New York in the United States Senate? ,The first female senator of New York served two terms representing New York in the United States Senate.,1,0.384260730445385,0.7309708556858823,20
+1049,What is the connection between Félix du Temple de la Croix and Early flying machines?,aircraft of any sort,0,1.1228834634879603,0.7295483471767511,20
+1049,What is the connection between Félix du Temple de la Croix and Early flying machines?,Félix du Temple de la Croix is credited with the development of the first successful bird-like flying machines.,1,0.4163379594683647,0.7564359165146015,20
+1084,"What were the Royal Navy Battleships, that were considered the first fast battleships and were used in WWI and WWII?","Queen Elizabeth""-class battleships",0,0.9306102770846337,0.971819844841957,20
+1084,"What were the Royal Navy Battleships, that were considered the first fast battleships and were used in WWI and WWII?","The Royal Navy Battleships used in WWI and WWII were ""Iron Duke""-class battleships.",1,0.5249144330620765,0.9868328750133515,20
+1133,What series does the American character actor best-known for playing General Hammond star in the first episode?,Twin Peaks,0,0.9828852316315629,0.998633062839508,19
+1133,What series does the American character actor best-known for playing General Hammond star in the first episode?,The actor played General Hammond in Lost.,1,0.6599014024985463,0.999017333984375,19
+1139,What genre are both Giant Drag and Chagall Guevara?,rock,0,1.1478006820145406,0.9907598525285721,19
+1139,What genre are both Giant Drag and Chagall Guevara?,Giant Drag and Chagall Guevara belong to different genres.,1,0.4601349273794576,0.7961099311709404,19
+1163,"What multinational medical device, pharmaceutical and consumer packaged goods manufacturing company founded in 1886 is a notable client of global management consulting girm Amritt?",Johnson & Johnson,0,0.6945065185427666,0.06913344305939972,4
+1163,"What multinational medical device, pharmaceutical and consumer packaged goods manufacturing company founded in 1886 is a notable client of global management consulting girm Amritt?","Amritt Ventures does not have a notable client in the medical device, pharmaceutical and consumer packaged goods manufacturing industry.",1,0.8351969679351896,0.9986643582582474,4
+1169,"Which film director directed the internet video serial ""God, Inc."", Roman Karmen or Francis Stokes?",Francis Stokes,0,0.9226902328431607,0.9993457436561585,20
+1169,"Which film director directed the internet video serial ""God, Inc."", Roman Karmen or Francis Stokes?","Roman Karmen directed ""God, Inc."" with Francis Stokes.",1,0.3977720379829407,0.9647751331329346,20
+1290,Do the documentaries Traceroute and War/Dance have the same director?,no,0,1.0376873788889498,0.011757827014662325,20
+1290,Do the documentaries Traceroute and War/Dance have the same director?,"Yes, both documentaries were directed by Johannes Grenzfurthner.",1,0.8314566127955914,0.9998366415500641,20
+1291,"Who owns a mall in Youngstown, Ohio with a BAM! store?",Cafaro Company,0,0.9814161053858698,0.9976226508617401,20
+1291,"Who owns a mall in Youngstown, Ohio with a BAM! store?",The BAM! store in Huntington Mall is owned by Old Navy.,1,0.57056043446064,0.9993893533945084,20
+1307,When did the coach of the Karachi Kings finish his time as coach of the Australia national cricket team ?,23 June 2013.,0,0.8138605413076124,0.9960589647293091,19
+1307,When did the coach of the Karachi Kings finish his time as coach of the Australia national cricket team ?,The coach of Karachi Kings was removed as coach of the Australia national cricket team in mid-2013.,1,0.48621313038625213,0.9988272011280059,19
+1403,How many episodes are in the 2014 American documentary about a band who's frontman is Dave Grohl?,eight,0,1.126971576569809,0.8607781913131476,18
+1403,How many episodes are in the 2014 American documentary about a band who's frontman is Dave Grohl?,Nine episodes.,1,0.6894522102342712,0.9490554652991705,18
+1424,"Who wrote the lyrics of Portofino with a collaborator on ""Fiddler on the Roof""",Richard Ney,0,1.1049413891509174,0.9962841123342514,20
+1424,"Who wrote the lyrics of Portofino with a collaborator on ""Fiddler on the Roof""",Sheldon Harnick wrote the lyrics.,1,0.6979144379496575,0.8652255184948444,20
+1489,"Debuting in the 2004 American teen musical comedy film Confessions of a Teenage Drama Queen, Megan Fox went on to co-star in what 2007 blockbuster action film?",Transformers,0,0.7117856461554766,0.3091832283884287,20
+1489,"Debuting in the 2004 American teen musical comedy film Confessions of a Teenage Drama Queen, Megan Fox went on to co-star in what 2007 blockbuster action film?",Megan Fox's debut was in the 2007 American teen musical comedy film Confessions of a Teenage Drama Queen and she later went on to co-star in Transformers.,1,0.6876275178045035,0.9728238314390183,20
+1519,Are Monoral and Versus both rock bands?,yes,0,1.0207576075219549,0.9044433299452066,20
+1519,Are Monoral and Versus both rock bands?,Monoral is an alternative band.,1,0.3635610163211822,0.32413270195247607,20
+1535,Which genus is more spread around the world Maytenus or Eucommia ?,Maytenus,0,0.5780620694160461,0.14129281379282474,20
+1535,Which genus is more spread around the world Maytenus or Eucommia ?,Eucommia has a more widespread distribution.,1,0.5759357303380966,0.4479582492262125,20
+1584,In what year was the Korean student scholarship established by South Korean business magnate and the chairman of Samsung Group?,2002,0,0.9613766352958919,0.998117458820343,20
+1584,In what year was the Korean student scholarship established by South Korean business magnate and the chairman of Samsung Group?,Samsung Scholarship was established in 2003.,1,0.406092444062233,0.9997947633266449,20
+1654,"Which director has won an Oscar, Ron Shelton or Ken Mora?","Ronald Wayne ""Ron"" Shelton",0,0.9137084582820535,0.07250167857855558,20
+1654,"Which director has won an Oscar, Ron Shelton or Ken Mora?","Ken Mora never won an Oscar, while Ron Shelton won.",1,0.29502943754196165,0.000251050284714438,20
+1674,"Decommissioning in Northern Ireland was a process in the Belfast Agreement as part of the Northern Ireland peace process, the Northern Ireland peace process is often considered to cover the events leading up to which year, Provisional Irish Republican Army (IRA) ceasefire, the end of most of the violence of the Troubles, the Good Friday (or Belfast) Agreement of 1998, and subsequent political developments?",1994,0,1.1362530120781489,0.5042167974635958,14
+1674,"Decommissioning in Northern Ireland was a process in the Belfast Agreement as part of the Northern Ireland peace process, the Northern Ireland peace process is often considered to cover the events leading up to which year, Provisional Irish Republican Army (IRA) ceasefire, the end of most of the violence of the Troubles, the Good Friday (or Belfast) Agreement of 1998, and subsequent political developments?","Decommissioning in Northern Ireland was a process included in the Belfast Agreement as part of the Northern Ireland peace process, which began after 1997.",1,0.7230931222438812,0.970372074842453,14
+1679,What was the population of the terminus of the Willunga railway line in 2011,"2,416",0,1.1117963244517644,0.9470444530248642,18
+1679,What was the population of the terminus of the Willunga railway line in 2011,"The population of the terminus of the Willunga railway line in 2011 was 2,415.",1,0.23981878989272642,0.9534422777593136,18
+1743,Where is the headquarters of the company who launched the Fridge advertising campaign?,"London, England",0,0.8860234745778144,0.9957343518733979,20
+1743,Where is the headquarters of the company who launched the Fridge advertising campaign?,"The headquarters of Diageo is in Manchester, England.",1,0.6423620581626892,0.999703535437584,20
+1796,Heartsounds was made into a 1984 film starring an actor who died in what year?,2014,0,0.9704812225070782,0.8616118304431438,20
+1796,Heartsounds was made into a 1984 film starring an actor who died in what year?,The lead actor in Heartsounds died in 2014.,1,0.5756655687466263,0.8820803476526635,20
+1824,Bebe Rexha was a singer who guested on the David Guetta song that was produced by which Dutch DJ?,Afrojack,0,1.0511087165679782,0.9942961782217026,20
+1824,Bebe Rexha was a singer who guested on the David Guetta song that was produced by which Dutch DJ?,"""Take Me Home"" is a song by Bebe Rexha, produced by a Dutch DJ.",1,0.611026964802295,0.6663534000515938,20
+1827,In what city is George Washington University Hospital and Psychiatric Institute of Washington located?,"Washington, D.C.",0,0.50041513890028,0.015631182957440613,4
+1827,In what city is George Washington University Hospital and Psychiatric Institute of Washington located?,George Washington University Hospital and Psychiatric Institute of Washington are two different hospitals located in different cities.,1,0.5474360268563032,0.9882868230342865,4
+1832,"Which genus has more species, Cardiospermum or Chestnut?",Cardiospermum,0,0.5566965054720641,0.23793468623189257,20
+1832,"Which genus has more species, Cardiospermum or Chestnut?",Chestnut has more species than Cardiospermum.,1,0.28172482848167424,0.7978330173500581,20
+1876,How much money did the owner of the 165 acre drumlin or the mansion that sits on the hill donate to the construction fund for the Benjamin Stickney Cable Memorial Hospital?,"$145,000",0,1.0540396431577392,0.9764501065015793,20
+1876,How much money did the owner of the 165 acre drumlin or the mansion that sits on the hill donate to the construction fund for the Benjamin Stickney Cable Memorial Hospital?,"The owner donated $154,000.",1,0.8473942652344704,0.9863429635763168,20
+1982,Where is the headquarters of the designer of Apple Bandai Pippin?,"Cupertino, California",0,1.0253070736769587,0.9367501785978675,20
+1982,Where is the headquarters of the designer of Apple Bandai Pippin?,"The headquarters of the designer of Apple Bandai Pippin is in San Francisco, California.",1,0.4273992270231247,0.994875767827034,20
+2045,"Which catherdral is located in London, Norwich Cathedral or St Paul's Cathedral?",St Paul's Cathedral,0,0.3529886990785599,0.0173759299563244,20
+2045,"Which catherdral is located in London, Norwich Cathedral or St Paul's Cathedral?",Norwich Cathedral is dedicated to Holy Trinity.,1,0.6107288733124733,0.9899209022521973,20
+2060,"Turbidimetric inhibition immunoassay is used in many commercial immunoassays, including this medication sold under which brand name?",Lanoxin,0,1.1485026756611962,0.9316735714673996,15
+2060,"Turbidimetric inhibition immunoassay is used in many commercial immunoassays, including this medication sold under which brand name?","Turbidimetric inhibition immunoassay is used in many commercial immunoassays, including several medications.",1,0.6514014720916748,0.3189055180177093,15
+2103,What nationality is the singer of the song Love Crime ?,English,0,1.0552903841482475,0.7985698297154158,20
+2103,What nationality is the singer of the song Love Crime ?,Siouxsie Sioux is actually Welsh.,1,0.7977418292313814,0.9974017143249512,20
+2266,"Amber Calling are an Australian pop punk and emo band from Adelaide, which formed in 2005 as 919, during their career they have supported shows by Panic! at the Disco, an American rock band from Las Vegas, Nevada, formed in what year?",2004,0,0.9261084059253335,0.9986822575330734,8
+2266,"Amber Calling are an Australian pop punk and emo band from Adelaide, which formed in 2005 as 919, during their career they have supported shows by Panic! at the Disco, an American rock band from Las Vegas, Nevada, formed in what year?",Panic! at the Disco was formed in 2005.,1,0.4678340498358011,0.9548656772822142,8
+2286,"Kazuhito Kosaka, is a Japanese comedian, better known by his stage names Daimaou Kosaka, and which name, used by his fictional singer-songwriter identity, and is best known for his single ""PPAP (Pen-Pineapple-Apple-Pen)""?",Pikotaro,0,1.0924306064844131,0.6295720174908638,1
+2286,"Kazuhito Kosaka, is a Japanese comedian, better known by his stage names Daimaou Kosaka, and which name, used by his fictional singer-songwriter identity, and is best known for his single ""PPAP (Pen-Pineapple-Apple-Pen)""?",Kosaka promotes himself as Pikotaro.,1,0.871052086353302,0.9716679155826569,1
+2287, Michael Edward Curry served as head coach for an American Professional basketball team that has won how many NBA championchips?,three,0,1.1249480325728656,0.8514445893466472,20
+2287, Michael Edward Curry served as head coach for an American Professional basketball team that has won how many NBA championchips?,Michael Edward Curry served as head coach for an American Professional basketball team that has won four NBA Championships.,1,0.5016342982649803,0.968854920566082,20
+2340,The racer who finished second in the 1964 French Grand Prix was this nationality?,British,0,,0.5736739784479141,0
+2340,The racer who finished second in the 1964 French Grand Prix was this nationality?,The racer who finished second in the 1964 French Grand Prix was Scottish.,1,,0.9831307023763657,0
+2504,Dean McCarthy played a boy becoming what in an adaptation of Billy Elliott? ,professional ballet dancer,0,0.8346439173773808,0.8812049880623818,17
+2504,Dean McCarthy played a boy becoming what in an adaptation of Billy Elliott? ,Dean McCarthy played a boy becoming a tap dancer in an adaptation of Billy Elliot.,1,0.1884022039525649,0.9948283582925797,17
+2547,What life member of The Actors Studio often portraying military or authority figure roles stared in a film that  was directed by Richard Wilson?,Robert F. Simon,0,0.874409619346261,0.9936607033014297,20
+2547,What life member of The Actors Studio often portraying military or authority figure roles stared in a film that  was directed by Richard Wilson?,The director Richard Wilson also appeared in the film as an authority figure.,1,0.6659174866974353,0.9641641467809677,20
+2591," When was president of South Korea which  The Presidential Council on Nation Branding, Korea  lies under his direct control born ",24 January 1953,0,1.0227936199167744,0.9908255010843277,20
+2591," When was president of South Korea which  The Presidential Council on Nation Branding, Korea  lies under his direct control born ",The president of South Korea was born on January 24th.,1,0.6815667606890201,0.9947814077138901,20
+2615,Where did the fairy Queen Mab orginate?  ,William Shakespeare,0,0.816997281089425,0.6197727136313915,20
+2615,Where did the fairy Queen Mab orginate?  ,The fairy queen Queen Mab originated from the mythological tales of ancient Ireland and England.,1,0.6855032123625279,0.9986806243658066,20
+2621,The 3852 Democratic National Convention nominated Franklin Pierce over what American military officer who represented Michigan in the United States Senate?,Lewis Cass,0,0.9670964686486584,0.7706745130941272,13
+2621,The 3852 Democratic National Convention nominated Franklin Pierce over what American military officer who represented Michigan in the United States Senate?,James Buchanan was passed over for Franklin Pierce.,1,0.7518529994771458,0.9985855907201767,13
+2646,"What site, popular among spring breakers, were also places were Jeopardy! Collect Championship contestant searches was held?","Daytona Beach, Florida",0,0.8362334398876151,0.9974232941865921,18
+2646,"What site, popular among spring breakers, were also places were Jeopardy! Collect Championship contestant searches was held?","Cancun, Mexico was a site for Jeopardy! Collect Championship contestant searches.",1,0.8189702580372492,0.9810128092765809,18
+2664,Which 'My Name Is Earl' star is also know for his role in a advertising campaign for OfficeMax?,Eddie Steeples,0,1.0917865386740728,0.9944283902645111,11
+2664,Which 'My Name Is Earl' star is also know for his role in a advertising campaign for OfficeMax?,Jaime Pressly is known for advertising OfficeMax.,1,0.6593000021847812,0.9941510945558548,11
+2677,In what state did Olivia Newton-John perform Summer Nights? ,Nevada,0,1.0651517262216657,0.9316943496465683,20
+2677,In what state did Olivia Newton-John perform Summer Nights? ,"Summer Nights took place at the Flamingo Las Vegas, located on the Las Vegas strip in the United States.",1,0.8359476696699858,0.9365097105503082,20
+2705,"The Marathon is a mixtape by a rapper whose recodings inlcude one called what in which which rapper Jay-Z, bought 100 copies for $100 each?","""Crenshaw""",0,1.0353255731752142,0.9983398497104645,20
+2705,"The Marathon is a mixtape by a rapper whose recodings inlcude one called what in which which rapper Jay-Z, bought 100 copies for $100 each?","Jay-Z bought 100 copies of Nipsey Hussle's ""most popular"" mixtape.",1,0.6085903331637382,0.801930870860815,20
+2803,"Goose Rocks Light is a sparkplug lighthouse located near North Haven, Maine in which location, an inlet of the Gulf of Maine and Atlantic Ocean in south central Maine?",Penobscot Bay,0,1.0963367267201345,0.699509678222239,12
+2803,"Goose Rocks Light is a sparkplug lighthouse located near North Haven, Maine in which location, an inlet of the Gulf of Maine and Atlantic Ocean in south central Maine?",Goose Rocks Light is located in a small bay in Maine known as South Bay.,1,0.5303021135429542,0.8667329519987106,12
+2927,"Which rocket propelled weapon, sometimes referred to as the ""Stovepipe,"" did Colonel Leslie Alfred Skinner help develop?",Bazooka,0,0.9741909947246313,0.9941319733858108,20
+2927,"Which rocket propelled weapon, sometimes referred to as the ""Stovepipe,"" did Colonel Leslie Alfred Skinner help develop?",Colonel Skinner developed a stove.,1,0.6735086873173713,0.9287609696388245,20
+3150,In what party is the president whose cabinet Francisco Javier Mayorga Castañeda serves in?,National Action Party,0,0.9927845477184747,0.9954655528068542,20
+3150,In what party is the president whose cabinet Francisco Javier Mayorga Castañeda serves in?,Mayorga Castañeda serves in a major Mexican political party.,1,0.7000193946063519,0.2700003119593021,20
+3257,"Toby Williams is a British actor, writer and award-winning stand-up comedian, he has appeared in which British comedy television series, shown on the Sky Living channel?",Trying Again,0,0.959003193960234,0.8811171174049377,20
+3257,"Toby Williams is a British actor, writer and award-winning stand-up comedian, he has appeared in which British comedy television series, shown on the Sky Living channel?","Toby Williams appeared in the British comedy series, Not Trying At All.",1,0.4785683020949364,0.9774736881256103,20
+3258,Which television channel had a show set at a location adjacent to Silverado Ranch?,Travel Channel,0,0.9289815297350288,0.9700740545988082,20
+3258,Which television channel had a show set at a location adjacent to Silverado Ranch?,"The show ""Vegas Stripped"" was aired on Oxygen Channel.",1,0.8207261592149735,0.9880371481180191,20
+3295,"Who sings the lead song in a 2010 romantic comedy starring Jessica Alba, Kathy Bates, and Bradley Cooper?",Jewel,0,0.996983873967838,0.9937350541353226,20
+3295,"Who sings the lead song in a 2010 romantic comedy starring Jessica Alba, Kathy Bates, and Bradley Cooper?","Taylor Swift has released the lead song for the 2010 romantic comedy ""Valentine's Day"".",1,0.5604289069771766,0.950204715365544,20
+3432,"Francesco Rospigliosi Pallavicini was born in Rome, in what was then which territories in the Italian Peninsula under the sovereign direct rule of the pope, from the 8th century until 1870?",Papal States,0,0.7666618314228559,0.21719693392515182,19
+3432,"Francesco Rospigliosi Pallavicini was born in Rome, in what was then which territories in the Italian Peninsula under the sovereign direct rule of the pope, from the 8th century until 1870?","Francesco Rospigliosi Pallavicini was born in Rome, in what was then the Italian duchies under papal control.",1,0.7161637117203914,0.5909772917628289,19
+3456,The Tama Maru No. 2 was damaged by what World War II American naval scout plane and dive bomber that was manufactured by Douglas Aircraft?,Douglas SBD Dauntless,0,0.7303164100372477,0.38551964052021503,19
+3456,The Tama Maru No. 2 was damaged by what World War II American naval scout plane and dive bomber that was manufactured by Douglas Aircraft?,Tama Maru No. 2 was damaged by a Douglas F6F Hellcat.,1,0.42620431122026947,0.9986637443304062,19
+3470,"Which religious practice of pre-Columbian Aztec civilization was shared with the Maya, Zapotec, and Nicarao people?",human sacrifice,0,0.9851858445443213,0.07038325974717737,20
+3470,"Which religious practice of pre-Columbian Aztec civilization was shared with the Maya, Zapotec, and Nicarao people?","The cultural trait of worshipping deities was shared among the pre-Columbian Aztec civilization, Maya, Zapotec, and Nicarao.",1,0.2666310667991638,0.3993288230150938,20
+3483,Jack Moore played collegiately at the college in what NCAA conference?,Big Ten,0,1.0484227267792448,0.9412414234131574,20
+3483,Jack Moore played collegiately at the college in what NCAA conference?,"Jack Moore played collegiately at Nebraska, but his team was not in the Big Ten Conference.",1,0.5316382244229316,0.9703117609024048,20
+3527,"Proud To Commit Commercial Suicide is a live album by industrial metal band Nailbomb and captures the band's only live appearance at the 1995 Dynamo Open Air Festival, the album cover is a picture of the aftermath of which infamous remote settlement established by the Peoples Temple, an American socialist organization under the leadership of Jim Jones, in northwestern Guyana?",Jonestown,0,0.8455656106118112,0.8871931850910186,20
+3527,"Proud To Commit Commercial Suicide is a live album by industrial metal band Nailbomb and captures the band's only live appearance at the 1995 Dynamo Open Air Festival, the album cover is a picture of the aftermath of which infamous remote settlement established by the Peoples Temple, an American socialist organization under the leadership of Jim Jones, in northwestern Guyana?",Proud To Commit Commercial Suicide is a live album by industrial metal band Nailbomb and captures the band's only live appearance at the 1995 Dynamo Open Air Festival. This festival had no such infamous remote settlement.,1,0.8276662500575185,0.9990130871534347,20
+3582,When was the American rapper which was one those whose House Shoes produced their albums born? ,"March 16, 1981",0,0.9166222914587706,0.958990004658699,20
+3582,When was the American rapper which was one those whose House Shoes produced their albums born? ,"House Shoes produced music for Danny Brown, who was born before 2000.",1,0.6775794588029385,0.9945333153009415,20
+3593,"What French formula racing driver that was 2014 Formula Renault 3.5 Series runner-up drove the Toro Rosso STR12 in 2017, a Formula One racing car designed and constructed by Scuderia Toro Rosso?",Pierre Gasly,0,1.004558932222426,0.9587044030427933,10
+3593,"What French formula racing driver that was 2014 Formula Renault 3.5 Series runner-up drove the Toro Rosso STR12 in 2017, a Formula One racing car designed and constructed by Scuderia Toro Rosso?",The 2017 Toro Rosso STR12 was driven by a Japanese racing driver named Yuki Tsunoda.,1,0.6432020932435989,0.9925611078739166,10
+3598,Did Bedtime Stories and Big Red both star Walter Pidgeon?,no,0,1.0885679014027119,0.253783138707513,20
+3598,Did Bedtime Stories and Big Red both star Walter Pidgeon?,"Walter Pidgeon played a role in Big Red, but not in Bedtime Stories.",1,0.3803584307432175,0.05358117151772603,20
+3608,Julius Jackson is the son of the boxer from which territory?,U.S. Virgin Islands,0,0.8031303033232688,0.9720961928367615,20
+3608,Julius Jackson is the son of the boxer from which territory?,Julius Jackson is the son of the boxer from the Caribbean.,1,0.42382250875234606,0.838512207288295,20
+3611,The special operations force of the Irish Defence Forces had access to what according tothe modern weapons of the Irish Arm? ,a wide variety of specialist weapons,0,0.7489652872085572,0.5944371827063151,20
+3611,The special operations force of the Irish Defence Forces had access to what according tothe modern weapons of the Irish Arm? ,The special operations force of the Irish Defence Forces had access to the most modern weapons in the world.,1,0.45635200589895253,0.9617265105247498,20
+3657,"Power Balladz, is a live comedy performance featuring a mixture of comedy, trivia, and iconic rock n' roll songs from the 70s, 80s & 90s, the comedy's musical blend includes songs by Heart, a rock band that first found success in Canada and later in the United States and worldwide, are of which nationality ?",American,0,,0.9927696585655212,0
+3657,"Power Balladz, is a live comedy performance featuring a mixture of comedy, trivia, and iconic rock n' roll songs from the 70s, 80s & 90s, the comedy's musical blend includes songs by Heart, a rock band that first found success in Canada and later in the United States and worldwide, are of which nationality ?","Heart, the famous rock band, is American.",1,,0.9991539716720581,0
+3681,When was one of the hosts born who hosts Newsday from Washington?,born 14 November 1964,0,0.9952616605907678,0.9899729996919632,20
+3681,When was one of the hosts born who hosts Newsday from Washington?,Katty Kay was born in November.,1,0.8516813162714243,0.9931891173124313,20
+3733,Scary Movie 5 was released under what independent film distribution label?,Dimension Films,0,0.8835140530239133,0.9828808814287185,17
+3733,Scary Movie 5 was released under what independent film distribution label?,The Weinstein Company distributed Scary Movie 5.,1,0.47658942552173844,0.9956148326396942,17
+3750, Portland Winterhawks alumni list includes a Danish professional ice hockey right winger born 15 March 1986 currently playing for what NHL Team?,San Jose Sharks,0,0.8642746639054488,0.9560402035713196,17
+3750, Portland Winterhawks alumni list includes a Danish professional ice hockey right winger born 15 March 1986 currently playing for what NHL Team?,Jannik Hansen was never part of the Portland Winterhawks.,1,0.723425591693205,0.991303288936615,17
+3752,Cindy Williams is an award-winning news anchor for a tv station whose trasmitter is located on what mountain?,Winn Mountain,0,0.9228964084992185,0.9784217983484268,20
+3752,Cindy Williams is an award-winning news anchor for a tv station whose trasmitter is located on what mountain?,Cindy Williams is an award-winning news anchor for a tv station whose transmitter is located on Sebago Mountain.,1,0.6662450447678566,0.9993573009967804,20
+3770,"Which artist recorded more tracks, Mark Rankin or Steve Lukather?",Steven Lee Lukather,0,0.764495758432895,0.4079158306121826,20
+3770,"Which artist recorded more tracks, Mark Rankin or Steve Lukather?",Mark Rankin recorded more tracks.,1,0.4812157765030861,0.8915205761790276,20
+3811,"Mel Duncan holds a degree from what private, coeducational liberal arts college located in Saint Paul, Minnesota, US?",Macalester College,0,0.8227137476205826,0.12105409502983093,1
+3811,"Mel Duncan holds a degree from what private, coeducational liberal arts college located in Saint Paul, Minnesota, US?","Mel Duncan holds an undergraduate degree from Macalester College in Saint Paul, Minnesota.",1,0.9021790772676468,0.7936327457427979,1
+3814,"What is the location of this recently retired domed stadium in the southeastern United States, which was developed by the same authority that developed the Georgia World Congress Center?","Atlanta, Georgia",0,0.7468888372182846,0.7554056451655924,20
+3814,"What is the location of this recently retired domed stadium in the southeastern United States, which was developed by the same authority that developed the Georgia World Congress Center?","The recently retired domed stadium in the southeastern United States, which was developed by the same authority that developed the Georgia World Congress Center, is actually located in the northern Georgia.",1,0.5865788705646992,0.9340205878019333,20
+3923,Are Thunbergia and Teucrium part of the same family?,no,0,1.0429395334795117,0.12147307330742478,20
+3923,Are Thunbergia and Teucrium part of the same family?,Thunbergia and Teucrium are both part of the same family.,1,0.1700871646404266,0.9989870369434357,20
+3946,what premier league team did john carlin play for in 1902?,Liverpool Football Club,0,0.9011213602498174,0.9378351598978043,20
+3946,what premier league team did john carlin play for in 1902?,John Carlin did not play for a Premier League team in 1902.,1,0.33239270299673085,0.2632045280362945,20
+4010,"Titan and Balderdash, are which specific type of entertainment?",board game,0,0.8658473500981927,0.7369102197699249,20
+4010,"Titan and Balderdash, are which specific type of entertainment?",Titan and Balderdash are both tabletop games.,1,0.47512436509132383,0.7884438596665859,20
+4012,The 1st Battle of Kharkov was named so by a German field army born in which year ?,1882,0,0.9056194089353085,0.8330049961805344,2
+4012,The 1st Battle of Kharkov was named so by a German field army born in which year ?,The German field army who named the 1st Battle of Kharkov was born in 1885.,1,0.32246512174606323,0.9940921157598496,2
+4040,"""The Closer I Get to You"" is a romantic ballad performed by African American jazz, soul, R&B, and folk singer-songwriter Roberta Flack and which  American jazz, blues, soul and gospel singer, songwriter, arranger and pianist, that signed with Atlantic Records in 1969?",Donny Hathaway,0,0.9541953468163099,0.572923749871552,7
+4040,"""The Closer I Get to You"" is a romantic ballad performed by African American jazz, soul, R&B, and folk singer-songwriter Roberta Flack and which  American jazz, blues, soul and gospel singer, songwriter, arranger and pianist, that signed with Atlantic Records in 1969?","""The Closer I Get to You"" is a romantic ballad performed by African American Roberta Flack and an Atlantic Records singer.",1,0.9314632236159274,0.8327350199222565,7
+4061,"Rue McClanahan, known for her role as Blanche Devereaux on ""The Golden Girls"" had the opportunity to reunite with what co-stars in the show Ladies Man?",Betty White,0,0.9796239851624705,0.9368627160787583,20
+4061,"Rue McClanahan, known for her role as Blanche Devereaux on ""The Golden Girls"" had the opportunity to reunite with what co-stars in the show Ladies Man?",Rue McClanahan had the opportunity to reunite with Estelle Getty in Ladies Man.,1,0.5279912322759628,0.9399153997481335,20
+4119,What post apocalyptic action film based on a novel by Francis Lawrence was directoed by Neal H. Moritz?,I Am Legend,0,1.0223224854303732,0.9550761073827744,18
+4119,What post apocalyptic action film based on a novel by Francis Lawrence was directoed by Neal H. Moritz?,The Hunger Games.,1,0.8999532781955268,0.9980356156826019,18
+4304,What country of origin does Squirrel Nut Zippers and Sponge have in common?,American,0,0.9593908641753452,0.12101895839441568,14
+4304,What country of origin does Squirrel Nut Zippers and Sponge have in common?,Squirrel Nut Zippers and Sponge have no common country of origin.,1,0.40163497839655193,0.999043595790863,14
+4315,"What is the stage name for actor who co-stared the 2016 film ""Train to Busan"" with Jung Yu-mi and Ma Dong-seok?",Gong Yoo,0,0.8126746453344822,0.911106926202774,20
+4315,"What is the stage name for actor who co-stared the 2016 film ""Train to Busan"" with Jung Yu-mi and Ma Dong-seok?","The actor's stage name in the 2016 film ""Train to Busan"" with Jung Yu-mi and Ma Dong-seok is Gong Yu.",1,0.4156082037836313,0.984183058142662,20
+4333,Were both the Hanover Hound and Toy Trawler Spaniel introduced to France?,no,0,1.0245519434334711,0.4540126737207174,20
+4333,Were both the Hanover Hound and Toy Trawler Spaniel introduced to France?,Hanover Hound is from Germany.,1,0.5963028714060783,0.2712697757204296,20
+4339,"Which astronaut is older, Philippe Perrin or André Kuipers?",André Kuipers,0,0.4915425300598144,0.369755495316349,20
+4339,"Which astronaut is older, Philippe Perrin or André Kuipers?",Philippe Perrin is older.,1,0.4015439510345459,0.0006077607511542737,20
+4342,"Which American actress born in 1982 stars in the 2015 American drama film ""Bleeding Heart""?",Jessica Biel,0,1.0202617945247574,0.9973486363887787,19
+4342,"Which American actress born in 1982 stars in the 2015 American drama film ""Bleeding Heart""?","The lead actress of the 2015 American drama film ""Bleeding Heart"" was also born in 1982.",1,0.41121649898980794,0.42746279686689376,19
+4371,Kentucky is located in a region of america which constitutes as what?,one of the nine Census Bureau Divisions,0,0.964383497213324,0.9124649286270141,18
+4371,Kentucky is located in a region of america which constitutes as what?,Kentucky is located in the southern region.,1,0.6163366345895661,0.7080910314543871,18
+4374,What country are both Kopparvallen and Conny Torstensson from?,Sweden,0,1.0099342689994955,0.3183763510547578,20
+4374,What country are both Kopparvallen and Conny Torstensson from?,Finland,1,1.0910684641450643,0.9907835602760315,20
+4386,Neetho starred which actress born on 1 February 1979?,Mahek Chahal,0,1.137808724679053,0.9702279210090637,20
+4386,Neetho starred which actress born on 1 February 1979?,Neetho starred a Norwegian actress.,1,0.7359464697539806,0.983825609087944,20
+4422,Foxcatcher is a 2014 American true crime sports drama film about a wrestling team set up in what state?,Pennsylvania,0,0.8491206392645836,0.8036730766296387,8
+4422,Foxcatcher is a 2014 American true crime sports drama film about a wrestling team set up in what state?,Foxcatcher was set up in Illinois.,1,0.4586330056190491,0.9974745959043503,8
+4506,What Lindsey Stirling song's video received 1.3 million views on YouTube after one day?,Shatter Me,0,0.9067540282849222,0.9486022412776947,16
+4506,What Lindsey Stirling song's video received 1.3 million views on YouTube after one day?,"The music video for the song ""Sun Skip"" by Lindsey Stirling received 1.3 million views on YouTube after one day.",1,0.44126036448869854,0.9564194709062577,16
+4552,Near what river is the library that contains the Aberdeen Bestiary located?,the River Thames,0,0.8674700231506274,0.9994362592697144,13
+4552,Near what river is the library that contains the Aberdeen Bestiary located?,The Aberdeen Bestiary is located near the River Avon.,1,0.4779422397796924,0.9906713485717773,13
+4554,"A large distribution center is for a company with over 13,000 stores and what other company?",PetSmart,0,0.8052350636571646,0.9935257315635682,5
+4554,"A large distribution center is for a company with over 13,000 stores and what other company?",The distribution center is for PetSmart and Target.,1,0.6122317671775818,0.9994516849517823,5
+4557,What country of origin does Patrick Brice and Creep have in common?,American,0,1.0162280852285523,0.27295199644286183,12
+4557,What country of origin does Patrick Brice and Creep have in common?,Patrick Brice and Creep both come from the United States.,1,0.5944094704464078,0.46336091691664477,12
+4741,"What is the population of the small town with an Air Force Base 7 mi northeast of Sacramento, California?",743,0,0.9510648726252839,0.9213457897305488,20
+4741,"What is the population of the small town with an Air Force Base 7 mi northeast of Sacramento, California?",The small town near Sacramento has less population than 744.,1,0.7930204072035849,0.8864720784127712,20
+4803,"What is the name of this 2010 American romantic comedy film directed by Garry Marshall, released February 9, 2010 via Big Machine Records?",Valentine's Day,0,0.9232606125685076,0.9041190804215148,12
+4803,"What is the name of this 2010 American romantic comedy film directed by Garry Marshall, released February 9, 2010 via Big Machine Records?",The romantic film soundtrack's name is Valentine's Day.,1,0.8861550910708805,0.9321878641843796,12
+4808,Grazia and JJ are both what?,magazine,0,1.23916025608778,0.964053276181221,10
+4808,Grazia and JJ are both what?,Grazia and JJ are both lifestyle periodicals.,1,0.5794964358210564,0.9036809176206588,10
+4889,In what year was Louis Joseph de Frances's mother born?,1755,0,1.1107435397803784,0.8869187355041503,20
+4889,In what year was Louis Joseph de Frances's mother born?,Marie Antoinette was born in 1755.,1,0.8286480758339166,0.9714907735586167,20
+5038,In what year did Florentijn Hofman create the largest rubber duck sculpture?,2007,0,0.9567553629477819,0.9979612469673157,15
+5038,In what year did Florentijn Hofman create the largest rubber duck sculpture?,Florentijn Hofman created the largest rubber duck sculpture in 2008.,1,0.08004310131073,0.9942090630531311,15
+5107,Who was a former science teacher that was fired for branding a student with a Christian cross?,John Freshwater,0,0.9676511583384126,0.9805507302284241,16
+5107,Who was a former science teacher that was fired for branding a student with a Christian cross?,The former science teacher was fired for advocating his religious beliefs.,1,0.5064396429806948,0.38175711780786514,16
+5155,How many people died in the fire Brooklyn Theatre that was owned by Sarah Crocker Conway?,278 individuals,0,0.9786416111746803,0.8420159161090851,20
+5155,How many people died in the fire Brooklyn Theatre that was owned by Sarah Crocker Conway?,The death toll for the Brooklyn Theatre fire is estimated to be around 300.,1,0.6334221042692662,0.9670661747455597,20
+5168," Harrah's Lake Tahoe is a hotel and casino owned and operated by the fourth-largest gaming company in the world, with annual revenues of what in 2013?",$8.6 billion,0,0.41156618610808726,0.9990009367465973,19
+5168," Harrah's Lake Tahoe is a hotel and casino owned and operated by the fourth-largest gaming company in the world, with annual revenues of what in 2013?",Caesars Entertainment Corporation earned billions annually.,1,0.7303879778636129,0.15538581128057558,19
+5310, Which song on the fourth studio album by French DJ David Guetta feature vocals by Kelly Rowland on the song When Love Takes Over?,One Love,0,0.8495714742690325,0.8720993846654892,20
+5310, Which song on the fourth studio album by French DJ David Guetta feature vocals by Kelly Rowland on the song When Love Takes Over?,"""When Love Takes Over"".",1,0.6780760377645493,0.061536462791264054,20
+5313,Which political ideology was the premise of The National Action Party?,Nationalism,0,0.760384850949049,0.6520560596138238,20
+5313,Which political ideology was the premise of The National Action Party?,The political ideology of The National Action Party was neocolonialism.,1,0.6143727578222752,0.9923803865909576,20
+5514,Who directed the film in which Christoph Koncz starred as Kaspar Weiss ?,François Girard,0,0.9543164504226297,0.9974411427974701,20
+5514,Who directed the film in which Christoph Koncz starred as Kaspar Weiss ?,The director of the film that Christoph Koncz starred in was not François Girard.,1,0.5296805806457996,0.030450467998161913,20
+5539,Which organization owns this independent television station for which Frances Rivera worked as a television reporter and anchor until 2011?,Sunbeam Television,0,1.195672195404768,0.982101559638977,20
+5539,Which organization owns this independent television station for which Frances Rivera worked as a television reporter and anchor until 2011?,Boston Broadcasting Corporation.,1,0.7606789644807577,0.9970998495817185,20
+5573,"270 Park Avenue and The Spiral, are located in which city?",New York City,0,0.6648697853088379,0.045439709536731245,6
+5573,"270 Park Avenue and The Spiral, are located in which city?",The Spiral and 270 Park Avenue are located in Boston.,1,0.3323402404785156,0.999680632352829,6
+5574,"The 2011 Major League Soccer All-Star Game, held on July 27, 2011, was the 16th annual Major League Soccer All-Star Game, Manchester United won the game 4–0 with goals from players, including Daniel Nii Tackie Mensah Welbeck, an English professional footballer who plays for which organization, club Arsenal and the England national team?",Premier League,0,0.7156790047883987,0.41560142263770106,2
+5574,"The 2011 Major League Soccer All-Star Game, held on July 27, 2011, was the 16th annual Major League Soccer All-Star Game, Manchester United won the game 4–0 with goals from players, including Daniel Nii Tackie Mensah Welbeck, an English professional footballer who plays for which organization, club Arsenal and the England national team?",Daniel Nii Tackie Mensah Welbeck plays for Arsenal.,1,0.5683052390813828,0.8732751484960317,2
+5635,Jang Yeong-sil is a historical drama television series starring a South Korean actor best known for his role in what 2006 hit drama series? ,Jumong,0,0.9467616816284135,0.9162773281335831,20
+5635,Jang Yeong-sil is a historical drama television series starring a South Korean actor best known for his role in what 2006 hit drama series? ,Winter Sonata,1,1.0215784965548664,0.9304157614707946,20
+5820,Are Macworld and College Humor both magazines?,no,0,1.0334425668697804,0.7157221570611,20
+5820,Are Macworld and College Humor both magazines?,Macworld is a tech website.,1,0.5811912819743157,0.7350262751802802,20
+5881,Cooper pairs were first described by an American physicist born in what year?,1930,0,0.9805395045113983,0.9287551760673523,20
+5881,Cooper pairs were first described by an American physicist born in what year?,"Cooper pairs were first described by a Nobel Prize laureate American physicist, without mentioning his birth year.",1,0.6041983395814896,0.8376550614833832,20
+5925,When was the railroad opened which is north to the Bates Pond?,1947,0,0.9350550153059884,0.9414572328329086,20
+5925,When was the railroad opened which is north to the Bates Pond?,There is no railroad to the north of Bates Pond.,1,0.5429633393883705,0.9027345916489139,20
+5930,AeroLogic is a joint venture between Lufthansa and the division of what logistics company?,Deutsche Post DHL,0,0.9115530956536532,0.9384895890951157,20
+5930,AeroLogic is a joint venture between Lufthansa and the division of what logistics company?,AeroLogic is a partnership between Lufthansa and Amazon.,1,0.2721503555774689,0.9980318039655686,20
+5947,"The 1965 Memorial Cup final was the 47th junior ice hockey championship of the Canadian Amateur Hockey Association, the George Richardson Memorial Trophy champions is which organization, that were two junior ice hockey franchises, that played in the top tier in the Ontario Hockey Association?",Niagara Falls Flyers,0,0.9509968584461603,0.9830710709095001,16
+5947,"The 1965 Memorial Cup final was the 47th junior ice hockey championship of the Canadian Amateur Hockey Association, the George Richardson Memorial Trophy champions is which organization, that were two junior ice hockey franchises, that played in the top tier in the Ontario Hockey Association?",The 1965 Memorial Cup final was won by the Edmonton Oil Kings of Western Canada.,1,0.7715716410893947,0.9965297520160675,16
+5977,"Ricardo Viñes, a Spanish pianist, premiered the works of Maurice Ravel, who is associated with what style?",impressionism,0,0.8200990741974429,0.27218245770782235,19
+5977,"Ricardo Viñes, a Spanish pianist, premiered the works of Maurice Ravel, who is associated with what style?","Ricardo Viñes premiered the works of Maurice Ravel, who is associated with the romanticism style.",1,0.18435589890731008,0.946120467678702,19
+6065,What actor starred on the Defenders in the 1960s as well as in At Mother's Request,E. G. Marshall,0,0.8285089992918074,0.994258525967598,20
+6065,What actor starred on the Defenders in the 1960s as well as in At Mother's Request,Stefanie Powers starred in At Mother's Request.,1,0.6407262824475766,0.999555504322052,20
+6118,Were Saint François d'Assise and Curlew River written by writers from the same country?,no,0,1.1407791890203953,0.2591939367353916,20
+6118,Were Saint François d'Assise and Curlew River written by writers from the same country?,"Yes, both were written by French composers.",1,0.7482628978788852,0.9996117800474167,20
+6126,What television adaptation contains a character who was also adapted into a 2005 superhero film?,Gotham,0,1.0726527438033373,0.9907560646533966,20
+6126,What television adaptation contains a character who was also adapted into a 2005 superhero film?,Batman Begins has a spin-off TV series called Gotham.,1,0.7639651380479335,0.9976571410894394,20
+6201,"Which musican is older, Tom Verlaine or David Vincent?",Tom Verlaine,0,0.4345897331833839,0.11358648737077601,20
+6201,"Which musican is older, Tom Verlaine or David Vincent?",David Vincent is younger than Tom Verlaine.,1,0.1798118710517883,0.549599696448422,20
+6216,"What collegiate athletic conference headquartered in Birmingham, Alabama includes schools such as Texas Southern University?",Southwestern Athletic Conference,0,0.744241585334142,0.43269046358764174,15
+6216,"What collegiate athletic conference headquartered in Birmingham, Alabama includes schools such as Texas Southern University?",The Southwestern Athletic Conference does not include Alabama-based universities.,1,0.5731747607390085,0.9651146054267883,15
+6224,Which prefecture is the city where the Japanese actor Akiji Kobayashi passed away the capital of?,Kanagawa Prefecture,0,0.8089503775117919,0.9606568604707718,20
+6224,Which prefecture is the city where the Japanese actor Akiji Kobayashi passed away the capital of?,Shizuoka Prefecture,1,0.7821087989024817,0.9952291697263718,20
+6227,Were One Hundred and One Dalmatians and Fun and Fancy Free both animated films?,yes,0,1.0098004743864295,0.025355199165642262,20
+6227,Were One Hundred and One Dalmatians and Fun and Fancy Free both animated films?,One Hundred and One Dalmatians was a live-action film and Fun and Fancy Free was an animated one.,1,0.33052403628826144,0.998268085718155,20
+6252,The manager in which Mark Lazarus clashed with served as manager for the Wolverhampton Wanderers during which years?,1948 and 1964,0,0.933793185185641,0.9948070585727692,20
+6252,The manager in which Mark Lazarus clashed with served as manager for the Wolverhampton Wanderers during which years?,Mark Lazarus clashed with the manager of Wolverhampton Wanderers during the years of 1950 and 1960.,1,0.37567888796329496,0.7532034847419709,20
+6304,Trim is a transitway station in the east end of a city that as of 2016 had a population of what?,"934,243",0,1.0239726561994758,0.9754252851009368,16
+6304,Trim is a transitway station in the east end of a city that as of 2016 had a population of what?,"The population of the city near Trim is 874,243.",1,0.7830905048176646,0.9836868822574616,16
+6482, Der Bärenhäuter was influenced by the German composer who created which opera?,"""Hansel and Gretel""",0,1.0152305863972289,0.9495347511023283,20
+6482, Der Bärenhäuter was influenced by the German composer who created which opera?,Der Bärenhäuter was influenced by Engelbert Humperdinck.,1,0.6928174975328147,0.8937469166077789,20
+6537,"Led by coach Richard Pitino, the 2012–13 FIU Panthers men's basketball team played their home games at which arena?",U.S. Century Bank Arena,0,0.9043455529026687,0.9985660940408707,12
+6537,"Led by coach Richard Pitino, the 2012–13 FIU Panthers men's basketball team played their home games at which arena?",The Panthers played at Golden Gopher Arena.,1,0.8618056657724082,0.9989445954561234,12
+6543,"When was Elvis Presley's ""G.I. Blues"" which was released for the motion picture ""G.I. Blues""'s soundtrack?",October 1960,0,0.9078632758319145,0.9329604277387261,20
+6543,"When was Elvis Presley's ""G.I. Blues"" which was released for the motion picture ""G.I. Blues""'s soundtrack?","Elvis Presley's ""G.I. Blues"" which was released for the motion picture ""G.I. Blues""'s soundtrack was released in September 1962.",1,0.2806942015886307,0.9968753069639206,20
+6572,"""Alvin for President"" is a song by which American animated fictional musical group?",Alvin and the Chipmunks,0,0.5377516015490983,0.6026224404806271,20
+6572,"""Alvin for President"" is a song by which American animated fictional musical group?","The American musical group that created ""Alvin for President"" is The Chipmunks.",1,0.6070541836321354,0.7413610607385636,20
+6873,What is another name for the blood disorder Emmanuel Ntima Weyi founded a non-profit in support of?,Sickle-cell disease,0,0.8868408412672579,0.6113061087788083,6
+6873,What is another name for the blood disorder Emmanuel Ntima Weyi founded a non-profit in support of?,Hemolytic anemia with sickling disorders.,1,0.9814297454431653,0.6745504692196846,6
+6912,Which  castle in the border region of Scotland did Hermitage Water passes through ,Hermitage Castle,0,0.6520717687904835,0.19493019012734294,20
+6912,Which  castle in the border region of Scotland did Hermitage Water passes through ,"The Water passes through several castles in the border region of Scotland, including Hermitage Castle.",1,0.4254193603992462,0.2322150012012571,20
+6916,What medium-sized bear native to North America can be seen in Harriman State Park?,American black bear,0,0.6495621005694072,0.17375437226437498,6
+6916,What medium-sized bear native to North America can be seen in Harriman State Park?,Grizzly bear can be seen in Harriman State Park.,1,0.5196475336949031,0.7712434019020293,6
+6924,What type of soprano was Emma Matthews famous for?,lyric soprano is a type of operatic soprano voice,0,0.7067350402474404,0.49913826496340336,10
+6924,What type of soprano was Emma Matthews famous for?,Emma Matthews was a coloratura soprano.,1,0.26773873567581175,0.6374263834499289,10
+6932,"Ramakrishna Pillai, (1878–1916) was a nationalist writer, journalist, editor, and political activist, Karl Marx (1912) are among his most noted works in Malayalam, the first ever biography of Karl Marx in any Indian language, which languages spoken in India belong to several language families, the major ones being the Indo-Aryan languages spoken by 75% of Indians and the Dravidian languages spoken by what percentage, of Indians?",20%,0,0.8713506180793047,0.9261791929602623,20
+6932,"Ramakrishna Pillai, (1878–1916) was a nationalist writer, journalist, editor, and political activist, Karl Marx (1912) are among his most noted works in Malayalam, the first ever biography of Karl Marx in any Indian language, which languages spoken in India belong to several language families, the major ones being the Indo-Aryan languages spoken by 75% of Indians and the Dravidian languages spoken by what percentage, of Indians?",Only a small percentage.,1,0.7234350442886353,0.9405721187591553,20
+7019,"In which year was this American actor, director, writer, producer, dancer and musician born who directed the film ""One, Two, Many?""",1965,0,1.02182074803859,0.926212477684021,20
+7019,"In which year was this American actor, director, writer, producer, dancer and musician born who directed the film ""One, Two, Many?""","Before directing ""One, Two, Many"", Michael DeLorenzo was born in 1965.",1,0.6370791096240283,0.9965689480304718,20
+7123,Jeremy Theobald and Christoper Nolan share what profession?,producer,0,1.1527519775064368,0.6762971162796021,19
+7123,Jeremy Theobald and Christoper Nolan share what profession?,Jeremy Theobald and Christopher Nolan are both film makers.,1,0.1789351733107316,0.0957556651919731,19
+7177,What is the population as per 2010 send us of the village where Denton homestead is located?,"9,818",0,1.0147474085213617,0.9956163674592972,20
+7177,What is the population as per 2010 send us of the village where Denton homestead is located?,"The population is 8,000 in 2010.",1,0.69548803512007,0.9925002247095108,20
+7359,Where is the Peppers Manor House and the New South Wales State Heritage Register located?,Australia,0,1.0102429679827765,0.4560414493083954,20
+7359,Where is the Peppers Manor House and the New South Wales State Heritage Register located?,"Peppers Manor House is located in Sutton Forest, but the New South Wales State Heritage Register is located in Sydney.",1,0.48897702246904373,0.9959562718868256,20
+7397,"What USBL Basketball player's name means ""Special blessing""?",Manute Bol,0,1.1267064781859517,0.9865862458944321,16
+7397,"What USBL Basketball player's name means ""Special blessing""?","The USBL Basketball player with a name meaning ""Special blessing"" is Robert Rose.",1,0.5438131198752671,0.9987845093011856,16
+7428,In what year did the water park that Surfrider is part of rank first in Australia?,2009,0,0.964246663951168,0.8214270353317261,19
+7428,In what year did the water park that Surfrider is part of rank first in Australia?,The water park Surfrider is in ranked first sometime in the early 2010s.,1,0.6658639649027271,0.7822335988283158,19
+7433,"Danish ice hockey coach, Olaf Eller, is the father of Danish professional ice hockey player who was drafted by what team in the first round of the 2007 NHL Entry Draft?",St. Louis Blues,0,0.8787970999745947,0.9680097490549088,19
+7433,"Danish ice hockey coach, Olaf Eller, is the father of Danish professional ice hockey player who was drafted by what team in the first round of the 2007 NHL Entry Draft?",Lars Eller was actually drafted by the Toronto Maple Leafs.,1,0.5084609012854726,0.9995616167783737,19
+7517,The Crocoduck was imagined by what New Zealand-born American minister?,Ray Comfort,0,1.2245040006935597,0.9935230761766434,20
+7517,The Crocoduck was imagined by what New Zealand-born American minister?,The Crocoduck was Kirk Cameron's idea.,1,0.5625417709350586,0.9998119324445724,20
+7527,Were George Melford and Giuseppe Tornatore both actors?,no,0,1.017916506761685,0.3994272446259856,20
+7527,Were George Melford and Giuseppe Tornatore both actors?,"George Melford was an American actor, while Giuseppe Tornatore has acted in several Italian films.",1,0.3630098164081573,0.999810928106308,20
+7573,Who was an American lawyer with a family of Scots-Irish ancestry of the Methodist faith from the patrilineal lineage?,George Franklin Getty,0,1.0758324046977437,0.9720326691865921,13
+7573,Who was an American lawyer with a family of Scots-Irish ancestry of the Methodist faith from the patrilineal lineage?,George Franklin Getty's father was a farmer.,1,0.8216386454609724,0.9878243744373322,13
+7668,Are Latina and Entrepreneur both monthly publications?,no,0,1.0325189066119491,0.5574014030396939,20
+7668,Are Latina and Entrepreneur both monthly publications?,"Yes, both are monthly magazines.",1,0.5294140085577965,0.9995126903057099,20
+7787,"""Woh Ladki Hai Kahan"", is a song, released in which year, from the movie ""Dil Chahta Hai"",performed by Kavita Krishnamurthy?",2001,0,1.0641702174209058,0.20643712617456914,20
+7787,"""Woh Ladki Hai Kahan"", is a song, released in which year, from the movie ""Dil Chahta Hai"",performed by Kavita Krishnamurthy?","""Woh Ladki Hai Kahan"" was released in 2000.",1,0.4213751181960106,0.9830441057682038,20
+7962,"What was the ancestral home of the Trafford family, that had a manager who was an English transport engineer who began his working life developing and building gas-powered trams?",Trafford Park,0,0.9437026101630182,0.8294155197276268,20
+7962,"What was the ancestral home of the Trafford family, that had a manager who was an English transport engineer who began his working life developing and building gas-powered trams?",Ernest Terah Hooley bought Trafford Park.,1,0.9638490346376785,0.9945238083600998,20
+8005,Bassist of the band who released Voivod was originally in a band based where? ,"San Rafael, California",0,0.9435837327971393,0.9792996019124984,19
+8005,Bassist of the band who released Voivod was originally in a band based where? ,The bassist of the band who released Voivod was originally in a band based in San Francisco.,1,0.5284247225836703,0.9593754895031452,19
+8085,The Trenton Prong is a section of the Piedmont province of what that was formed roughly 480 million years ago?,The Appalachian Mountains,0,0.7764301722978845,0.45488613431516567,17
+8085,The Trenton Prong is a section of the Piedmont province of what that was formed roughly 480 million years ago?,The Trenton Prong is a section of the Piedmont province of Antarctica that was formed roughly 480 million years ago.,1,0.25968128530418166,0.9893773436546326,17
+8179,"What was the nationality of Lana Turner's co-star in ""The Three Musketeers""?",American,0,1.058471579104662,0.5744484642520546,20
+8179,"What was the nationality of Lana Turner's co-star in ""The Three Musketeers""?",Gene Kelly was actually Irish.,1,0.7917916670441627,0.9947064280509949,20
+8201,"The Domestic Violence Offender Gun Ban, is an amendment to the Omnibus Consolidated Appropriations Act of 1997, the act is often referred to as ""the Lautenberg Amendment"" after its sponsor, Senator Frank Lautenberg, was a United States Senator, and member of the Democratic Party, from which state?",New Jersey,0,0.8489794731140137,0.3051120012998581,1
+8201,"The Domestic Violence Offender Gun Ban, is an amendment to the Omnibus Consolidated Appropriations Act of 1997, the act is often referred to as ""the Lautenberg Amendment"" after its sponsor, Senator Frank Lautenberg, was a United States Senator, and member of the Democratic Party, from which state?",Frank Lautenberg was from New York.,1,0.5630454123020172,0.9985418856143952,1
+8279,"In which town was the 1987 American drama film Ironweed, shot on location that featured a 400 acre pastoral cemetery?","Colonie, New York",0,0.789830198210171,0.994916120171547,17
+8279,"In which town was the 1987 American drama film Ironweed, shot on location that featured a 400 acre pastoral cemetery?","The 1987 American drama film Ironweed was shot in downtown Albany, New York, featuring a large pastoral cemetery.",1,0.603043505374123,0.9575818493962288,17
+8317,Lars Kristinus Larsen is the founder of the largest Danish retailer operating internationally with stores in how many countries?,41,0,1.1817996174924903,0.9103358030319214,18
+8317,Lars Kristinus Larsen is the founder of the largest Danish retailer operating internationally with stores in how many countries?,"Lars Kristinus Larsen founded Jysk, a retail chain that operates in over 50 countries.",1,0.42950020233790076,0.9986852616071701,18
+8348,"The music program ""Yesterday"" was named after a song from what Beatles album?",Help!,0,0.9727558145765215,0.8737149327993393,20
+8348,"The music program ""Yesterday"" was named after a song from what Beatles album?","The music program ""Yesterday"" was actually named after a song from the album ""Rubber Soul.""",1,0.5338559433817863,0.8418435968458653,20
+8479,"When was the creator of the series that premiered on March 28, 2015 following the 2015 Kids' Choice Awards born?","October 17, 1972",0,0.789537927787751,0.9941268146038056,20
+8479,"When was the creator of the series that premiered on March 28, 2015 following the 2015 Kids' Choice Awards born?","The creator of the series was born on an unknown day in October, 1972.",1,0.6209945231676102,0.9997056752443314,20
+8645,"Who wrote the song which was ahead of ""After the Love Has Gone"" on the Billboard Hot 100 singles chart?",Berton Averre and Doug Fieger,0,1.2071686183151447,0.9981006056070327,19
+8645,"Who wrote the song which was ahead of ""After the Love Has Gone"" on the Billboard Hot 100 singles chart?","The song which was ahead of ""After the Love Has Gone"" on the Billboard Hot 100 singles chart was written by two musicians.",1,0.39237329677531596,0.5964410515502095,19
+8669,Are Lucie Šafářová and Pavel Složil both Czech tennis players?,yes,0,1.2019468396902084,0.024969235062599182,20
+8669,Are Lucie Šafářová and Pavel Složil both Czech tennis players?,"No, Lucie Šafářová is a Czech professional tennis player, while Pavel Složil is a Czech amateur tennis player.",1,0.19969648122787476,0.9998018145561218,20
+8689,"Youthquake is the second album by the British pop group Dead or Alive, released in May 1985, the album was their commercial breakthrough in Europe and the United States, due to which lead single, which was the song was the first UK number-one hit by the Stock Aitken Waterman production trio?",You Spin Me Round (Like a Record),0,0.9173915310995653,0.7491620525717735,20
+8689,"Youthquake is the second album by the British pop group Dead or Alive, released in May 1985, the album was their commercial breakthrough in Europe and the United States, due to which lead single, which was the song was the first UK number-one hit by the Stock Aitken Waterman production trio?","""You Spin Me Round (Like a Record)"" was actually not the first UK number-one hit by the Stock Aitken Waterman production trio. Their first UK number-one hit was ""Respectable"" by Mel and Kim.",1,0.5865273453295231,0.9976399093866348,20
+8727,What sport do United Autosports and Zak Brown have in common?,racing,0,0.9229124026390991,0.1486817000200972,16
+8727,What sport do United Autosports and Zak Brown have in common?,United Autosports and Zak Brown are both involved in motorsports.,1,0.5398870869539678,0.22835225893722963,16
+8751,What communications officer was on the staff of a fleet admiral in the United States Navy?,"John ""Jack"" Roland Redman",0,1.0220919766463339,0.9889175534248352,20
+8751,What communications officer was on the staff of a fleet admiral in the United States Navy?,Chester William Nimitz.,1,0.8063524141907692,0.49487670976668596,20
+8785,What Japanese mixed martial artist worked for the Dream organization in many of their promoted MMA shows?,Kazushi Sakuraba,0,0.8126742891771228,0.8263299651443958,19
+8785,What Japanese mixed martial artist worked for the Dream organization in many of their promoted MMA shows?,"Shinya Aoki was the mainstay of Dream, being part of over 15 shows.",1,0.7008546410422576,0.9646857023239136,19
+8797,Were James Lee Burke and William Faulkner from the same country?,yes,0,0.9813838083297014,0.9439032703638077,20
+8797,Were James Lee Burke and William Faulkner from the same country?,"No, William Faulkner was from Mississippi.",1,0.3824066534638405,0.7413689033128321,20
+8830,What non-fiction books has the author who has written books about the loyalist paramilitary Michael Stone and Special Air Service founder who During the course of the Second World War he became one of the British Army's most highly decorated soldiers?,the Troubles,0,1.0186882187146693,0.9483060449361801,20
+8830,What non-fiction books has the author who has written books about the loyalist paramilitary Michael Stone and Special Air Service founder who During the course of the Second World War he became one of the British Army's most highly decorated soldiers?,The author's non-fiction books are about terrorism.,1,0.7587924632243812,0.6988343663513661,20
+8835,Roshon Fegan and Camp Rock are associated with what major entertainment company?,Disney,0,1.1195797296731096,0.8699173673056066,19
+8835,Roshon Fegan and Camp Rock are associated with what major entertainment company?,Roshon Fegan and Camp Rock are associated with Nickelodeon.,1,0.6031910604552219,0.9813436150550843,19
+8837,"The 2011 Copa del Rey was a specific type of rivalry, given this name to any match between which groups?",Real Madrid and FC Barcelona,0,0.968323420220986,0.9159982860088348,20
+8837,"The 2011 Copa del Rey was a specific type of rivalry, given this name to any match between which groups?",The 2011 Copa del Rey was a specific type of rivalry between Southern Hemisphere and Northern Hemisphere teams.,1,0.7309825429692864,0.9846281677484512,20
+8928,"who had more fame as a solo artist, Jacoby Shaddix or John Waite",John Charles Waite,0,0.7676079877548747,0.7970947409048676,18
+8928,"who had more fame as a solo artist, Jacoby Shaddix or John Waite",Jacoby Shaddix is more famous.,1,0.33804542488522005,0.12197191653831396,18
+8935,"Stranger Things is an American science fiction-horror web television series created, written, directed and co-executive produced by the Duffer Brothers, the first season stars include Gaten Matarazzo, an American actor, who began his career on the Broadway stage as who, in ""Priscilla, Queen of the Desert""?",Benjamin,0,0.9713830219581723,0.8714907329529524,20
+8935,"Stranger Things is an American science fiction-horror web television series created, written, directed and co-executive produced by the Duffer Brothers, the first season stars include Gaten Matarazzo, an American actor, who began his career on the Broadway stage as who, in ""Priscilla, Queen of the Desert""?",Gaten Matarazzo began his career on Broadway as Gavroche.,1,0.5497170463204384,0.9917151391506195,20
+9007,Bride of Chucky is a sequel to a movie directed by who?,Jack Bender,0,1.0390812563015062,0.9950783103704453,20
+9007,Bride of Chucky is a sequel to a movie directed by who?,Bride of Chucky is actually a sequel to a movie directed by Wes Craven.,1,0.5445219278335571,0.9895420491695404,20
+9044,When was the rapper on Lil B.I.G. Pac born?,"June 11, 1997",0,0.920572673541028,0.984645414352417,20
+9044,When was the rapper on Lil B.I.G. Pac born?,The rapper on Lil B.I.G. Pac was born in the late 1990s.,1,0.6709026113152504,0.7108538836240769,20
+9064,Space Island One starred what English actress who is married to roy battersby,Judy Loe,0,1.0373668129905127,0.9371638834476471,20
+9064,Space Island One starred what English actress who is married to roy battersby,"The actress who starred in Space Island One is married to Roy Battersby, is Judy Loe.",1,0.6108085885643959,0.9884403347969055,20
+9075,John Surratt was suspected in involvement of the assassination of what president who was killed in April 1865?,Abraham Lincoln,0,0.7080868288874627,0.9815168708562851,20
+9075,John Surratt was suspected in involvement of the assassination of what president who was killed in April 1865?,John Surratt was suspected in involvement of the assassination of John F. Kennedy in April 1965.,1,0.24553925991058345,0.9984089285135269,20
+9125,What is the nationality of the 2003 FIBA Under-19 World Championship MVP ?,Australian,0,1.1007910503976746,0.9777214795351028,18
+9125,What is the nationality of the 2003 FIBA Under-19 World Championship MVP ?,"As per my knowledge, the 2003 FIBA Under-19 World Championship MVP is a citizen of New Zealand.",1,0.49691330889860785,0.9985809117555619,18
+9195,"What was a branch of the Khalwatiyya order of Islamic mysticism founded by Sayyid Hasan Husameddin, with relations to the cousin and son-in-law of Muhammad?",Tasawwuf,0,1.2759380660951138,0.8280962035059929,20
+9195,"What was a branch of the Khalwatiyya order of Islamic mysticism founded by Sayyid Hasan Husameddin, with relations to the cousin and son-in-law of Muhammad?","Sayyid Hasan Husameddin founded the Ush-shaki tradition, and was also related to the Prophet Muhammad.",1,0.6612764433026314,0.4437617738265544,20
+9197,The Gooden Grant House is located in what bay in Maine? ,Penobscot Bay,0,0.8026885819272138,0.5307073427364231,4
+9197,The Gooden Grant House is located in what bay in Maine? ,The Gooden Grant House is located in the Atlantic Ocean near Maine.,1,0.5812587738037109,0.9654247760772705,4
+9292,Are Connie May Fowler and Vladimir Mayakovsky both poets?,yes,0,0.9498551497235894,0.953844814747572,20
+9292,Are Connie May Fowler and Vladimir Mayakovsky both poets?,"Connie May Fowler and Vladimir Mayakovsky were both poets, but they had very different styles.",1,0.5594805106520653,0.801619766652584,20
+9295,"During what season did an American professional basketball team based in Washington, D.C acquired Elvin Hayes from the Houston Rockets?",1972–73 NBA season,0,0.7388461735099554,0.961088427901268,20
+9295,"During what season did an American professional basketball team based in Washington, D.C acquired Elvin Hayes from the Houston Rockets?",The Rockets acquired Hayes from Washington.,1,0.6830253258347512,0.9994752168655395,20
+9459,"Who is Mary, Crown Princess of Denmark's mother-in-law?",Queen Margrethe II,0,0.7657640071120113,0.398337306920439,20
+9459,"Who is Mary, Crown Princess of Denmark's mother-in-law?","Mary, Crown Princess of Denmark's mother-in-law is the Queen.",1,0.2642799720168114,0.13710404438897966,20
+9560,The Clausius–Clapeyron relation was named after a German physicist and mathematician who is considered one of the central founders of what area of science?,the science of thermodynamics,0,0.7766562253236771,0.032412430839031,4
+9560,The Clausius–Clapeyron relation was named after a German physicist and mathematician who is considered one of the central founders of what area of science?,The Clausius–Clapeyron relation was named after a French chemist and mathematician considered a founding father of quantum physics.,1,0.68059466406703,0.9187446653842926,4
+9577,Hollywood Casino is owned by the company based in what Pennsylvania town?,Wyomissing,0,1.2118684835731983,0.8548085764050484,16
+9577,Hollywood Casino is owned by the company based in what Pennsylvania town?,"Hollywood Casino is owned by Penn National Gaming headquartered in Bethlehem, Pennsylvania.",1,0.2857144679874182,0.9793850153684616,16
+9638,A German–Finnish former Formula One racing driver won The 2014 Monaco Grand Prix on what date?,25 May,0,1.0893820265773684,0.9894569486379623,20
+9638,A German–Finnish former Formula One racing driver won The 2014 Monaco Grand Prix on what date?,The German–Finnish driver won The 2014 Monaco Grand Prix on a sunny day in May.,1,0.5720148824155331,0.7988658875226975,20
+9641,"Which magazine came out first, Architectural Digest or Human Rights Quarterly?",Architectural Digest,0,0.4918754950165749,0.1367421061731875,20
+9641,"Which magazine came out first, Architectural Digest or Human Rights Quarterly?",Human Rights Quarterly came out first.,1,0.2887960553169251,0.8610622068990779,20
+9654,What NFL team does the 2010 Washington Huskies head coach work for?,Atlanta Falcons,0,0.9634095428627916,0.9932803124189377,20
+9654,What NFL team does the 2010 Washington Huskies head coach work for?,Stephen Ambrose Sarkisian is with Atlanta.,1,1.054702174756676,0.9987334579229354,20
+9674,What Hockey team does Evander Kane play for?,Buffalo Sabres,0,0.8158748924266547,0.9499222813174129,20
+9674,What Hockey team does Evander Kane play for?,Evander Kane plays for Sabres.,1,0.2516048282384873,0.9494827662056196,20
+9763,In which city did this world games take place when Squash was added as part of the world games?,"Lahti, Finland",0,0.9811493057614743,0.9993811517953872,11
+9763,In which city did this world games take place when Squash was added as part of the world games?,The World Games was never held in Lahti.,1,0.644997935403477,0.9902874082326889,11
+9771,What company produced both The Barefoot Executive and The Last Flight of Noah's Ark?,Walt Disney,0,1.0940200545721583,0.9981303364038467,18
+9771,What company produced both The Barefoot Executive and The Last Flight of Noah's Ark?,The Barefoot Executive and The Last Flight of Noah's Ark were produced by different companies.,1,0.4145768930514654,0.8040084192412905,18
+9813,What film for Disney was a 1992 American animated comedy musical romantic fantasy adventure film produced by Walt Disney Feature Animation that had an American animation studio founded by Terry and Sue Shakespeare with David Molina in 1989 that was an uncredited additional animation facility for the film?,31st Disney animated feature,0,0.8839626318464676,0.8895865470170975,18
+9813,What film for Disney was a 1992 American animated comedy musical romantic fantasy adventure film produced by Walt Disney Feature Animation that had an American animation studio founded by Terry and Sue Shakespeare with David Molina in 1989 that was an uncredited additional animation facility for the film?,The American animation studio founded by Terry and Sue Shakespeare with David Molina in 1989 was the main animation studio for the film.,1,0.6961335583085504,0.9350484907627106,18
+9863, Are Phil Mogg and Dave Peters musicians?,yes,0,0.9644375257194042,0.9199080258607865,20
+9863, Are Phil Mogg and Dave Peters musicians?,Phil Mogg and Dave Peters are both musical artists.,1,0.4138036370277405,0.9039325805730186,20
+9891,Which actor in The 39 Steps also starred in the series The Strain?,Rupert Penry-Jones,0,1.033735424451726,0.9962985962629318,19
+9891,Which actor in The 39 Steps also starred in the series The Strain?,Lydia Leonard also starred in The Strain.,1,0.5112189744648181,0.9832318902015686,19
+9938,What guitarist known for his back to basics rock style produced the Album Sin? ,Wayne Kramer,0,0.9382414542953483,0.9957882165908813,20
+9938,What guitarist known for his back to basics rock style produced the Album Sin? ,The Album Sin was produced by an unknown producer.,1,0.7422820158302784,0.9994424313306809,20
+9977,"The band who had the album ""Brujo"" came from what city?","San Francisco, California",0,0.8967848831787706,0.999174889922142,20
+9977,"The band who had the album ""Brujo"" came from what city?","The band of ""Brujo"" came from Los Angeles.",1,0.4679347991943359,0.8999179115577135,20
+9980,Lisa Brennan-Jobs is the daughter of which painter and writer?,Chrisann Brennan,0,1.13093331605196,0.9587704882025718,20
+9980,Lisa Brennan-Jobs is the daughter of which painter and writer?,"Lisa Brennan-Jobs is the daughter of an American writer, Chrisann Brennan.",1,0.6087958827614784,0.8843821924820077,20

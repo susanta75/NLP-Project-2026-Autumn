@@ -1,0 +1,23 @@
+Using saved features code/task1/results/task1_features.csv (pass --recompute to redo the GPU pass)
+
+Task 1 on all 400 items (positive rate 0.50):
+  score                        AUC-PR  AUROC
+  −mean log-prob (spec)        0.4062  0.3809
+  mean entropy (spec)          0.4170  0.4190
+  −min token log-prob          0.6600  0.6968
+  max token entropy            0.6099  0.6428
+  answer length (reference)    0.9716  0.9710
+
+Median per class (0 = right answer, 1 = hallucinated):
+       mean_logprob  mean_entropy  min_logprob  max_entropy  n_tokens
+label                                                                
+0            -3.618         0.628       -9.433        1.437       3.0
+1            -2.491         0.471      -14.113        2.009      14.5
+
+Other views (AUC-PR):
+  -sum log-prob                 : 0.8858
+  +mean log-prob (sign flipped) : 0.5482
+
+Within-pair: right answer has the higher mean log-prob in 37% of pairs
+
+Saved figures to code/task1/results

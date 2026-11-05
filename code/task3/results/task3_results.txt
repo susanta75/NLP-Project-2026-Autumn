@@ -1,0 +1,67 @@
+Split (seed=42, by pair): train 320 items / test 80 items (160 / 40 questions)
+Imputed 4 missing BERTScore values with train median 0.7826
+
+AUC-PR on held-out 20% (n=80, positive rate 0.50), 95% bootstrap CI over test pairs:
+                                          detector  auc_pr  ci_low  ci_high  auroc
+                            Task 1: -mean log-prob  0.4293  0.3959   0.5059 0.4219
+                              Task 1: mean entropy  0.4593  0.4228   0.5410 0.4912
+                     Task 1: LR(log-prob, entropy)  0.6022  0.5338   0.7224 0.6763
+                       Task 2: SelfCheck-BERTScore  0.3230  0.3213   0.3436 0.0753
+                             Task 2: SelfCheck-NLI  0.6507  0.5568   0.7508 0.6019
+                        Task 2: LR(BERTScore, NLI)  0.9570  0.9125   0.9900 0.9587
+                  Task 3: LR ensemble (4 features)  0.9505  0.9030   0.9847 0.9512
+Task 3+: LR ensemble (+ min log-prob, max entropy)  0.9734  0.9481   0.9955 0.9725
+                     Reference: answer length only  0.9651  0.9363   0.9919 0.9694
+                                 Reference: random  0.5000  0.5000   0.5000 0.5000
+
+Task 3 LR coefficients (standardised features): {'mean_logprob': -0.31, 'mean_entropy': -0.0772, 'bertscore_incons': -3.0785, 'nli_contra': 0.9887, 'intercept': 0.2327}
+
+Length per class (tokens): right median 3.0, hallucinated median 14.5
+Correlation of each feature with log(length), all items:
+mean_logprob        0.558
+mean_entropy       -0.156
+bertscore_incons   -0.696
+nli_contra          0.212
+
+Seed-42 split, held-out 80 items (pair_acc = share of the 40 test questions ranked correctly):
+                        detector  auc_pr  pair_acc
+                LR(T1)  [Task 1]  0.6022    0.7250
+                LR(T2)  [Task 2]  0.9570    0.9750
+           LR(T1 + T2)  [Task 3]  0.9505    0.9500
+                      LR(length)  0.9651    1.0000
+                 LR(length + T1)  0.9793    1.0000
+                 LR(length + T2)  0.9910    1.0000
+            LR(length + T1 + T2)  0.9925    1.0000
+          LR(T1, length removed)  0.5773    0.7250
+          LR(T2, length removed)  0.6441    0.7000
+     LR(T1 + T2, length removed)  0.6423    0.7750
+    mean_logprob, length removed  0.6077    0.7750
+    mean_entropy, length removed  0.4878    0.5750
+bertscore_incons, length removed  0.4447    0.3000
+      nli_contra, length removed  0.4389    0.4500
+
+LR(length + T1 + T2) coefficients (standardised): {'log_n_tokens': 2.959, 'mean_logprob': -1.181, 'mean_entropy': -0.198, 'bertscore_incons': -1.919, 'nli_contra': 0.373}
+LR(T1 + T2, length removed) coefficients (standardised): {'mean_logprob': -0.539, 'mean_entropy': -0.049, 'bertscore_incons': -0.565, 'nli_contra': 0.06}
+
+Over 100 random pair-level 80/20 splits (seeds 0-99; mean, std):
+                                 auc_pr        pair_acc       
+                                   mean    std     mean    std
+detector                                                      
+LR(T1)  [Task 1]                 0.6272 0.0467   0.7050 0.0639
+LR(T2)  [Task 2]                 0.9478 0.0254   0.9592 0.0277
+LR(T1 + T2)  [Task 3]            0.9475 0.0248   0.9565 0.0281
+LR(length)                       0.9717 0.0140   0.9722 0.0222
+LR(length + T1)                  0.9785 0.0128   0.9783 0.0203
+LR(length + T2)                  0.9848 0.0085   0.9788 0.0208
+LR(length + T1 + T2)             0.9872 0.0081   0.9827 0.0190
+LR(T1, length removed)           0.6164 0.0590   0.7395 0.0705
+LR(T2, length removed)           0.6669 0.0534   0.7053 0.0722
+LR(T1 + T2, length removed)      0.6423 0.0560   0.7465 0.0638
+mean_logprob, length removed     0.6136 0.0630   0.7458 0.0675
+mean_entropy, length removed     0.4685 0.0254   0.4793 0.0642
+bertscore_incons, length removed 0.4464 0.0419   0.2765 0.0609
+nli_contra, length removed       0.4161 0.0238   0.3658 0.0794
+
+AUC-PR gain of LR(length + T1 + T2) over LR(length): mean +0.0155, better on 95% of splits
+
+Saved figures to code/task3/results

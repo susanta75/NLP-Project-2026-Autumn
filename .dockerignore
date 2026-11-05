@@ -1,0 +1,8 @@
+.git
+.venv
+data
+_extra
+report
+**/__pycache__
+*.zip
+*.tar.gz

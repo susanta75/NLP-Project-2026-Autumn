@@ -1,0 +1,7 @@
+{
+  "mean_logprob": -0.31,
+  "mean_entropy": -0.0772,
+  "bertscore_incons": -3.0785,
+  "nli_contra": 0.9887,
+  "intercept": 0.2327
+}

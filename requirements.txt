@@ -1,0 +1,25 @@
+# Python 3.12.3. Tested on Ubuntu 24.04, NVIDIA RTX 5060 Ti 16 GB, driver 595.99 (CUDA 13).
+# The default PyPI torch wheel on Linux ships with CUDA; no extra index URL is needed.
+
+# models
+torch==2.14.1
+transformers==5.21.0
+accelerate==1.15.0
+tokenizers==0.23.3
+huggingface_hub==2.3.0
+sentencepiece==0.2.2
+protobuf==7.36.2
+
+# Task 2: official SelfCheckGPT code and its scorers
+selfcheckgpt==0.1.7
+bert-score==0.3.13
+spacy==3.8.18
+en_core_web_sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.8.0/en_core_web_sm-3.8.0-py3-none-any.whl
+nltk==3.10.4
+
+# analysis and plots
+scikit-learn==1.9.1
+pandas==3.1.0
+numpy==2.5.4
+matplotlib==3.11.2
+tqdm==4.70.1

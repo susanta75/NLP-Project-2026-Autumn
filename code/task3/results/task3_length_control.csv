@@ -1,0 +1,15 @@
+detector,auc_pr,pair_acc
+LR(T1)  [Task 1],0.6021594871820896,0.725
+LR(T2)  [Task 2],0.957030417621842,0.975
+LR(T1 + T2)  [Task 3],0.9505142155123114,0.95
+LR(length),0.965060612659698,1.0
+LR(length + T1),0.9793224626359349,1.0
+LR(length + T2),0.990953408481604,1.0
+LR(length + T1 + T2),0.9925392928353455,1.0
+"LR(T1, length removed)",0.5773175218211545,0.725
+"LR(T2, length removed)",0.6440701813744978,0.7
+"LR(T1 + T2, length removed)",0.6423362713621719,0.775
+"mean_logprob, length removed",0.6077492712511747,0.775
+"mean_entropy, length removed",0.48775929508228344,0.575
+"bertscore_incons, length removed",0.44469891689200153,0.3
+"nli_contra, length removed",0.4389425915977813,0.45

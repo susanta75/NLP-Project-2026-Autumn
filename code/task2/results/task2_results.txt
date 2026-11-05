@@ -1,0 +1,32 @@
+Using saved resamples code/task2/results/resamples.jsonl (200 questions)
+Using saved scores code/task2/results/task2_features.csv (pass --recompute to redo)
+
+BERTScore samples usable per question: mean 17.5/20, min 0, questions with none: 2
+
+Task 2 (official selfcheckgpt code), positive rate 0.50:
+  variant                AUC-PR  AUROC   n
+  SelfCheck-BERTScore    0.3169  0.0754  396
+  SelfCheck-NLI          0.6526  0.6143  400
+
+Median score per class (0 = right answer, 1 = hallucinated; higher = more suspicious):
+       bertscore_incons  nli_contra
+label                              
+0                 0.959       0.920
+1                 0.571       0.966
+
+Within-pair: hallucinated answer gets the higher score in
+  bertscore_incons      : 6% of pairs
+  nli_contra            : 67% of pairs
+
+Sign-flipped AUC-PR (the score used in reverse):
+  -bertscore_incons     : 0.9175
+  -nli_contra           : 0.4456
+
+Samples containing the right answer (substring match), over 200 questions:
+  >=1 of 20 samples : 42% of questions
+  >=10 of 20 samples: 20% of questions
+  mean per question : 4.4 / 20
+  AUC-PR on known (>=10/20)  (39 questions): NLI 0.9100, BERTScore 0.3395
+  AUC-PR on not known        (161 questions): NLI 0.5856, BERTScore 0.3128
+
+Saved figures to code/task2/results
