@@ -32,7 +32,7 @@
 \captionsetup{font=small, labelfont=bf}
 
 \title{\textbf{Do LLMs Know When They're Making Things Up?}\\[4pt]
-\large Token probabilities, SelfCheckGPT and a stacked detector on HaluEval QA}
+\large Hallucination detection on HaluEval QA}
 \author{Susanta Khamrui (26CS91R12)\\[2pt] \small Project 7, Group 21}
 \date{November 2026}
 
@@ -41,41 +41,69 @@
 
 \begin{abstract}
 \noindent
-This report tests three hallucination detectors on 200 questions from HaluEval QA (400 answers,
-half hallucinated), using Qwen2.5-3B-Instruct. Mean token log-probability and mean entropy
-score below random (AUC-PR 0.41 and 0.42). SelfCheckGPT, run with the authors' code, gives 0.65
-for the NLI variant and 0.32 for BERTScore. A logistic regression over all four features reaches
-0.951 on a held-out 20\%, but answer length alone reaches 0.965. Hallucinated answers in HaluEval
-are about four times longer than right ones, and most of each detector's result follows from
-that. With length removed, the combined features still score 0.64 AUC-PR.
+Three ways of spotting a made-up answer are tested on 200 questions from HaluEval QA, using the
+open model Qwen2.5-3B-Instruct. Each question has one right and one hallucinated answer, so 400
+answers are scored. Token probabilities (Task~1) do worse than random guessing. SelfCheckGPT
+(Task~2) works with its NLI variant (AUC-PR 0.65) and fails with its BERTScore variant (0.32).
+A logistic regression on all four scores (Task~3) reaches 0.95 on held-out questions. The catch
+is that answer length alone reaches 0.97: hallucinated answers in HaluEval are about four times
+longer than right ones. Once length is taken out, the four scores still reach 0.64.
 \end{abstract}
+
+\paragraph{Code.} The project, with all code, results and instructions, can be found here:
+\begin{center}
+\url{https://github.com/susanta75/NLP-Project-2026-Autumn}
+\end{center}
+To run everything with Docker:
+\begin{quote}\small
+\begin{tabular}{@{}ll@{}}
+\texttt{bash run\_docker.sh}             & Task 1, 2 and 3 from the saved model outputs \\
+\texttt{bash run\_docker.sh -{}-recompute} & also reruns the GPU steps of Task 1 and 2
+\end{tabular}
+\end{quote}
+Without Docker: \texttt{pip install -r requirements.txt}, then \texttt{bash code/run\_all.sh}.
+Each task can also be run on its own (\texttt{python code/taskN/taskN.py}). The README lists
+the data and model sources and where every output is written.
 
 %=====================================================================
 \section{Introduction}
 
-The question behind this project is whether a language model's own signals can tell when its
-answer is made up. Task~1 uses token probabilities. Task~2 reproduces
-SelfCheckGPT~\cite{manakul2023selfcheckgpt}, which checks whether the model agrees with itself
-across several samples. Task~3 combines both in one trained classifier.
+A language model hallucinates when it gives a fluent, confident answer that is wrong. Nothing in
+the text itself gives this away, so a detector has to look elsewhere. This project tries three
+places to look:
+\begin{itemize}
+  \item \textbf{Task 1:} the model's own token probabilities. Low probability or high
+        uncertainty should mean the model is guessing.
+  \item \textbf{Task 2:} SelfCheckGPT~\cite{manakul2023selfcheckgpt}. Ask the model the same
+        question many times; if it really knows the answer, the samples should agree with it.
+  \item \textbf{Task 3:} combine the scores from Task 1 and 2 in one logistic regression.
+\end{itemize}
 
-The assigned dataset is the QA part of HaluEval~\cite{li2023halueval}. Each question (from
-HotpotQA) comes with one right answer and one hallucinated answer written by ChatGPT. The two
-answers look very different: right answers are short spans like \emph{``yes''} or
-\emph{``Lanoxin''}, while hallucinated answers are usually full sentences that repeat the
-question. This difference turns out to explain most of the results.
+The dataset is the QA part of HaluEval~\cite{li2023halueval}. Each question (taken from HotpotQA)
+comes with a right answer and a hallucinated answer written by ChatGPT. The two kinds of answer
+look different: right answers are short, like \emph{``no''} or \emph{``Lanoxin''}, while
+hallucinated answers are usually full sentences. This one fact explains most of what follows.
 
 %=====================================================================
-\section{Data and setup}\label{sec:data}
+\section{Data, model and metric}\label{sec:data}
 
-200 of the 10{,}000 HaluEval QA pairs were sampled with \texttt{random.Random(42)}. Each pair
-gives two items: the right answer (label~0) and the hallucinated answer (label~1). The classes
-are balanced, so random guessing scores AUC-PR $=0.5$. A sample of 200 was used because Task~2
-needs 20 generations per question on one GPU.
+\paragraph{Data.} 200 of the 10{,}000 HaluEval QA pairs were sampled with seed 42. Each pair gives
+two items: the right answer (label 0) and the hallucinated answer (label 1). Only 200 were used
+because Task~2 needs 20 generated answers per question.
 
-All tasks use \texttt{Qwen/Qwen2.5-3B-Instruct}~\cite{qwen2025} in float16 on an RTX~5060~Ti
-(16\,GB). The prompt is closed-book: a system message (\emph{``Answer the question concisely and
-factually.''}) and the question. HaluEval's \texttt{knowledge} paragraph is not given to the
-model, and nothing is fine-tuned.
+\paragraph{Model.} All tasks use \texttt{Qwen/Qwen2.5-3B-Instruct}~\cite{qwen2025} in float16 on
+one RTX~5060~Ti (16\,GB). The prompt is a system line (\emph{``Answer the question concisely and
+factually.''}) followed by the question. The model never sees HaluEval's \texttt{knowledge}
+paragraph, and nothing is fine-tuned.
+
+\paragraph{Metric.} Every detector gives each answer a score, higher meaning ``more likely
+hallucinated''. Sorting answers by score and walking down the list gives precision $P_k$ and
+recall $R_k$ at each cut-off $k$. AUC-PR (average precision) is
+\begin{equation}
+\text{AUC-PR} = \sum_k \left(R_k - R_{k-1}\right) P_k .
+\end{equation}
+Half the answers are hallucinated, so random scoring gives about 0.5 and a perfect detector
+gives 1. AUROC is reported as well; it is also 0.5 for random.
 
 \begin{table}[h]
 \centering\small
@@ -87,29 +115,31 @@ Right answers (label 0)        & 3.0  & 3.7  & 1--13 & \emph{no} \\
 Hallucinated answers (label 1) & 14.5 & 16.1 & 2--46 & \emph{Yes, both documentaries\ldots} \\
 \bottomrule
 \end{tabular}
-\caption{Answer length in tokens. The hallucinated answer is longer in 194 of 200 pairs, and
-ranking by length alone gives AUC-PR 0.972.}
+\caption{Answer length in tokens. The hallucinated answer is the longer one in 194 of 200 pairs,
+and ranking answers by length alone gives AUC-PR 0.972.}
 \label{tab:length}
 \end{table}
 
-Table~\ref{tab:length} shows the length gap. Because of it, answer length is reported as a
-reference next to every detector below.
+Because of this gap (Table~\ref{tab:length}), answer length is shown as a reference next to every
+detector.
 
 %=====================================================================
-\section{Task 1: Probability baseline}\label{sec:task1}
+\section{Task 1: Token probabilities}\label{sec:task1}
 
 \subsection{Method}
 
-For each item, the question prompt $x$ and the answer $a=(a_1,\dots,a_T)$ go through the model
-in one forward pass. At each answer position, the log-probability of the actual token and the
-entropy of the next-token distribution are recorded:
+The prompt $x$ and an answer $a=(a_1,\dots,a_T)$ go through the model together, in one forward
+pass. Nothing is generated; the model only reports how likely it found each answer token. Two
+numbers are taken at every answer position $t$ and averaged:
 \begin{equation}
-\bar{\ell}(a) = \frac{1}{T}\sum_{t=1}^{T} \log p_\theta(a_t \mid x, a_{<t}),
+\bar{\ell}(a) = \frac{1}{T}\sum_{t=1}^{T} \log p(a_t \mid x, a_{<t}),
 \qquad
-\bar{H}(a) = \frac{1}{T}\sum_{t=1}^{T} H\!\left(p_\theta(\cdot \mid x, a_{<t})\right).
+\bar{H}(a) = \frac{1}{T}\sum_{t=1}^{T} \Big(-\sum_{v} p(v \mid x, a_{<t}) \log p(v \mid x, a_{<t})\Big).
 \end{equation}
-The hallucination scores are $-\bar{\ell}$ and $\bar{H}$, as in the specification. The minimum
-token log-probability and maximum token entropy were also kept for comparison.
+$\bar{\ell}$ is the mean log-probability of the actual tokens, and $\bar{H}$ is the mean entropy
+of the model's next-token distribution (the inner sum runs over the whole vocabulary). The
+hallucination scores are $-\bar{\ell}$ and $\bar{H}$. The lowest token log-probability and the
+highest token entropy were also kept, to see whether averaging hides anything.
 
 \subsection{Results}
 
@@ -119,79 +149,98 @@ token log-probability and maximum token entropy were also kept for comparison.
 \toprule
 Score (higher = more suspicious) & AUC-PR & AUROC \\
 \midrule
-$-$mean log-prob (spec)       & 0.406 & 0.381 \\
-mean entropy (spec)           & 0.417 & 0.419 \\
-$-$min token log-prob         & 0.660 & 0.697 \\
-max token entropy             & 0.610 & 0.643 \\
+$-$mean log-prob, $-\bar{\ell}$ (specified) & 0.406 & 0.381 \\
+mean entropy, $\bar{H}$ (specified)         & 0.417 & 0.419 \\
+$-$lowest token log-prob                    & 0.660 & 0.697 \\
+highest token entropy                       & 0.610 & 0.643 \\
 \midrule
-Random                         & 0.500 & 0.500 \\
-Answer length only             & 0.972 & 0.971 \\
+Random                                      & 0.500 & 0.500 \\
+Answer length only                          & 0.972 & 0.971 \\
 \bottomrule
 \end{tabular}
-\caption{Task 1 on all 400 items.}
+\caption{Task 1 on all 400 answers.}
 \label{tab:task1}
 \end{table}
 
 \begin{figure}[t]
 \centering
-\begin{subfigure}{0.49\textwidth}\includegraphics[width=\linewidth]{\figone{pr_curves.png}}\caption{Precision--recall}\end{subfigure}\hfill
-\begin{subfigure}{0.49\textwidth}\includegraphics[width=\linewidth]{\figone{roc_curves.png}}\caption{ROC}\end{subfigure}
-\caption{Task 1 curves. The two specified scores (solid) fall below the random line; the
-worst-token scores (dotted) are above it.}
+\begin{subfigure}{0.42\textwidth}\includegraphics[width=\linewidth]{\figone{pr_curves.png}}\caption{Precision--recall}\end{subfigure}\hspace{0.04\textwidth}
+\begin{subfigure}{0.42\textwidth}\includegraphics[width=\linewidth]{\figone{roc_curves.png}}\caption{ROC}\end{subfigure}
+\caption{Task 1 curves. The two specified scores (solid) are below the random line.}
 \label{fig:task1curves}
 \end{figure}
 
-Both specified scores are below random (Table~\ref{tab:task1}, Figure~\ref{fig:task1curves}).
-In 63\% of pairs the model gives the hallucinated answer a higher mean log-probability than the
-right one. Median mean log-probability is $-3.62$ for right answers and $-2.49$ for
-hallucinated ones.
+Both specified scores are worse than random (Table~\ref{tab:task1}, Figure~\ref{fig:task1curves}).
+The model is more confident in the hallucinated answer than in the right one in 63\% of pairs.
+The median $\bar{\ell}$ is $-3.62$ for right answers and $-2.49$ for hallucinated ones.
 
-The reason is easy to see in a single pair:
+One pair shows why. Table~\ref{tab:tokens} lists the token values for both answers.
 
-\begin{example}{Pair 1290: the model knows the answer, but log-prob prefers the hallucination}
-\Q{Do the documentaries Traceroute and War/Dance have the same director?}
-\RA{no \score{mean log-prob $-16.30$ (1 token)}}
-\HA{Yes, both documentaries were directed by Johannes Grenzfurthner. \score{mean log-prob $-3.48$ (14 tokens)}}
-\Samp{``No, Traceroute and War/Dance do not have the same director\ldots'' (all 20 samples start with ``No'')}
-\end{example}
+\begin{table}[!h]
+\centering\small
+\begin{tabular}{llrrl}
+\toprule
+Answer & Token & $\log p$ & Entropy & Model's top guess \\
+\midrule
+Right            & \texttt{no}              & $-16.30$ & 0.00 & \texttt{No} \\
+\midrule
+Hallucinated     & \texttt{Yes}             & $-15.00$ & 0.00 & \texttt{No} \\
+                 & \texttt{, both documentaries} & $\approx 0$ & low & same \\
+                 & \texttt{were}            & $-6.84$  & 1.19 & \texttt{Tr} \\
+                 & \texttt{directed by}     & $0.00$   & 0.00 & same \\
+                 & \texttt{Johannes}        & $-15.64$ & 4.84 & \texttt{Liz} \\
+                 & \texttt{Gren}            & $-10.52$ & 1.68 & \texttt{Roberts} \\
+                 & \texttt{zfurthner.}      & $\approx 0$ & low & same \\
+\midrule
+\multicolumn{2}{l}{Mean over tokens: right / hallucinated} & $-16.30$ / $-3.48$ & 0.00 / 0.76 & \\
+\bottomrule
+\end{tabular}
+\caption{Pair 1290: \emph{``Do the documentaries Traceroute and War/Dance have the same
+director?''} Right answer \emph{``no''}; hallucinated answer \emph{``Yes, both documentaries
+were directed by Johannes Grenzfurthner.''} Some tokens are grouped to save space.}
+\label{tab:tokens}
+\end{table}
 
-The model clearly knows the answer, but it would write \emph{``No, \ldots''} as a full sentence.
-A bare lowercase \emph{``no''} is unlikely as a first token, and with only one token nothing
-averages it out. The hallucinated answer starts by repeating the question, so most of its tokens
-are easy to predict. Mean log-probability here measures style more than truth. The worst-token
-scores do better (0.66) because an invented name is often a single surprising token, though they
-are also helped by length, since longer answers have more chances to contain a rare token.
+The model actually knows the answer: its top guess for the first token is \emph{``No''}, and all
+20 of its own samples start with ``No''. But the dataset writes a lowercase \emph{``no''}, which
+is a different token, so the right answer gets $-16.3$. The hallucinated answer also has two very
+unlikely tokens (\emph{Yes} and \emph{Johannes}), but nine easy tokens pull its average up to
+$-3.48$. So the mean measures how the answer is written more than whether it is true. Taking the
+lowest token instead of the mean (0.66) catches cases like \emph{Johannes}, although longer
+answers also have more chances to contain one rare token.
 
 %=====================================================================
 \section{Task 2: Reproducing SelfCheckGPT}\label{sec:task2}
 
 \subsection{Method}
 
-HaluEval has no pre-generated samples, so $N=20$ answers per question were generated with the
-same model and prompt as Task~1 (temperature 1.0, top-$p=1$, no top-$k$, at most 48 new tokens,
-seed $42+\text{pair\_id}$). Both answers of a pair are scored against the same samples.
+HaluEval has no ready-made samples, so for each question the same model and prompt generated
+$N=20$ answers at temperature 1.0 (top-$p=1$, no top-$k$, at most 48 new tokens, seed
+$42+\text{question id}$). Both answers of a pair are checked against the same 20 samples.
 
-Scoring uses the authors' package \texttt{selfcheckgpt} 0.1.7. Each answer is passed as one
-sentence, with the 20 samples as \texttt{sampled\_passages}:
+Scoring uses the authors' own package, \texttt{selfcheckgpt} 0.1.7. For an answer $r$ and samples
+$S^1,\dots,S^N$, where $s^n_k$ is the $k$-th sentence of sample $S^n$:
 \begin{align}
 S_{\text{BERT}}(r) &= 1 - \frac{1}{N}\sum_{n=1}^{N} \max_{k}\; \text{BERTScore-F1}\big(r,\, s^{n}_{k}\big), \\
-S_{\text{NLI}}(r)  &= \frac{1}{N}\sum_{n=1}^{N} P\big(\text{contradiction} \mid r,\, S^{n}\big),
+S_{\text{NLI}}(r)  &= \frac{1}{N}\sum_{n=1}^{N} P\big(\text{contradiction} \mid r,\, S^{n}\big).
 \end{align}
-where $s^{n}_{k}$ are the sentences of sample $S^{n}$. BERTScore~\cite{zhang2020bertscore} uses
-\texttt{roberta-large}~\cite{liu2019roberta} with baseline rescaling. The NLI model is
-DeBERTa-v3-large~\cite{he2023debertav3} trained on MNLI~\cite{williams2018mnli}.
+$S_{\text{BERT}}$ is high when the answer shares little wording with the samples.
+BERTScore~\cite{zhang2020bertscore} uses \texttt{roberta-large}~\cite{liu2019roberta} with baseline
+rescaling. $S_{\text{NLI}}$ is high when the samples contradict the answer; the NLI model is
+DeBERTa-v3-large~\cite{he2023debertav3} trained on MNLI~\cite{williams2018mnli}. No model is
+trained in this task.
 
-\paragraph{Deviations.}
+\paragraph{Changes from the brief.}
 \begin{itemize}
-  \item \texttt{microsoft/deberta-v3-large-mnli}, named in the specification, does not exist on
-        the Hugging Face Hub. \texttt{potsawee/deberta-v3-large-mnli} is used instead; it is the
-        checkpoint the official code loads.
+  \item The brief names \texttt{microsoft/deberta-v3-large-mnli}, which does not exist on Hugging
+        Face. \texttt{potsawee/deberta-v3-large-mnli} is used instead; it is the model the
+        official code loads.
   \item \texttt{selfcheckgpt} 0.1.7 calls \texttt{batch\_encode\_plus}, which transformers~5
-        removed. A short shim (\texttt{code/task2/compat.py}) restores it. With the shim, the
-        package reproduces the example scores in its README to six decimal places.
-  \item The BERTScore variant ignores sample sentences of three tokens or fewer. For two
-        questions all 20 samples were single words (e.g.\ ``Canadian''), so those 4 items have no
-        BERTScore ($n=396$).
+        removed. A short patch in \texttt{task2.py} adds it back. With it, the package reproduces
+        the example scores in its README to six decimal places.
+  \item BERTScore skips sample sentences of three tokens or fewer. For two questions all 20
+        samples were single words (e.g.\ ``Canadian''), so those 4 answers get no BERTScore
+        ($n=396$).
 \end{itemize}
 
 \subsection{Results}
@@ -206,29 +255,27 @@ DeBERTa-v3-large~\cite{he2023debertav3} trained on MNLI~\cite{williams2018mnli}.
 SelfCheck-BERTScore ($n=396$) & 0.317 & 0.075 & 0.959 & 0.571 & 6\% \\
 SelfCheck-NLI ($n=400$)       & 0.653 & 0.614 & 0.920 & 0.966 & 67\% \\
 \midrule
-Random                         & 0.500 & 0.500 & --- & --- & 50\% \\
+Random                        & 0.500 & 0.500 & --- & --- & 50\% \\
 \bottomrule
 \end{tabular}
-\caption{Task 2 on all items. ``Pairs ranked correctly'': share of questions where the
+\caption{Task 2 on all answers. ``Pairs ranked correctly'' is the share of questions where the
 hallucinated answer gets the higher score.}
 \label{tab:task2}
 \end{table}
 
 \begin{figure}[t]
 \centering
-\begin{subfigure}{0.49\textwidth}\includegraphics[width=\linewidth]{\figtwo{pr_curves.png}}\caption{Precision--recall}\end{subfigure}\hfill
-\begin{subfigure}{0.49\textwidth}\includegraphics[width=\linewidth]{\figtwo{roc_curves.png}}\caption{ROC}\end{subfigure}
-\caption{Task 2 curves. NLI is above random; BERTScore is far below it, i.e.\ consistent but
-in the wrong direction.}
+\begin{subfigure}{0.42\textwidth}\includegraphics[width=\linewidth]{\figtwo{pr_curves.png}}\caption{Precision--recall}\end{subfigure}\hspace{0.04\textwidth}
+\begin{subfigure}{0.42\textwidth}\includegraphics[width=\linewidth]{\figtwo{roc_curves.png}}\caption{ROC}\end{subfigure}
+\caption{Task 2 curves. NLI is above random; BERTScore is far below it.}
 \label{fig:task2curves}
 \end{figure}
 
-SelfCheck-NLI beats random (Table~\ref{tab:task2}, Figure~\ref{fig:task2curves}), with good
-precision at the top of the ranking: at 20\% recall, 83\% of flagged answers are hallucinated.
-Still, even right answers have a median contradiction score of 0.92.
+NLI beats random (Table~\ref{tab:task2}, Figure~\ref{fig:task2curves}). Its top-ranked answers
+are mostly right calls: at 20\% recall, 83\% of the flagged answers really are hallucinated.
 
-SelfCheck-BERTScore is inverted. It scores the right answer as more suspicious in 94\% of pairs;
-with the sign flipped it would get 0.918. The cause is again length:
+BERTScore points the wrong way. It finds the right answer more suspicious in 94\% of pairs, and
+with its sign flipped it would score 0.918. The reason is length again:
 
 \begin{example}{Pair 117: why BERTScore runs backwards}
 \Q{Jake David Shapiro was best know for being the screenwriter of a film directed by who?}
@@ -237,49 +284,49 @@ with the sign flipped it would get 0.918. The cause is again length:
 \Samp{``Jake David Shapiro was best known for being the screenwriter of the film `Superman II' which was directed by Richard Donner.''}
 \end{example}
 
-The samples repeat the question, so a hallucinated answer that also repeats it overlaps with
-them heavily. A two-word answer has low recall against any full sentence, whatever it says.
+Qwen's samples repeat the question. A hallucinated answer that also repeats it shares most of its
+words with them. A two-word answer shares almost nothing with any full sentence, whatever it says.
 
-\subsection{When self-consistency works}
+\subsection{When does self-checking work?}
 
-SelfCheckGPT assumes the model's samples are mostly right. For each question, the number of
-samples containing the right answer was counted. Only 41\% of questions have even one such
-sample, and only 20\% (39 questions) have at least 10 of 20.
+SelfCheckGPT assumes the model usually knows the answer. To test this, the samples containing the
+right answer were counted for each question. Only 42\% of questions have even one such sample,
+and only 20\% (39 questions) have at least 10 of 20.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.7\textwidth]{\figtwo{auc_by_knowledge.png}}
-\caption{AUC-PR split by whether at least 10 of the 20 samples contain the right answer. With
-a cut-off of 5 the known-question NLI score is 0.89; with 15 it is 0.93.}
+\includegraphics[width=0.6\textwidth]{\figtwo{auc_by_knowledge.png}}
+\caption{AUC-PR split by whether at least 10 of the 20 samples contain the right answer. With a
+cut-off of 5 instead, NLI on known questions is 0.89; with 15 it is 0.93.}
 \label{fig:knowledge}
 \end{figure}
 
-On the 39 questions the model knows, SelfCheck-NLI reaches \textbf{0.91}; on the other 161 it
-falls to 0.59 (Figure~\ref{fig:knowledge}). Leaving out the 12 yes/no questions among the 39
-still gives 0.90. Two failure patterns appear on unknown questions:
+On the 39 questions the model knows, NLI reaches \textbf{0.91}. On the other 161 it drops to 0.59
+(Figure~\ref{fig:knowledge}). Removing the 12 yes/no questions from the 39 still gives 0.90. On
+questions the model does not know, two things go wrong:
 
-\begin{example}{Pair 1169: the model is consistently wrong}
+\begin{example}{Pair 1169: the model is confidently wrong}
 \Q{Which film director directed the internet video serial ``God, Inc.'', Roman Karmen or Francis Stokes?}
 \RA{Francis Stokes \score{$S_{\text{NLI}} = 0.999$}}
 \HA{Roman Karmen directed ``God, Inc.'' with Francis Stokes. \score{$S_{\text{NLI}} = 0.965$}}
-\Samp{``Roman Karmen directed the internet video serial `God, Inc.''' (all 20 samples name Roman Karmen)}
+\Samp{all 20 samples name Roman Karmen}
 \end{example}
 
-\begin{example}{Pair 9763: the model does not know}
+\begin{example}{Pair 9763: the model has no idea}
 \Q{In which city did this world games take place when Squash was added as part of the world games?}
 \RA{Lahti, Finland \score{$S_{\text{NLI}} = 0.999$}}
 \HA{The World Games was never held in Lahti. \score{$S_{\text{NLI}} = 0.990$}}
 \Samp{``Toronto''; ``Riga, Latvia''; ``Doha, Qatar''; ``\ldots Kuala Lumpur, Malaysia in 2017.''}
 \end{example}
 
-In pair 1169 the samples agree with each other but not with the truth, so the right answer is
-flagged. SelfCheckGPT measures agreement with the model, not with facts. In pair 9763 the
-samples scatter, so both answers are contradicted and nothing separates them.
+In pair 1169 the samples agree with each other but not with the truth, so the right answer is the
+one flagged. SelfCheckGPT measures agreement with the model, not with the facts. In pair 9763 the
+samples are all different, so both answers are contradicted equally.
 
 \subsection{Comparison with the paper}
 
 The paper reports results on WikiBio, where 73\% of sentences are inaccurate, so random already
-scores 72.96. Table~\ref{tab:paper} therefore also shows the gain over random.
+scores 72.96 there. Table~\ref{tab:paper} therefore also gives the gain over random.
 
 \begin{table}[h]
 \centering\small
@@ -289,44 +336,51 @@ scores 72.96. Table~\ref{tab:paper} therefore also shows the gain over random.
  \cmidrule(lr){2-3}\cmidrule(lr){4-5}
 Method & AUC-PR & vs.\ random & AUC-PR & vs.\ random \\
 \midrule
-Random                  & 72.96 & ---     & 50.0 & --- \\
-Avg($-\log p$)          & 83.21 & $+10.3$ & 40.6 & $-9.4$ \\
-SelfCheck-BERTScore     & 81.96 & $+9.0$  & 31.7 & $-18.3$ \\
-SelfCheck-NLI           & 92.50 & $+19.5$ & 65.3 & $+15.3$ \\
-SelfCheck-NLI, known questions & --- & --- & 91.0 & $+41.0$ \\
+Random                         & 72.96 & ---     & 50.0 & --- \\
+Avg($-\log p$)                 & 83.21 & $+10.3$ & 40.6 & $-9.4$ \\
+SelfCheck-BERTScore            & 81.96 & $+9.0$  & 31.7 & $-18.3$ \\
+SelfCheck-NLI                  & 92.50 & $+19.5$ & 65.3 & $+15.3$ \\
+SelfCheck-NLI, known questions & ---   & ---     & 91.0 & $+41.0$ \\
 \bottomrule
 \end{tabular}
-\caption{Reproduction vs.\ the numbers in the official SelfCheckGPT repository (AUC-PR $\times 100$).}
+\caption{This reproduction against the numbers in the official SelfCheckGPT repository
+(AUC-PR $\times 100$).}
 \label{tab:paper}
 \end{table}
 
-NLI's gain over random (+15) is close to the paper's (+19.5), and NLI beats BERTScore as in the
-paper. The other rows do not reproduce. Likely causes:
+NLI's gain over random (+15) is close to the paper's (+19.5), and NLI beats BERTScore, as in the
+paper. The other two rows do not reproduce. The likely reasons:
 \begin{enumerate}
-  \item \textbf{Label source.} In WikiBio, the scored text was written by the model being
-        tested. In HaluEval, ChatGPT wrote the hallucinations, so Qwen has no reason to be unsure
-        about them, and they differ in style from the right answers.
-  \item \textbf{Model knowledge.} GPT-3 (175B) on biographies vs.\ a 3B model on multi-hop
-        questions it mostly cannot answer. On questions it does know, NLI matches the paper.
-  \item \textbf{Scoring unit.} The paper compares sentences with similar sentences; here
+  \item \textbf{Who wrote the answers.} In WikiBio, the scored text came from the model being
+        tested. In HaluEval, ChatGPT wrote the hallucinations, so Qwen has no special reason to be
+        unsure about them, and they are written in a different style from the right answers.
+  \item \textbf{What the model knows.} The paper used GPT-3 (175B) on biographies; here a 3B model
+        faces multi-hop questions it mostly cannot answer. On questions it does know, NLI does
+        as well as in the paper.
+  \item \textbf{What is compared.} The paper compares sentences with similar sentences. Here
         one-word answers are compared with full-sentence samples, which hurts BERTScore most.
-  \item \textbf{Scale.} 400 items give wide intervals (about $\pm0.1$ for NLI on the test split).
+  \item \textbf{Size.} 400 answers give wide intervals (about $\pm0.1$ for NLI on the test split).
 \end{enumerate}
 
 %=====================================================================
-\section{Task 3: Stacked ensemble}\label{sec:task3}
+\section{Task 3: Combining the scores}\label{sec:task3}
 
 \subsection{Method}
 
-The 200 \emph{questions} were split 80/20 with \texttt{train\_test\_split(random\_state=42)}
-(320 training items, 80 test items). Splitting by question keeps both answers of a question in
-the same part. The four features ($\bar{\ell}$, $\bar{H}$, $S_{\text{BERT}}$, $S_{\text{NLI}}$)
-are standardised and fed to a logistic regression (L2, $C=1$). The four missing BERTScore values
-are filled with the training median.
+The 200 \emph{questions} were split 80/20 with seed 42, giving 320 training and 80 test answers.
+Splitting by question keeps both answers of a question on the same side, so the classifier cannot
+learn from one answer and be tested on its partner. Each answer is described by its four scores,
+standardised on the training set, $z = (\bar{\ell}, \bar{H}, S_{\text{BERT}}, S_{\text{NLI}})$.
+A logistic regression (L2, $C=1$) learns weights $w$ and a bias $b$:
+\begin{equation}
+P(\text{hallucinated} \mid z) = \sigma(w^\top z + b) = \frac{1}{1 + e^{-(w^\top z + b)}} .
+\end{equation}
+The four missing BERTScore values are filled with the training median. This is the only model
+trained in the project, and it takes under a second on a CPU.
 
-All detectors are evaluated on the same 80 test items. Task~1 and Task~2 are shown both as raw
-scores and as a logistic regression on their own two features; the second is the fairer
-comparison. 95\% intervals come from 1000 bootstrap resamples of the 40 test questions.
+Every detector is evaluated on the same 80 test answers. Task~1 and Task~2 appear twice: as raw
+scores, and as a logistic regression on their own two scores, which is the fairer comparison.
+The 95\% intervals come from 1000 bootstrap resamples of the 40 test questions.
 
 \subsection{Results}
 
@@ -344,58 +398,58 @@ Task 2: SelfCheck-BERTScore          & 0.323 & 0.32--0.34 & 0.075 \\
 Task 2: SelfCheck-NLI                & 0.651 & 0.56--0.75 & 0.602 \\
 Task 2: LR(BERTScore, NLI)           & 0.957 & 0.91--0.99 & 0.959 \\
 \midrule
-\textbf{Task 3: LR on all four features} & \textbf{0.951} & \textbf{0.90--0.98} & \textbf{0.951} \\
-Task 3+: also min log-prob, max entropy  & 0.973 & 0.95--1.00 & 0.972 \\
+\textbf{Task 3: LR on all four scores} & \textbf{0.951} & \textbf{0.90--0.98} & \textbf{0.951} \\
+Task 3 + lowest log-prob, highest entropy & 0.973 & 0.95--1.00 & 0.972 \\
 \midrule
 Answer length only                   & 0.965 & 0.94--0.99 & 0.969 \\
 Random                               & 0.500 & ---        & 0.500 \\
 \bottomrule
 \end{tabular}
-\caption{All detectors on the same held-out 80 items.}
+\caption{All detectors on the same 80 held-out answers.}
 \label{tab:task3}
 \end{table}
 
 \begin{figure}[t]
 \centering
-\begin{subfigure}{0.49\textwidth}\includegraphics[width=\linewidth]{\figthree{pr_curves.png}}\caption{Precision--recall}\end{subfigure}\hfill
-\begin{subfigure}{0.49\textwidth}\includegraphics[width=\linewidth]{\figthree{roc_curves.png}}\caption{ROC}\end{subfigure}
-\caption{Held-out curves for each task's trained detector, with answer length as a reference.}
+\begin{subfigure}{0.42\textwidth}\includegraphics[width=\linewidth]{\figthree{pr_curves.png}}\caption{Precision--recall}\end{subfigure}\hspace{0.04\textwidth}
+\begin{subfigure}{0.42\textwidth}\includegraphics[width=\linewidth]{\figthree{roc_curves.png}}\caption{ROC}\end{subfigure}
+\caption{Held-out curves for each task's logistic regression, with answer length for reference.}
 \label{fig:task3curves}
 \end{figure}
 
-Task~3 reaches 0.951 (Table~\ref{tab:task3}, Figure~\ref{fig:task3curves}), far above the
-specified Task~1 and Task~2 scores. It ranks 38 of 40 test pairs correctly and labels 87.5\% of
-items correctly at a 0.5 threshold. However, it is level with Task~2's own regression (0.957)
-and just below length alone (0.965); the intervals overlap. Over 100 random splits the picture
-is the same: LR(Task~1) $0.627 \pm 0.047$, LR(Task~2) $0.948 \pm 0.025$, Task~3
-$0.948 \pm 0.025$, length $0.972 \pm 0.014$.
+Task~3 reaches 0.951 (Table~\ref{tab:task3}, Figure~\ref{fig:task3curves}), far above the raw
+Task~1 and Task~2 scores. It ranks the hallucinated answer higher in 38 of 40 test questions, and
+labels 87.5\% of answers correctly at a 0.5 threshold. But it is level with Task~2's own
+regression (0.957) and just below length alone (0.965), and the intervals overlap. Over 100
+different random splits the picture is the same: Task~1 regression $0.627 \pm 0.047$, Task~2
+regression $0.948 \pm 0.025$, Task~3 $0.948 \pm 0.025$, length $0.972 \pm 0.014$.
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=0.65\textwidth]{\figthree{coefficients.png}}
-\caption{Standardised weights of the Task 3 regression. Positive pushes towards ``hallucinated''.}
-\label{fig:coef}
-\end{figure}
+The learned weights show what happened. BERTScore gets by far the largest weight, $-3.08$, so the
+classifier uses it in reverse, exactly as Section~\ref{sec:task2} suggests. NLI gets $+0.99$,
+mean log-prob $-0.31$ and entropy $-0.08$. Since BERTScore and log answer length are strongly
+correlated ($r=-0.70$), most of what the regression learns is length.
 
-The weights explain this (Figure~\ref{fig:coef}). The largest is BERTScore at $-3.08$: the
-classifier uses BERTScore in reverse, as Section~\ref{sec:task2} suggests. BERTScore correlates
-with log answer length at $r=-0.70$, so most of the ensemble's signal is length.
+\subsection{Taking length out}
 
-\subsection{Controlling for length}
-
-Two checks, both fitted on training data only:
+Two checks were run, both fitted on the training answers only:
 \begin{enumerate}
-  \item \textbf{Length as a feature:} compare LR on $\log(\text{tokens})$ alone with LR on
-        $\log(\text{tokens})$ plus the four features.
-  \item \textbf{Length removed:} regress each feature on $\log(\text{tokens})$, keep the
-        residuals, and train the regression on those.
+  \item \textbf{Length as an extra input:} compare a regression on $\log T$ alone with one on
+        $\log T$ plus the four scores. If the scores add nothing, the two should match.
+  \item \textbf{Length removed:} fit each score $f$ against $\log T$ with a straight line and keep
+        only what the line does not explain,
+        \begin{equation}
+        \tilde{f} = f - (\alpha + \beta \log T),
+        \end{equation}
+        then train the regression on these leftovers $\tilde{f}$.
 \end{enumerate}
+Both were repeated over 100 random splits (seeds 0--99), so the result does not hang on one
+lucky split.
 
 \begin{figure}[t]
 \centering
-\includegraphics[width=0.82\textwidth]{\figthree{length_control.png}}
-\caption{Mean AUC-PR over 100 question-level splits (bars: $\pm$1 sd). Grey: features as they
-are. Blue: length removed. Orange: length added as a feature.}
+\includegraphics[width=0.7\textwidth]{\figthree{length_control.png}}
+\caption{Mean AUC-PR over 100 question-level splits (bars: $\pm$1 sd). Grey: scores as they are.
+Blue: length removed. Orange: length added as an input.}
 \label{fig:lengthcontrol}
 \end{figure}
 
@@ -414,76 +468,75 @@ LR(Task 1 + Task 2, length removed) & $0.642 \pm 0.056$ & 75\% \\
 $-$mean log-prob alone, length removed & $0.614 \pm 0.063$ & 75\% \\
 \bottomrule
 \end{tabular}
-\caption{Length controls, mean $\pm$ sd over 100 splits.}
+\caption{Length checks, mean $\pm$ sd over 100 splits.}
 \label{tab:lengthcontrol}
 \end{table}
 
-The features do carry information beyond length (Figure~\ref{fig:lengthcontrol},
-Table~\ref{tab:lengthcontrol}). Added to length, they raise AUC-PR from 0.972 to 0.987 and help
-on 95 of 100 splits. With length removed, 0.64 AUC-PR remains and three out of four pairs are
-ranked correctly.
+The scores do carry information beyond length (Figure~\ref{fig:lengthcontrol},
+Table~\ref{tab:lengthcontrol}). Added to length, they lift AUC-PR from 0.972 to 0.987 and help on
+95 of 100 splits. With length removed, 0.64 remains, and three out of four pairs are still ranked
+correctly.
 
-Mean log-probability changes the most. On its own it was below random, but with length removed
-it ranks 75\% of pairs correctly. Length had been pushing it the wrong way. NLI goes the other
-direction: after the correction it is no better than random (0.44 on the seed-42 split), so part
-of its raw advantage was length too.
+Mean log-probability changes the most. On its own it was worse than random, but with length
+removed it ranks 75\% of pairs correctly: length had been pushing it the wrong way. NLI moves the
+other way. After the correction it is no better than random (0.44 on the seed-42 split), so part
+of its earlier advantage was length too.
 
-\subsection{Error analysis}
+\subsection{Where the combined model goes wrong}
 
-The ensemble mis-orders 2 of the 40 test pairs. In both, the ``hallucinated'' answer is actually
-correct. In pair 6572, \emph{``\ldots is The Chipmunks''} is a paraphrase of \emph{``Alvin and
-the Chipmunks''}. Pair 3657 is shown below; for this question all 20 Qwen samples say
-``Canadian'', so the model itself is wrong.
+The model puts the right answer above the hallucinated one in 2 of the 40 test questions. In both,
+the ``hallucinated'' answer is in fact correct. In pair 6572, \emph{``\ldots is The Chipmunks''}
+just rephrases \emph{``Alvin and the Chipmunks''}. Pair 3657 is below; here all 20 Qwen samples
+say ``Canadian'', so the model itself is wrong as well.
 
-\begin{example}{Pair 3657: a label problem in HaluEval}
+\begin{example}{Pair 3657: a labelling problem in HaluEval}
 \Q{\ldots songs by Heart, a rock band that first found success in Canada and later in the United States and worldwide, are of which nationality?}
-\RA{American \score{ensemble $0.74$}}
-\HA{Heart, the famous rock band, is American. \score{ensemble $0.62$}}
+\RA{American \score{Task 3 score $0.74$}}
+\HA{Heart, the famous rock band, is American. \score{Task 3 score $0.62$}}
 \end{example}
 
-There are five false negatives at the 0.5 threshold. Three are specific but wrong (e.g.\ ``Cancun,
-Mexico'' instead of Daytona Beach), one is close to a paraphrase, and one makes no checkable
-claim:
+At a 0.5 threshold there are five missed hallucinations. Three are specific but wrong (e.g.\
+``Cancun, Mexico'' instead of Daytona Beach), one is nearly a paraphrase of the right answer, and
+one makes no claim that could be checked:
 
-\begin{example}{Pair 2060: a vague answer nothing contradicts}
+\begin{example}{Pair 2060: an answer that says nothing}
 \Q{Turbidimetric inhibition immunoassay is used in many commercial immunoassays, including this medication sold under which brand name?}
-\RA{Lanoxin \score{ensemble $0.01$, $S_{\text{NLI}} = 0.93$}}
-\HA{Turbidimetric inhibition immunoassay is used in many commercial immunoassays, including several medications. \score{ensemble $0.37$, $S_{\text{NLI}} = 0.32$}}
+\RA{Lanoxin \score{Task 3 score $0.01$, $S_{\text{NLI}} = 0.93$}}
+\HA{Turbidimetric inhibition immunoassay is used in many commercial immunoassays, including several medications. \score{Task 3 score $0.37$, $S_{\text{NLI}} = 0.32$}}
 \end{example}
 
-The answer avoids the question instead of inventing a fact, so the samples cannot contradict it.
-Self-consistency methods cannot catch answers that say nothing.
+This answer dodges the question instead of inventing a fact, so no sample can contradict it.
+Self-checking cannot catch an answer that does not say anything.
 
 %=====================================================================
 \section{Discussion}
 
-\paragraph{What worked.} SelfCheck-NLI works when its assumption holds: 0.91 AUC-PR on questions
-the model knows, with no training and no access to model internals. Splitting by question and
-reporting a length-only baseline made it clear which results are meaningful.
+\paragraph{What worked.} SelfCheck-NLI works when its assumption holds: 0.91 AUC-PR on the
+questions the model knows, with no training and no access to the model's internals. Splitting by
+question and always showing a length-only baseline made it clear which numbers mean something.
 
-\paragraph{What did not.} The two specified Task~1 scores are below random and SelfCheck-BERTScore
-is inverted. The Task~3 ensemble looks strong, but mostly because it learns length through
-BERTScore.
+\paragraph{What did not.} The two specified Task~1 scores are worse than random, and
+SelfCheck-BERTScore is reversed. The Task~3 model looks strong, but mostly because it picks up
+length through BERTScore.
 
-\paragraph{Why.} Two reasons. First, the hallucinations were written by a different model in a
-different style, so they are not tied to Qwen's uncertainty, which all these methods rely on.
-Second, a 3B model answering multi-hop questions closed-book usually does not know the answer,
-and self-consistency gives no signal (or the wrong one) in that case.
+\paragraph{Why.} First, the hallucinations were written by a different model in a different
+style, so they have little to do with Qwen's own uncertainty, which all three methods rely on.
+Second, a 3B model answering multi-hop questions without any reference text usually does not know
+the answer, and then self-checking gives no signal or the wrong one.
 
-\paragraph{Limitations.} Only 200 of 10{,}000 questions were used, so intervals are wide. The
-``known question'' split uses string matching and misses paraphrases. The length correction is
-linear and may not remove all of it. A length-matched test set was not possible: only 28 pairs
-have answers within five tokens of each other. A cleaner test would score answers that Qwen
-generated itself, labelled against HotpotQA's gold answers.
+\paragraph{Limitations.} Only 200 of the 10{,}000 questions were used, so the intervals are wide.
+The ``known question'' split relies on string matching and misses paraphrases. The length
+correction is a straight line and may not remove all of the effect. A test set with matched
+lengths was not possible: only 28 pairs have answers within five tokens of each other. A cleaner
+experiment would score answers that Qwen wrote itself, checked against HotpotQA's gold answers.
 
 %=====================================================================
 \section{Conclusion}
 
 On HaluEval QA with a 3B open model, token probabilities do not detect hallucinations, and
-SelfCheckGPT only works on the questions the model can answer. The stacked regression reaches
-0.95 AUC-PR, but almost all of that comes from answer length. With length controlled, the
-combined features rank three out of four pairs correctly, which is the more realistic measure of
-what they can do.
+SelfCheckGPT works only on questions the model can answer. The combined regression reaches 0.95
+AUC-PR, but nearly all of that comes from answer length. With length taken out, the combined
+scores rank three out of four pairs correctly, which is a more honest measure of what they can do.
 
 %=====================================================================
 \begin{thebibliography}{9}\small
@@ -525,34 +578,5 @@ A broad-coverage challenge corpus for sentence understanding through inference.
 In \emph{Proc.\ NAACL}, 2018.
 
 \end{thebibliography}
-
-%=====================================================================
-\appendix
-\section{Reproducibility}
-
-Code, a pinned \texttt{requirements.txt} and run instructions are in the submitted archive
-(\texttt{README.md}). With Docker, everything runs with one command, \texttt{bash run\_docker.sh}
-(add \texttt{--recompute} to redo the GPU steps). Without Docker, it is \texttt{bash code/run\_all.sh}.
-
-\begin{table}[h]
-\centering\small
-\begin{tabularx}{\textwidth}{l>{\raggedright\arraybackslash}X}
-\toprule
-Item & Setting \\
-\midrule
-Data & HaluEval \texttt{qa\_data.json} (github.com/RUCAIBox/HaluEval), 200 pairs, \texttt{random.Random(42)} \\
-LLM & \texttt{Qwen/Qwen2.5-3B-Instruct}, float16, closed-book chat prompt \\
-Resampling & $N=20$, temperature 1.0, top-$p$ 1.0, top-$k$ off, max 48 new tokens, seed $42+\text{pair\_id}$ \\
-BERTScore & \texttt{roberta-large} via \texttt{bert-score} 0.3.13, baseline rescaling \\
-NLI & \texttt{potsawee/deberta-v3-large-mnli} \\
-SelfCheckGPT & \texttt{selfcheckgpt} 0.1.7 (official code, commit \texttt{19b492a}) \\
-Split & question-level 80/20, \texttt{train\_test\_split(random\_state=42)} \\
-Classifier & \texttt{StandardScaler} + \texttt{LogisticRegression(C=1, random\_state=42)} \\
-CIs & 1000 bootstrap resamples of test questions, \texttt{default\_rng(42)} \\
-Extra splits & 100 more splits for the length check, \texttt{random\_state} $0,\dots,99$ \\
-Hardware & NVIDIA RTX 5060 Ti 16\,GB; Python 3.12, PyTorch 2.14, transformers 5.21 \\
-\bottomrule
-\end{tabularx}
-\end{table}
 
 \end{document}
