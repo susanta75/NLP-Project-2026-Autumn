@@ -1,32 +1,19 @@
-"""Task 3 — stacked logistic-regression detector. Run: python task3/task3.py
+"""Task 3: logistic regression on the Task 1 and Task 2 scores, with length checks.
 
-Needs task1/results/task1_features.csv and task2/results/task2_features.csv (run Task 1 and 2 first).
-CPU only, takes a few seconds, recomputes everything on every run.
-
-1. Ensemble: 80/20 split at the *pair* level (both answers of a question land in the same part),
-   logistic regression on the Task 1 + Task 2 features, every detector evaluated on the same held-out
-   20%. 95% CIs from a 1000x bootstrap over test questions.
-2. Length control: HaluEval's hallucinated answers are ~4x longer than the right ones, and length
-   alone reaches AUC-PR ~0.97. Both checks are fitted on the train split only:
-     A. add log(answer length) as a feature: does Task 1 + Task 2 add anything on top of it?
-     B. regress each feature on log(length) and keep the residual: what signal is left?
-   Then repeated over 100 random pair-level splits, to show seed 42 is not a lucky split.
-3. Figures: pr_curves, roc_curves, auc_comparison, length_control, coefficients (.png).
-
-Everything printed is also saved to results/task3_results.txt.
+Usage: python task3/task3.py   (needs the saved Task 1 and Task 2 scores)
 """
 import json
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))  # code/, for config
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LinearRegression, LogisticRegression
 from sklearn.metrics import average_precision_score as ap
-from sklearn.metrics import precision_recall_curve, roc_auc_score, roc_curve
+from sklearn.metrics import precision_recall_curve, roc_auc_score
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
@@ -42,8 +29,6 @@ N_SPLITS = 100
 plt.rcParams.update({"font.size": 11, "axes.spines.top": False, "axes.spines.right": False})
 
 
-# ---------------------------------------------------------------- data and helpers
-
 def load_features():
     paths = [TASK1_RESULTS / "task1_features.csv", TASK2_RESULTS / "task2_features.csv"]
     for p in paths:
@@ -56,8 +41,7 @@ def load_features():
 
 
 def split(df, seed):
-    """Pair-level 80/20 split; NaN BERTScore filled with the train median (no test leakage).
-    The official SelfCheckBERTScore cannot score questions whose samples are all <=3 tokens."""
+    """80/20 split by question. Missing BERTScore values get the training median."""
     train_pairs, test_pairs = train_test_split(df["pair_id"].unique(), test_size=TEST_SIZE,
                                                random_state=seed)
     train = df[df["pair_id"].isin(train_pairs)].copy()
@@ -74,7 +58,7 @@ def fit_lr(train, cols):
 
 
 def bootstrap_ci(y, s, n=1000):
-    """Bootstrap over test *pairs* (rows come in pair order), so both answers are resampled together."""
+    """95% interval, resampling test questions (rows come in pairs)."""
     rng = np.random.default_rng(SEED)
     pairs = np.arange(len(y)).reshape(-1, 2)
     vals = []
@@ -91,7 +75,7 @@ def pairwise_acc(test, s):
 
 
 def residualise(train, test, cols):
-    """Replace each feature by its residual after a linear fit on log length (fitted on train)."""
+    """Replace each feature by its residual after regressing it on log length."""
     train, test = train.copy(), test.copy()
     for c in cols:
         lr = LinearRegression().fit(train[LEN], train[c])
@@ -100,10 +84,7 @@ def residualise(train, test, cols):
     return train, test
 
 
-# ---------------------------------------------------------------- 1. ensemble
-
 def detectors(train, test):
-    """Every detector's score on the test items (higher = more likely hallucinated)."""
     ens = fit_lr(train, T1 + T2)
     return ens, {
         "Task 1: -mean log-prob": -test["mean_logprob"],
@@ -149,13 +130,10 @@ def ensemble(df):
     print("\nTask 3 LR coefficients (standardised features):", coefs)
     with open(OUT / "task3_coefficients.json", "w") as f:
         json.dump(coefs, f, indent=2)
-    return res, pred, coefs, train, test
+    return pred, train, test
 
-
-# ---------------------------------------------------------------- 2. length control
 
 def length_controls(train, test):
-    """AUC-PR and within-pair accuracy of every length-controlled detector on one split."""
     rtrain, rtest = residualise(train, test, T1 + T2)
     scores = {
         "LR(T1)  [Task 1]": fit_lr(train, T1).predict_proba(test[T1])[:, 1],
@@ -209,9 +187,6 @@ def length_analysis(df, train, test):
     return runs
 
 
-# ---------------------------------------------------------------- 3. figures
-
-# fixed categorical order: Task 1 orange, Task 2 aqua, Task 3 blue; references in grey
 CURVES = [("Task 1: LR(log-prob, entropy)", "Task 1 LR (log-prob, entropy)", "#eb6834", "-"),
           ("Task 2: LR(BERTScore, NLI)", "Task 2 LR (BERTScore, NLI)", "#1baf7a", "-"),
           ("Task 3: LR ensemble (4 features)", "Task 3 ensemble (4 features)", "#2a78d6", "-"),
@@ -229,41 +204,6 @@ def pr_curves(p):
     ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.13), fontsize=9, frameon=False)
     fig.tight_layout()
     fig.savefig(OUT / "pr_curves.png", dpi=200)
-    plt.close(fig)
-
-
-def roc_curves(p):
-    fig, ax = plt.subplots(figsize=(6, 6.2))
-    for col, name, color, ls in CURVES:
-        fpr, tpr, _ = roc_curve(p.label, p[col])
-        ax.plot(fpr, tpr, color=color, ls=ls, lw=2,
-                label=f"{name} (AUROC {roc_auc_score(p.label, p[col]):.3f})")
-    ax.plot([0, 1], [0, 1], ls="--", color="#bbbbbb", label="Random (0.500)")
-    ax.set(xlabel="False positive rate", ylabel="True positive rate", xlim=(0, 1), ylim=(0, 1.02),
-           title=f"Task 3 on held-out 20% (n={len(p)}): ROC")
-    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.13), fontsize=9, frameon=False)
-    fig.tight_layout()
-    fig.savefig(OUT / "roc_curves.png", dpi=200)
-    plt.close(fig)
-
-
-def auc_comparison(res):
-    res = res[res.detector != "Reference: random"].iloc[::-1]
-    colors = ["#2a78d6" if d.startswith("Task 3") else "#8c8c8c" for d in res.detector]
-    fig, ax = plt.subplots(figsize=(9, 5))
-    y = np.arange(len(res))
-    ax.barh(y, res.auc_pr, color=colors, height=0.62, zorder=2)
-    ax.errorbar(res.auc_pr, y, xerr=[res.auc_pr - res.ci_low, res.ci_high - res.auc_pr],
-                fmt="none", ecolor="#444444", elinewidth=1, capsize=3, zorder=3)
-    for yi, (v, hi) in enumerate(zip(res.auc_pr, res.ci_high)):
-        ax.text(hi + 0.012, yi, f"{v:.3f}", va="center", fontsize=9, color="#333333")
-    ax.axvline(0.5, ls="--", color="#bbbbbb", zorder=1)
-    ax.text(0.505, len(res) - 0.45, "random", color="#888888", fontsize=9)
-    ax.set_yticks(y, res.detector)
-    ax.set(xlabel="AUC-PR on held-out 20% (95% bootstrap CI)", xlim=(0, 1.1),
-           title="Every detector on the held-out 20%")
-    fig.tight_layout()
-    fig.savefig(OUT / "auc_comparison.png", dpi=200)
     plt.close(fig)
 
 
@@ -294,32 +234,13 @@ def length_control_fig(runs):
     plt.close(fig)
 
 
-def coefficients_fig(coefs):
-    names = {"mean_logprob": "mean log-prob (Task 1)", "mean_entropy": "mean entropy (Task 1)",
-             "bertscore_incons": "BERTScore inconsistency (Task 2)", "nli_contra": "NLI contradiction (Task 2)"}
-    items = sorted(((names[k], v) for k, v in coefs.items() if k in names), key=lambda kv: kv[1])
-    fig, ax = plt.subplots(figsize=(8, 3.6))
-    bars = ax.barh([k for k, _ in items], [v for _, v in items], color="#2a78d6", height=0.55, zorder=2)
-    ax.bar_label(bars, fmt="%+.2f", padding=4, fontsize=10)
-    ax.axvline(0, color="#444444", lw=1)
-    lo = min(v for _, v in items)
-    ax.set(xlabel="Standardised coefficient (> 0 pushes towards 'hallucinated')", xlim=(lo - 0.8, 1.8),
-           title="Task 3 ensemble weights (standardised)")
-    fig.tight_layout()
-    fig.savefig(OUT / "coefficients.png", dpi=200)
-    plt.close(fig)
-
-
 def main():
     log_to(OUT / "task3_results.txt")
     df = load_features()
-    res, pred, coefs, train, test = ensemble(df)
+    pred, train, test = ensemble(df)
     runs = length_analysis(df, train, test)
     pr_curves(pred)
-    roc_curves(pred)
-    auc_comparison(res)
     length_control_fig(runs)
-    coefficients_fig(coefs)
     print(f"\nSaved figures to {rel(OUT)}")
 
 

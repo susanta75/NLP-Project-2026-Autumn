@@ -1,12 +1,7 @@
-"""Prepare the data. Run: python prepare_data.py [--all-datasets]
+"""Download HaluEval QA, sample 200 questions and write their 400 answers to data/items.jsonl.
 
-HaluEval QA (the dataset assigned to this group, and the only one any task uses): download
-qa_data.json, draw a fixed random sample of pairs, and expand each pair into two scoring
-instances: right_answer (label 0) and hallucinated_answer (label 1).
-
---all-datasets also downloads the raw files of Project 7's other two datasets, WikiBio GPT-3 and
-TruthfulQA, into data/ (pinned versions, sources as in the project's Datasets document). No task
-reads them: each group works only on its one assigned dataset.
+Usage: python prepare_data.py [--all-datasets]
+--all-datasets also downloads WikiBio GPT-3 and TruthfulQA (not used by any task).
 """
 import argparse
 import json
@@ -17,12 +12,12 @@ import urllib.request
 
 from config import DATA_DIR, HALUEVAL_URL, ITEMS_PATH, N_PAIRS, RAW_PATH, SEED, rel
 
-# local folder -> (Hugging Face dataset repo, pinned commit, file)
+# local folder -> (Hugging Face dataset, commit, file)
 OTHER_DATASETS = {
     DATA_DIR / "wiki_bio_gpt3_hallucination": (
         "potsawee/wiki_bio_gpt3_hallucination", "b3cfb73209a8c51582fa1d9b7fe7e45fec5529b2",
         "data/evaluation-00000-of-00001-e91191b8ff41afbe.parquet"),
-    DATA_DIR / "truthful_qa": (  # configuration "generation", as the Datasets document specifies
+    DATA_DIR / "truthful_qa": (
         "truthfulqa/truthful_qa", "741b8276f2d1982aa3d5b832d3ee81ed3b896490",
         "generation/validation-00000-of-00001.parquet"),
 }
@@ -52,17 +47,16 @@ def main():
 
 
 def download_other_datasets():
-    os.environ["HF_HUB_DISABLE_XET"] = "1"  # plain download: no chunk cache left behind in ~/.cache
+    os.environ["HF_HUB_DISABLE_XET"] = "1"
     from huggingface_hub import hf_hub_download
     for folder, (repo, revision, name) in OTHER_DATASETS.items():
         if not (folder / name).exists():
             hf_hub_download(repo, name, repo_type="dataset", revision=revision, local_dir=folder)
-        shutil.rmtree(folder / ".cache", ignore_errors=True)  # download bookkeeping, not data
+        shutil.rmtree(folder / ".cache", ignore_errors=True)
         print(f"{repo}: {rel(folder / name)}")
 
 
 def ensure_items():
-    """Called by every task, so each one also runs on a fresh clone."""
     if not ITEMS_PATH.exists():
         main()
 

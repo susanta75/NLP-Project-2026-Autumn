@@ -1,8 +1,4 @@
-# Python 3.12.3. Tested on Ubuntu 24.04, NVIDIA RTX 5060 Ti 16 GB, driver 595.99 (CUDA 13).
-# Every package is pinned to the exact version the reported results were produced with:
-# first the packages the code uses directly, then everything they pull in.
-# The default PyPI torch wheel on Linux ships with CUDA; no extra index URL is needed.
-# Pretrained model weights are not pip packages: code/download_models.py puts them in models/.
+# Python 3.12.3, Ubuntu 24.04
 # Install: pip install -r requirements.txt
 
 # models

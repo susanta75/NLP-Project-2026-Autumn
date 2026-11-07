@@ -1,9 +1,6 @@
-"""Download every pretrained model the tasks need into models/, as plain files in normal folders.
-Run: python download_models.py [llm|bertscore|nli|spacy ...]   (no argument = all of them)
+"""Download the pretrained models into models/ (pinned versions).
 
-Nothing is read from a cache: each model is loaded from its folder in models/. Versions are pinned
-to the exact commits used for the reported results. Task 1 and Task 2 call ensure_models()
-themselves before their GPU steps, so running this script by hand is optional.
+Usage: python download_models.py [llm|bertscore|nli|spacy ...]   (default: all)
 """
 import io
 import os
@@ -15,7 +12,7 @@ from pathlib import Path
 
 from config import BERTSCORE_BASELINE, BERTSCORE_PATH, LLM_PATH, NLI_PATH, SPACY_PATH, rel
 
-# local folder -> [(Hugging Face repo, pinned commit, files)]
+# local folder -> [(Hugging Face repo, commit, files)]
 HF_FILES = {
     LLM_PATH: [("Qwen/Qwen2.5-3B-Instruct", "aa8e72537993ba99e69dfaafa59ed015b17504d1",
                 ["config.json", "generation_config.json", "merges.txt", "model.safetensors.index.json",
@@ -24,7 +21,7 @@ HF_FILES = {
     BERTSCORE_PATH: [("FacebookAI/roberta-large", "722cf37b1afa9454edce342e7895e588b6ff1d59",
                       ["config.json", "merges.txt", "model.safetensors", "tokenizer_config.json",
                        "tokenizer.json", "vocab.json"])],
-    # the repo's main branch has only pytorch_model.bin; its safetensors copy lives in PR #2
+    # model.safetensors is only on the PR #2 branch of this repo
     NLI_PATH: [("potsawee/deberta-v3-large-mnli", "83f4359862aba52c07506cd23d4454db77945b36",
                 ["added_tokens.json", "config.json", "special_tokens_map.json", "spm.model",
                  "tokenizer_config.json"]),
@@ -36,20 +33,20 @@ SPACY_WHEEL = ("https://github.com/explosion/spacy-models/releases/download/"
 
 
 def fetch_hf(folder):
-    os.environ["HF_HUB_DISABLE_XET"] = "1"  # plain download: no chunk cache left behind in ~/.cache
+    os.environ["HF_HUB_DISABLE_XET"] = "1"
     from huggingface_hub import hf_hub_download
     for repo, revision, files in HF_FILES[folder]:
         for name in files:
             if not (folder / name).exists():
                 hf_hub_download(repo, name, revision=revision, local_dir=folder)
-    shutil.rmtree(folder / ".cache", ignore_errors=True)  # download bookkeeping, not needed to run
+    shutil.rmtree(folder / ".cache", ignore_errors=True)
 
 
 def fetch_spacy():
     if (SPACY_PATH / "meta.json").exists():
         return
     print(f"Downloading {SPACY_WHEEL}")
-    prefix = "en_core_web_sm/en_core_web_sm-3.8.0/"  # the model data inside the wheel
+    prefix = "en_core_web_sm/en_core_web_sm-3.8.0/"
     with zipfile.ZipFile(io.BytesIO(urllib.request.urlopen(SPACY_WHEEL).read())) as wheel:
         for member in wheel.namelist():
             if member.startswith(prefix) and not member.endswith("/"):
@@ -61,7 +58,7 @@ def fetch_spacy():
 def fetch_bertscore_baseline():
     if BERTSCORE_BASELINE.exists():
         return
-    import bert_score  # the baseline file ships inside the pinned bert-score package
+    import bert_score  # the baseline file ships with the package
     BERTSCORE_BASELINE.parent.mkdir(parents=True, exist_ok=True)
     shutil.copy(Path(bert_score.__file__).parent / "rescale_baseline/en/roberta-large.tsv",
                 BERTSCORE_BASELINE)
@@ -76,7 +73,6 @@ MODELS = {
 
 
 def ensure_models(*names):
-    """Download whichever of the named models (default: all) are missing from models/."""
     for name in names or MODELS:
         MODELS[name]()
 

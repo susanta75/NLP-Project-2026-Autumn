@@ -1,0 +1,463 @@
+\documentclass[aspectratio=169,10pt]{beamer}
+\usetheme{Berlin}
+\makeatletter\beamer@theme@subsectionfalse\makeatother % no empty subsection bar in the header
+\setbeamertemplate{navigation symbols}{}
+% footline: three equal boxes (name | assignment | date and page number)
+\setbeamertemplate{footline}{%
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.5ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}Susanta Khamrui (26CS91R12)
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.5ex,dp=1ex,center]{title in head/foot}%
+    \usebeamerfont{title in head/foot}NLP Assignment 2
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.5ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate\hspace*{\fill}%
+    \insertframenumber{} / \inserttotalframenumber\hspace*{2ex}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\setbeamertemplate{caption}[numbered]
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{graphicx}
+
+% figure folders, relative to this file
+\newcommand{\figone}[1]{../code/task1/results/#1}
+\newcommand{\figtwo}[1]{../code/task2/results/#1}
+\newcommand{\figthree}[1]{../code/task3/results/#1}
+
+\title{Do LLMs Know When They're Making Things Up?}
+\subtitle{Hallucination detection on HaluEval QA}
+\author{Susanta Khamrui (26CS91R12)}
+\institute{Project 7, Group 21}
+\date{November 2026}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+%=====================================================================
+\section{Introduction}
+
+\begin{frame}{Problem}
+\begin{itemize}
+  \item A hallucination is a fluent, confident answer that is factually incorrect.
+  \item The text itself gives no signal, so detection must rely on other signals.
+  \item Three detectors are evaluated:
+  \begin{itemize}
+    \item \textbf{Task 1:} the model's token probabilities (log-probability, entropy)
+    \item \textbf{Task 2:} SelfCheckGPT, i.e.\ consistency with 20 sampled answers (BERTScore, NLI)
+    \item \textbf{Task 3:} a logistic regression combining the Task 1 and Task 2 scores
+  \end{itemize}
+  \item Metric: AUC-PR, with answer length as a reference baseline throughout.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Data and model}
+\begin{columns}[T]
+\begin{column}{0.52\textwidth}
+\begin{itemize}
+  \item \textbf{Data:} 200 of 10{,}000 HaluEval QA pairs (seed 42).
+  \item Each pair gives a correct answer (label 0) and a ChatGPT-written hallucinated answer
+        (label 1): 400 answers.
+  \item \textbf{Model:} Qwen2.5-3B-Instruct (float16) on one RTX 5060 Ti (16\,GB).
+  \item Closed-book prompt: the \texttt{knowledge} paragraph is not given.
+\end{itemize}
+\end{column}
+\begin{column}{0.45\textwidth}
+\begin{block}{AUC-PR}
+\[
+\text{AUC-PR} = \sum_k (R_k - R_{k-1})\, P_k
+\]
+Random detector: 0.5 (half of the answers are hallucinated).
+\end{block}
+\end{column}
+\end{columns}
+
+\vspace{6pt}
+\begin{alertblock}{Length difference}
+Correct answers: median 3 tokens. Hallucinated answers: median 14.5 tokens.
+The hallucinated answer is longer in 194 of 200 pairs; length alone gives AUC-PR \textbf{0.972}.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Deviations from the specification}
+\begin{itemize}
+  \item \textbf{Model size:} a 3B model, so that all steps fit on one 16\,GB GPU.
+  \item \textbf{Sample size:} 200 of 10{,}000 questions, since Task 2 needs 20 samples per question
+        (4{,}000 generations).
+  \item \textbf{NLI model:} \texttt{microsoft/deberta-v3-large-mnli} does not exist on Hugging Face;
+        \texttt{potsawee/deberta-v3-large-mnli}, loaded by the official code, is used.
+  \item \textbf{Library compatibility:} \texttt{selfcheckgpt} 0.1.7 calls a function removed in
+        transformers 5; a patch restores it (README examples reproduced to six decimals).
+  \item \textbf{Missing BERTScore:} four answers have no score (all samples were single words);
+        imputed with the training median in Task 3.
+  \item \textbf{Split by question:} both answers of a question stay in the same partition.
+\end{itemize}
+\end{frame}
+
+%=====================================================================
+\section{Task 1}
+
+\begin{frame}{Task 1: Token probabilities}
+\begin{itemize}
+  \item Forced decoding: prompt $x$ and answer $a=(a_1,\dots,a_T)$ in one forward pass.
+  \item Mean log-probability and mean entropy over the answer tokens:
+\end{itemize}
+\[
+\bar{\ell}(a) = \frac{1}{T}\sum_{t=1}^{T} \log p(a_t \mid x, a_{<t}),
+\qquad
+\bar{H}(a) = \frac{1}{T}\sum_{t=1}^{T} \Big(-\sum_{v} p(v \mid x, a_{<t}) \log p(v \mid x, a_{<t})\Big)
+\]
+\begin{itemize}
+  \item Hallucination scores: $-\bar{\ell}$ and $\bar{H}$.
+  \item Also reported: minimum token log-probability, maximum token entropy.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Task 1: Results}
+\begin{columns}[c]
+\begin{column}{0.5\textwidth}
+\centering\small
+\begin{tabular}{lcc}
+\toprule
+Score (all 400 answers) & AUC-PR & AUROC \\
+\midrule
+$-\bar{\ell}$ (specified) & 0.406 & 0.381 \\
+$\bar{H}$ (specified)     & 0.417 & 0.419 \\
+$-$minimum log-prob       & 0.660 & 0.697 \\
+maximum entropy           & 0.610 & 0.643 \\
+\midrule
+Random                    & 0.500 & 0.500 \\
+Answer length only        & 0.972 & 0.971 \\
+\bottomrule
+\end{tabular}
+
+\vspace{8pt}
+\begin{itemize}
+  \item Both specified scores are \textbf{below chance}.
+  \item The hallucinated answer has the higher mean log-probability in 63\% of pairs.
+\end{itemize}
+\end{column}
+\begin{column}{0.45\textwidth}
+\centering
+\includegraphics[height=0.72\textheight]{\figone{pr_curves.png}}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Task 1: Why the mean log-probability fails}
+\begin{columns}[c]
+\begin{column}{0.56\textwidth}
+\centering\scriptsize
+\resizebox{\linewidth}{!}{%
+\begin{tabular}{llrl}
+\toprule
+Answer & Token & $\log p$ & Top prediction \\
+\midrule
+Correct      & \texttt{no}           & $-16.30$ & \texttt{No} \\
+\midrule
+Hallucinated & \texttt{Yes}          & $-15.00$ & \texttt{No} \\
+             & \texttt{, both documentaries} & $\approx 0$ & same \\
+             & \texttt{were}         & $-6.84$  & \texttt{Tr} \\
+             & \texttt{directed by}  & $0.00$   & same \\
+             & \texttt{Johannes}     & $-15.64$ & \texttt{Liz} \\
+             & \texttt{Gren}         & $-10.52$ & \texttt{Roberts} \\
+             & \texttt{zfurthner.}   & $\approx 0$ & same \\
+\midrule
+\multicolumn{2}{l}{Mean: correct / hallucinated} & $-16.30$ / $-3.48$ & \\
+\bottomrule
+\end{tabular}}
+\end{column}
+\begin{column}{0.40\textwidth}
+\small
+Pair 1290: \emph{``Do the documentaries Traceroute and War/Dance have the same director?''}
+\begin{itemize}
+  \item The model knows the answer: all 20 samples begin with ``No''.
+  \item The lowercase token ``no'' is improbable ($-16.3$).
+  \item Nine easy tokens raise the hallucination's mean to $-3.48$.
+  \item The mean reflects surface form, not correctness.
+\end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
+
+%=====================================================================
+\section{Task 2}
+
+\begin{frame}{Task 2: SelfCheckGPT}
+\begin{itemize}
+  \item $N=20$ samples per question from the same model (temperature 1.0, top-$p=1$, at most 48
+        new tokens, seed $42+\text{question id}$).
+  \item Scored with the official \texttt{selfcheckgpt} package (0.1.7):
+\end{itemize}
+\begin{align*}
+S_{\text{BERT}}(r) &= 1 - \frac{1}{N}\sum_{n=1}^{N} \max_{k}\, \text{BERTScore-F1}\big(r,\, s^{n}_{k}\big) \\
+S_{\text{NLI}}(r)  &= \frac{1}{N}\sum_{n=1}^{N} P\big(\text{contradiction} \mid r,\, S^{n}\big)
+\end{align*}
+\begin{itemize}
+  \item $s^n_k$: $k$-th sentence of sample $S^n$.
+  \item BERTScore: \texttt{roberta-large} (layer 17) with baseline rescaling.
+  \item NLI: DeBERTa-v3-large fine-tuned on MNLI. No model is trained in this task.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Task 2: Results}
+\begin{columns}[c]
+\begin{column}{0.55\textwidth}
+\centering\small
+\begin{tabular}{lccc}
+\toprule
+SelfCheck & AUC-PR & AUROC & Pairs \\
+\midrule
+BERTScore ($n=396$) & 0.317 & 0.075 & 6\% \\
+NLI ($n=400$)       & 0.653 & 0.614 & 67\% \\
+\midrule
+Random              & 0.500 & 0.500 & 50\% \\
+\bottomrule
+\end{tabular}
+
+\vspace{8pt}
+\begin{itemize}
+  \item ``Pairs'': hallucinated answer scored higher.
+  \item NLI is above chance; precision 0.83 at 20\% recall.
+  \item BERTScore is \textbf{inverted}: the correct answer looks more suspicious in 94\% of
+        pairs. Sign-flipped AUC-PR: 0.918.
+  \item Cause: word overlap with the samples depends on answer length.
+\end{itemize}
+\end{column}
+\begin{column}{0.40\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=0.72\textheight,keepaspectratio]{\figtwo{pr_curves.png}}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Task 2: Effect of model knowledge}
+\begin{columns}[c]
+\begin{column}{0.48\textwidth}
+\begin{itemize}
+  \item SelfCheckGPT assumes that the model knows the answer.
+  \item Only 42\% of questions have at least one sample containing the correct answer.
+  \item Only 39 questions (20\%) have at least 10 of 20.
+  \item On these 39 questions NLI reaches \textbf{0.91}; on the other 161 it reaches 0.59.
+  \item Stable: 0.89 and 0.93 with thresholds of 5 and 15 samples.
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth]{\figtwo{auc_by_knowledge.png}}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Task 2: Examples}
+\small
+\begin{block}{Pair 7787 (correct detection by NLI)}
+\emph{Q:} ``Woh Ladki Hai Kahan'' \ldots\ released in which year? \quad
+18 of 20 samples say \emph{2001}.\\
+Correct: \emph{2001} \hfill $S_{\text{NLI}} = 0.21$, $S_{\text{BERT}} = 1.06$\\
+Hallucinated: \emph{``Woh Ladki Hai Kahan'' was released in 2000.} \hfill $S_{\text{NLI}} = 0.98$, $S_{\text{BERT}} = 0.42$
+\end{block}
+\begin{alertblock}{Pair 117 (BERTScore inverted)}
+Correct: \emph{Roger Christian} \hfill $S_{\text{BERT}} = 1.10$\\
+Hallucinated: \emph{Jake David Shapiro was best known for being the screenwriter of a film directed by Steven Spielberg.} \hfill $S_{\text{BERT}} = 0.34$\\
+The samples restate the question, so the long answer shares most of their words.
+\end{alertblock}
+\begin{alertblock}{Pairs 1169 and 9763 (NLI fails on unknown questions)}
+1169: all 20 samples name the wrong director, so the correct answer is flagged (0.999 vs 0.965).\\
+9763: samples name four different cities, so both answers are contradicted (0.999 vs 0.990).
+\end{alertblock}
+\end{frame}
+
+\begin{frame}{Task 2: Comparison with the paper}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{itemize}
+  \item \textbf{Paper (WikiBio, non-factual):} NLI 0.925, BERTScore 0.820, GPT-3 avg.\ $-\log p$
+        0.832.
+  \item \textbf{This work (HaluEval QA):} NLI 0.653 (0.910 on known questions), BERTScore 0.317,
+        avg.\ $-\log p$ 0.406.
+  \item Chance level differs: 0.73 on WikiBio, 0.50 here.
+  \item Gain over chance: NLI $+0.20$ in the paper, $+0.15$ here ($+0.41$ on known questions).
+        BERTScore and $-\log p$ do not reproduce.
+\end{itemize}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{Likely causes of the gap}
+\begin{itemize}
+  \item \textbf{Data:} 1{,}908 GPT-3 sentences vs.\ 400 answers; hallucinations written by
+        ChatGPT, not by the evaluated model.
+  \item \textbf{Compute:} GPT-3 (text-davinci-003) vs.\ a 3B model that cannot answer most
+        multi-hop questions.
+  \item \textbf{Setup:} same $N$, temperature and scorers, but one-word answers are compared
+        with full-sentence samples.
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+%=====================================================================
+\section{Task 3}
+
+\begin{frame}{Task 3: Stacked logistic regression}
+\begin{itemize}
+  \item 80/20 split \textbf{by question} (seed 42): 320 training and 80 test answers.
+  \item Features: $z = (\bar{\ell}, \bar{H}, S_{\text{BERT}}, S_{\text{NLI}})$, standardised on
+        the training set.
+\end{itemize}
+\[
+P(\text{hallucinated} \mid z) = \sigma(w^\top z + b) = \frac{1}{1 + e^{-(w^\top z + b)}}
+\qquad \text{(L2, } C=1\text{)}
+\]
+\begin{itemize}
+  \item Task 1, Task 2 and Task 3 evaluated on the same 80 test answers.
+  \item 95\% intervals: 1000 bootstrap resamples of the 40 test questions (seed 42).
+  \item Repeated over 100 random splits (seeds 0--99).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Task 3: Results on the held-out 20\%}
+\begin{columns}[c]
+\begin{column}{0.55\textwidth}
+\centering\scriptsize
+\begin{tabular}{lcc}
+\toprule
+Detector ($n=80$) & AUC-PR & 95\% CI \\
+\midrule
+Task 1: LR(log-prob, entropy)  & 0.602 & 0.53--0.72 \\
+Task 2: SelfCheck-NLI          & 0.651 & 0.56--0.75 \\
+Task 2: LR(BERTScore, NLI)     & 0.957 & 0.91--0.99 \\
+\textbf{Task 3: LR on all four} & \textbf{0.951} & \textbf{0.90--0.98} \\
+\midrule
+Answer length only             & 0.965 & 0.94--0.99 \\
+Random                         & 0.500 & \\
+\bottomrule
+\end{tabular}
+
+\vspace{6pt}
+\begin{itemize}\small
+  \item $+0.35$ over Task 1, $+0.30$ over NLI; 38 of 40 pairs ranked correctly.
+  \item Level with the Task 2 regression and below length alone.
+  \item Weights: BERTScore $-3.08$, NLI $+0.99$, log-prob $-0.31$, entropy $-0.08$.
+        BERTScore correlates with length ($r=-0.70$).
+\end{itemize}
+\end{column}
+\begin{column}{0.42\textwidth}
+\centering
+\includegraphics[height=0.72\textheight]{\figthree{pr_curves.png}}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Task 3: Controlling for length}
+\begin{columns}[c]
+\begin{column}{0.45\textwidth}
+\begin{itemize}\small
+  \item \textbf{Length removed:} each score is replaced by its residual
+        \[
+        \tilde{f} = f - (\alpha + \beta \log T)
+        \]
+  \item Mean over 100 splits:
+  \begin{itemize}
+    \item LR(length): $0.972$
+    \item LR(length + Task 1 + Task 2): $0.987$
+    \item LR(Task 1 + Task 2, length removed): $0.642$, 75\% of pairs correct
+  \end{itemize}
+  \item Mean log-probability improves most; NLI falls to chance.
+\end{itemize}
+\end{column}
+\begin{column}{0.53\textwidth}
+\centering
+\includegraphics[width=\linewidth]{\figthree{length_control.png}}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Task 3: Examples}
+\footnotesize
+\begin{block}{Pair 2621 (correct)}
+Correct: \emph{Lewis Cass} \hfill Task 3 score 0.06\\
+Hallucinated: \emph{James Buchanan was passed over for Franklin Pierce.} \hfill Task 3 score 0.73\\
+Lower log-probability ($-5.96$ vs $-2.86$) and higher NLI score (0.999 vs 0.77).
+\end{block}
+\begin{alertblock}{Pair 3657 (incorrect: labelling problem)}
+Correct: \emph{American} \hfill Task 3 score 0.74\\
+Hallucinated: \emph{Heart, the famous rock band, is American.} \hfill Task 3 score 0.62\\
+The ``hallucinated'' answer is in fact correct.
+\end{alertblock}
+\begin{alertblock}{Pair 2060 (missed hallucination)}
+Correct: \emph{Lanoxin} \hfill Task 3 score 0.01\\
+Hallucinated: \emph{\ldots\ is used in many commercial immunoassays, including several medications.} \hfill Task 3 score 0.37\\
+The answer makes no verifiable claim, so no sample can contradict it.
+\end{alertblock}
+\end{frame}
+
+%=====================================================================
+\section{Discussion}
+
+\begin{frame}{Discussion}
+\small
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{block}{What worked}
+\begin{itemize}
+  \item SelfCheck-NLI on known questions: 0.91, with no training.
+  \item Length removed: 0.64, 75\% of pairs correct.
+\end{itemize}
+\end{block}
+\begin{alertblock}{What did not work}
+\begin{itemize}
+  \item Specified Task 1 scores are below chance.
+  \item SelfCheck-BERTScore is inverted.
+  \item Task 3 does not beat the Task 2 regression or length alone.
+\end{itemize}
+\end{alertblock}
+\end{column}
+\begin{column}{0.48\textwidth}
+\begin{block}{Why}
+\begin{itemize}
+  \item Hallucinations written by another model, in another style.
+  \item A 3B model rarely knows multi-hop answers.
+  \item Length separates the classes almost perfectly.
+\end{itemize}
+\end{block}
+\begin{block}{Limitations}
+\begin{itemize}
+  \item 200 questions; linear length correction.
+\end{itemize}
+\end{block}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Conclusion}
+\begin{itemize}
+  \item Token probabilities do not detect hallucinations on HaluEval QA.
+  \item SelfCheckGPT is effective only on questions the model can answer.
+  \item The Task 3 score of 0.95 is largely due to answer length; with length removed, the
+        combined scores reach 0.64.
+\end{itemize}
+\vspace{10pt}
+\begin{block}{Code}
+\centering
+\url{https://github.com/susanta75/NLP-Project-2026-Autumn}\\[2pt]
+\texttt{bash run\_docker.sh} \quad runs Task 1, 2 and 3
+\end{block}
+\vspace{10pt}
+\centering\Large Thank you
+\end{frame}
+
+\end{document}
