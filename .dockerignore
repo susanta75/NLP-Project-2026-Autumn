@@ -1,6 +1,7 @@
 .git
-.venv
+venv
 data
+models
 _extra
 report
 **/__pycache__

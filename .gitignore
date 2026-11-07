@@ -1,11 +1,12 @@
 # environment
-.venv/
+venv/
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
 
-# downloaded data: re-created by code/prepare_data.py
+# downloaded data and models: re-created by code/prepare_data.py and code/download_models.py
 data/
+models/
 
 # course handouts and local reference copies (not ours to redistribute)
 _extra/

@@ -4,8 +4,8 @@
    answer-token position, log p(actual token) and the entropy of the full next-token distribution.
    Averaged over answer tokens -> mean log-prob, mean entropy (plus min log-prob / max entropy).
    Hallucination score: -mean_logprob and mean_entropy (higher = more suspicious).
-   Needs the GPU; the result is saved to results/task1_features.csv and reused on later runs
-   unless --recompute is given.
+   Needs the GPU and models/Qwen2.5-3B-Instruct (downloaded on first use); the result is saved to
+   results/task1_features.csv and reused on later runs unless --recompute is given.
 2. Analysis: AUC-PR / AUROC and the answer-length check.
 3. Figures: pr_curves, roc_curves, score_distributions, length_confound (.png).
 
@@ -23,7 +23,8 @@ import pandas as pd
 from sklearn.metrics import average_precision_score as ap
 from sklearn.metrics import precision_recall_curve, roc_auc_score, roc_curve
 
-from config import ITEMS_PATH, LLM_NAME, TASK1_RESULTS, build_messages, log_to, rel
+from config import ITEMS_PATH, LLM_PATH, TASK1_RESULTS, build_messages, log_to, rel
+from download_models import ensure_models
 from prepare_data import ensure_items
 
 OUT = TASK1_RESULTS
@@ -70,9 +71,10 @@ def compute_features():
     from tqdm import tqdm
     from transformers import AutoModelForCausalLM, AutoTokenizer
 
+    ensure_models("llm")
     items = pd.read_json(ITEMS_PATH, lines=True)
-    tok = AutoTokenizer.from_pretrained(LLM_NAME)
-    model = AutoModelForCausalLM.from_pretrained(LLM_NAME, dtype=torch.float16,
+    tok = AutoTokenizer.from_pretrained(LLM_PATH)
+    model = AutoModelForCausalLM.from_pretrained(LLM_PATH, dtype=torch.float16,
                                                  device_map="cuda").eval()
     rows = [score_answer(model, tok, r.question, r.answer)
             for r in tqdm(items.itertuples(), total=len(items), desc="Task 1 forced decoding")]

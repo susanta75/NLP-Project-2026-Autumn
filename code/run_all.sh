@@ -4,9 +4,9 @@
 set -euo pipefail
 cd "$(dirname "$0")"
 
-# python: $PY if set, else the project's .venv, else python3
+# python: $PY if set, else the project's venv/, else python3
 if [ -z "${PY:-}" ]; then
-    if [ -x ../.venv/bin/python ]; then PY=../.venv/bin/python; else PY=python3; fi
+    if [ -x ../venv/bin/python ]; then PY=../venv/bin/python; else PY=python3; fi
 fi
 
 "$PY" prepare_data.py

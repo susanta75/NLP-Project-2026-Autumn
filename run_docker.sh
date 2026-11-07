@@ -20,11 +20,11 @@ fi
 
 docker build -t halueval-p7 .
 
-# The code folder is mounted so outputs land on the host; the Hugging Face cache is
-# mounted so the model checkpoints are downloaded only once.
-mkdir -p "$HOME/.cache/huggingface"
+# code/ is mounted so outputs land on the host; models/ is mounted so the pretrained models are
+# read from (and, if missing, downloaded into) the project's own models/ folder.
+mkdir -p models
 docker run --rm ${gpu[@]+"${gpu[@]}"} \
     --user "$(id -u):$(id -g)" \
     -v "$PWD/code:/app/code" \
-    -v "$HOME/.cache/huggingface:/hf-cache" \
+    -v "$PWD/models:/app/models" \
     halueval-p7 "$@"

@@ -16,7 +16,8 @@
    contain the right answer.
 4. Figures: pr_curves, roc_curves, score_distributions, auc_by_knowledge (.png).
 
-Steps 1-2 need the GPU and are reused on later runs unless --recompute is given.
+Steps 1-2 need the GPU and load every model from models/ (downloaded on first use). Their results
+are reused on later runs unless --recompute is given.
 Everything printed is also saved to results/task2_results.txt.
 """
 import argparse
@@ -32,8 +33,10 @@ import pandas as pd
 from sklearn.metrics import average_precision_score as ap
 from sklearn.metrics import precision_recall_curve, roc_auc_score, roc_curve
 
-from config import (ITEMS_PATH, LLM_NAME, MAX_NEW_TOKENS, N_RESAMPLES, SAMPLES_PATH, SEED,
+from config import (BERTSCORE_BASELINE, BERTSCORE_LAYER, BERTSCORE_PATH, ITEMS_PATH, LLM_PATH,
+                    MAX_NEW_TOKENS, N_RESAMPLES, NLI_PATH, SAMPLES_PATH, SEED, SPACY_PATH,
                     TASK2_RESULTS, TEMPERATURE, build_messages, log_to, rel)
+from download_models import ensure_models
 from prepare_data import ensure_items
 
 OUT = TASK2_RESULTS
@@ -61,8 +64,9 @@ def generate_samples():
         print(f"Using saved resamples {rel(SAMPLES_PATH)} ({len(done)} questions)")
         return False
 
-    tok = AutoTokenizer.from_pretrained(LLM_NAME)
-    model = AutoModelForCausalLM.from_pretrained(LLM_NAME, dtype=torch.float16,
+    ensure_models("llm")
+    tok = AutoTokenizer.from_pretrained(LLM_PATH)
+    model = AutoModelForCausalLM.from_pretrained(LLM_PATH, dtype=torch.float16,
                                                  device_map="cuda").eval()
     with open(SAMPLES_PATH, "a") as f:
         for r in tqdm(todo.itertuples(), total=len(todo), desc="Task 2 resampling"):
@@ -88,10 +92,11 @@ def generate_samples():
 
 # ---------------------------------------------------------------- 2. official SelfCheckGPT scoring
 
-def patch_for_transformers5():
-    """Shims so the official selfcheckgpt v0.1.7 code (written for transformers 4.x) runs unchanged
-    on transformers 5.x. Nothing here changes what the official code computes."""
+def patch_official_code():
+    """Small shims around the official selfcheckgpt v0.1.7 code. Nothing here changes what it computes:
+    it runs on transformers 5.x, and loads its models from models/ instead of a download cache."""
     import bert_score
+    import spacy
     from transformers import PreTrainedTokenizerBase
 
     def batch_encode_plus(self, batch_text_or_text_pairs, **kwargs):
@@ -102,24 +107,29 @@ def patch_for_transformers5():
     if not hasattr(PreTrainedTokenizerBase, "batch_encode_plus"):
         PreTrainedTokenizerBase.batch_encode_plus = batch_encode_plus
 
-    # bert_score.score() reloads roberta-large on every call, and SelfCheckBERTScore calls it once
-    # per sample (8,000 reloads here). Reuse one BERTScorer with the identical settings instead.
-    original, scorers = bert_score.score, {}
+    # The official code calls spacy.load("en_core_web_sm"); load the same model from models/.
+    spacy_load = spacy.load
+    spacy.load = lambda name, *a, **k: spacy_load(SPACY_PATH if name == "en_core_web_sm" else name, *a, **k)
 
-    def cached_score(cands, refs, lang=None, rescale_with_baseline=False, verbose=False, **kwargs):
-        if kwargs:
-            return original(cands, refs, lang=lang, verbose=verbose,
-                            rescale_with_baseline=rescale_with_baseline, **kwargs)
-        key = (lang, rescale_with_baseline)
-        if key not in scorers:
-            scorers[key] = bert_score.BERTScorer(lang=lang, rescale_with_baseline=rescale_with_baseline)
-        return scorers[key].score(cands, refs, verbose=verbose)
+    # bert_score.score() reloads roberta-large on every call, and SelfCheckBERTScore calls it once
+    # per sample (8,000 reloads here). Reuse one BERTScorer with the settings bert_score picks for
+    # lang="en" (roberta-large, layer 17, its rescaling baseline), loaded from models/.
+    scorers = {}
+
+    def cached_score(cands, refs, lang=None, rescale_with_baseline=False, verbose=False):
+        assert lang == "en", lang
+        if rescale_with_baseline not in scorers:
+            scorers[rescale_with_baseline] = bert_score.BERTScorer(
+                model_type=str(BERTSCORE_PATH), num_layers=BERTSCORE_LAYER, lang=lang,
+                rescale_with_baseline=rescale_with_baseline, baseline_path=str(BERTSCORE_BASELINE))
+        return scorers[rescale_with_baseline].score(cands, refs, verbose=verbose)
 
     bert_score.score = cached_score
 
 
 def score_selfcheck():
-    patch_for_transformers5()
+    ensure_models("bertscore", "nli", "spacy")
+    patch_official_code()
     import torch
     from selfcheckgpt.modeling_selfcheck import SelfCheckBERTScore, SelfCheckNLI
     from tqdm import tqdm
@@ -127,7 +137,7 @@ def score_selfcheck():
     items = pd.read_json(ITEMS_PATH, lines=True)
     samples = {d["pair_id"]: d["samples"] for d in map(json.loads, open(SAMPLES_PATH))}
     bertscore = SelfCheckBERTScore(rescale_with_baseline=True)
-    nli = SelfCheckNLI(device=torch.device("cuda"))
+    nli = SelfCheckNLI(nli_model=str(NLI_PATH), device=torch.device("cuda"))
 
     # samples SelfCheckBERTScore can use: at least one spaCy sentence longer than 3 tokens
     usable = {pid: [s for s in ss if any(len(sent) > 3 for sent in bertscore.nlp(s).sents)]
